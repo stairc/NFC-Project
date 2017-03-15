@@ -21,5 +21,17 @@ namespace NFC_Project
         {
 
         }
+
+        private void btn_CheckOut_Back_Click(object sender, EventArgs e)
+        {
+            this.CheckOutLaptopPanel.Visible = false;
+            this.HomePagePanel.Visible = true;
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            this.HomePagePanel.Visible = false;
+            this.CheckOutLaptopPanel.Visible = true;
+        }
     }
 }

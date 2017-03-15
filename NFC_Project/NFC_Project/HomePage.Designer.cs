@@ -36,6 +36,7 @@
             this.btnInventory = new System.Windows.Forms.Button();
             this.HomePagePanel = new System.Windows.Forms.Panel();
             this.CheckOutLaptopPanel = new System.Windows.Forms.Panel();
+            this.btn_CheckOut_Back = new System.Windows.Forms.Button();
             this.btn_CheckOut_ProcessCheckOut = new System.Windows.Forms.Button();
             this.tbx_CheckOut_SerialNum = new System.Windows.Forms.TextBox();
             this.tbxCheckOut_UniqueID = new System.Windows.Forms.TextBox();
@@ -69,6 +70,7 @@
             this.btnCheckOut.TabIndex = 2;
             this.btnCheckOut.Text = "Check Out Laptop";
             this.btnCheckOut.UseVisualStyleBackColor = false;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // btnCheckIn
             // 
@@ -130,10 +132,10 @@
             this.HomePagePanel.Name = "HomePagePanel";
             this.HomePagePanel.Size = new System.Drawing.Size(841, 617);
             this.HomePagePanel.TabIndex = 6;
-            this.HomePagePanel.Visible = false;
             // 
             // CheckOutLaptopPanel
             // 
+            this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_Back);
             this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_ProcessCheckOut);
             this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_SerialNum);
             this.CheckOutLaptopPanel.Controls.Add(this.tbxCheckOut_UniqueID);
@@ -144,6 +146,22 @@
             this.CheckOutLaptopPanel.Size = new System.Drawing.Size(841, 617);
             this.CheckOutLaptopPanel.TabIndex = 6;
             this.CheckOutLaptopPanel.Visible = false;
+            // 
+            // btn_CheckOut_Back
+            // 
+            this.btn_CheckOut_Back.BackColor = System.Drawing.Color.White;
+            this.btn_CheckOut_Back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_CheckOut_Back.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_CheckOut_Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btn_CheckOut_Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_CheckOut_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CheckOut_Back.Location = new System.Drawing.Point(12, 12);
+            this.btn_CheckOut_Back.Name = "btn_CheckOut_Back";
+            this.btn_CheckOut_Back.Size = new System.Drawing.Size(75, 29);
+            this.btn_CheckOut_Back.TabIndex = 4;
+            this.btn_CheckOut_Back.Text = "← Go Back";
+            this.btn_CheckOut_Back.UseVisualStyleBackColor = false;
+            this.btn_CheckOut_Back.Click += new System.EventHandler(this.btn_CheckOut_Back_Click);
             // 
             // btn_CheckOut_ProcessCheckOut
             // 
@@ -217,6 +235,7 @@
         private System.Windows.Forms.TextBox tbxCheckOut_UniqueID;
         private System.Windows.Forms.TextBox tbx_CheckOut_SerialNum;
         private System.Windows.Forms.Button btn_CheckOut_ProcessCheckOut;
+        private System.Windows.Forms.Button btn_CheckOut_Back;
     }
 }
 
