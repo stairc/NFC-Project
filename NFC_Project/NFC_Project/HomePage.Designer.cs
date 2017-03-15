@@ -48,39 +48,63 @@
             // 
             // btnCheckOut
             // 
+            this.btnCheckOut.BackColor = System.Drawing.Color.White;
+            this.btnCheckOut.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnCheckOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnCheckOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckOut.Location = new System.Drawing.Point(297, 237);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(262, 74);
             this.btnCheckOut.TabIndex = 2;
             this.btnCheckOut.Text = "Check Out Laptop";
-            this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.UseVisualStyleBackColor = false;
             // 
             // btnCheckIn
             // 
+            this.btnCheckIn.BackColor = System.Drawing.Color.White;
+            this.btnCheckIn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnCheckIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnCheckIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.Location = new System.Drawing.Point(297, 330);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(262, 74);
             this.btnCheckIn.TabIndex = 3;
             this.btnCheckIn.Text = "Return Laptop";
-            this.btnCheckIn.UseVisualStyleBackColor = true;
+            this.btnCheckIn.UseVisualStyleBackColor = false;
             // 
             // btnAddLaptop
             // 
+            this.btnAddLaptop.BackColor = System.Drawing.Color.White;
+            this.btnAddLaptop.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnAddLaptop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnAddLaptop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAddLaptop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddLaptop.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddLaptop.Location = new System.Drawing.Point(297, 421);
             this.btnAddLaptop.Name = "btnAddLaptop";
             this.btnAddLaptop.Size = new System.Drawing.Size(262, 74);
             this.btnAddLaptop.TabIndex = 4;
             this.btnAddLaptop.Text = "Add Laptop To System";
-            this.btnAddLaptop.UseVisualStyleBackColor = true;
+            this.btnAddLaptop.UseVisualStyleBackColor = false;
             // 
             // btnInventory
             // 
+            this.btnInventory.BackColor = System.Drawing.Color.White;
+            this.btnInventory.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnInventory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnInventory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInventory.Location = new System.Drawing.Point(297, 513);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(262, 74);
             this.btnInventory.TabIndex = 5;
             this.btnInventory.Text = "Check Inventory";
-            this.btnInventory.UseVisualStyleBackColor = true;
+            this.btnInventory.UseVisualStyleBackColor = false;
             // 
             // HomePage
             // 
