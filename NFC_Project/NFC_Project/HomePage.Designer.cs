@@ -36,11 +36,10 @@
             this.btnInventory = new System.Windows.Forms.Button();
             this.HomePagePanel = new System.Windows.Forms.Panel();
             this.CheckOutLaptopPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblCheckOutTitle = new System.Windows.Forms.Label();
-            this.tbxCheckOut_UniqueID = new System.Windows.Forms.TextBox();
-            this.tbx_CheckOut_SerialNum = new System.Windows.Forms.TextBox();
             this.btn_CheckOut_ProcessCheckOut = new System.Windows.Forms.Button();
+            this.tbx_CheckOut_SerialNum = new System.Windows.Forms.TextBox();
+            this.tbxCheckOut_UniqueID = new System.Windows.Forms.TextBox();
+            this.lblCheckOutTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -138,46 +137,13 @@
             this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_ProcessCheckOut);
             this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_SerialNum);
             this.CheckOutLaptopPanel.Controls.Add(this.tbxCheckOut_UniqueID);
-            this.CheckOutLaptopPanel.Controls.Add(this.label1);
             this.CheckOutLaptopPanel.Controls.Add(this.lblCheckOutTitle);
             this.CheckOutLaptopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CheckOutLaptopPanel.Location = new System.Drawing.Point(0, 0);
             this.CheckOutLaptopPanel.Name = "CheckOutLaptopPanel";
             this.CheckOutLaptopPanel.Size = new System.Drawing.Size(841, 617);
             this.CheckOutLaptopPanel.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 0;
-            // 
-            // lblCheckOutTitle
-            // 
-            this.lblCheckOutTitle.AutoSize = true;
-            this.lblCheckOutTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckOutTitle.Location = new System.Drawing.Point(273, 22);
-            this.lblCheckOutTitle.Name = "lblCheckOutTitle";
-            this.lblCheckOutTitle.Size = new System.Drawing.Size(290, 39);
-            this.lblCheckOutTitle.TabIndex = 0;
-            this.lblCheckOutTitle.Text = "Check Out Laptop";
-            // 
-            // tbxCheckOut_UniqueID
-            // 
-            this.tbxCheckOut_UniqueID.Location = new System.Drawing.Point(291, 141);
-            this.tbxCheckOut_UniqueID.Name = "tbxCheckOut_UniqueID";
-            this.tbxCheckOut_UniqueID.Size = new System.Drawing.Size(241, 20);
-            this.tbxCheckOut_UniqueID.TabIndex = 1;
-            this.tbxCheckOut_UniqueID.Text = "unique id";
-            // 
-            // tbx_CheckOut_SerialNum
-            // 
-            this.tbx_CheckOut_SerialNum.Location = new System.Drawing.Point(291, 296);
-            this.tbx_CheckOut_SerialNum.Name = "tbx_CheckOut_SerialNum";
-            this.tbx_CheckOut_SerialNum.Size = new System.Drawing.Size(241, 20);
-            this.tbx_CheckOut_SerialNum.TabIndex = 2;
-            this.tbx_CheckOut_SerialNum.Text = "Laptop Serial Number";
+            this.CheckOutLaptopPanel.Visible = false;
             // 
             // btn_CheckOut_ProcessCheckOut
             // 
@@ -193,6 +159,32 @@
             this.btn_CheckOut_ProcessCheckOut.TabIndex = 3;
             this.btn_CheckOut_ProcessCheckOut.Text = "Check Out";
             this.btn_CheckOut_ProcessCheckOut.UseVisualStyleBackColor = false;
+            // 
+            // tbx_CheckOut_SerialNum
+            // 
+            this.tbx_CheckOut_SerialNum.Location = new System.Drawing.Point(291, 296);
+            this.tbx_CheckOut_SerialNum.Name = "tbx_CheckOut_SerialNum";
+            this.tbx_CheckOut_SerialNum.Size = new System.Drawing.Size(241, 20);
+            this.tbx_CheckOut_SerialNum.TabIndex = 2;
+            this.tbx_CheckOut_SerialNum.Text = "Laptop Serial Number";
+            // 
+            // tbxCheckOut_UniqueID
+            // 
+            this.tbxCheckOut_UniqueID.Location = new System.Drawing.Point(291, 141);
+            this.tbxCheckOut_UniqueID.Name = "tbxCheckOut_UniqueID";
+            this.tbxCheckOut_UniqueID.Size = new System.Drawing.Size(241, 20);
+            this.tbxCheckOut_UniqueID.TabIndex = 1;
+            this.tbxCheckOut_UniqueID.Text = "unique id";
+            // 
+            // lblCheckOutTitle
+            // 
+            this.lblCheckOutTitle.AutoSize = true;
+            this.lblCheckOutTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckOutTitle.Location = new System.Drawing.Point(273, 22);
+            this.lblCheckOutTitle.Name = "lblCheckOutTitle";
+            this.lblCheckOutTitle.Size = new System.Drawing.Size(290, 39);
+            this.lblCheckOutTitle.TabIndex = 0;
+            this.lblCheckOutTitle.Text = "Check Out Laptop";
             // 
             // HomePage
             // 
@@ -222,7 +214,6 @@
         private System.Windows.Forms.Panel HomePagePanel;
         private System.Windows.Forms.Panel CheckOutLaptopPanel;
         private System.Windows.Forms.Label lblCheckOutTitle;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxCheckOut_UniqueID;
         private System.Windows.Forms.TextBox tbx_CheckOut_SerialNum;
         private System.Windows.Forms.Button btn_CheckOut_ProcessCheckOut;
