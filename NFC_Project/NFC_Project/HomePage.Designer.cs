@@ -49,6 +49,7 @@
             // btnCheckOut
             // 
             this.btnCheckOut.BackColor = System.Drawing.Color.White;
+            this.btnCheckOut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCheckOut.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnCheckOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.btnCheckOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -64,6 +65,7 @@
             // btnCheckIn
             // 
             this.btnCheckIn.BackColor = System.Drawing.Color.White;
+            this.btnCheckIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCheckIn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnCheckIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.btnCheckIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -79,6 +81,7 @@
             // btnAddLaptop
             // 
             this.btnAddLaptop.BackColor = System.Drawing.Color.White;
+            this.btnAddLaptop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddLaptop.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnAddLaptop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.btnAddLaptop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -94,6 +97,7 @@
             // btnInventory
             // 
             this.btnInventory.BackColor = System.Drawing.Color.White;
+            this.btnInventory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInventory.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnInventory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.btnInventory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
