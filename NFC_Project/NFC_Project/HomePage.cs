@@ -22,19 +22,30 @@ namespace NFC_Project
 
         }
 
+        /// Naviagtion Methods ////////////////////////////////////
+        private void btnAddLaptop_Click(object sender, EventArgs e)
+        {
+            this.HomePagePanel.Visible = false;
+            this.AddLaptopPanel.Visible = true;
+        }
+        private void btn_AddLaptop_Back_Click(object sender, EventArgs e)
+        {
+            this.HomePagePanel.Visible = true;
+            this.AddLaptopPanel.Visible = false;
+        }
         private void btn_CheckOut_Back_Click(object sender, EventArgs e)
         {
             this.CheckOutLaptopPanel.Visible = false;
             this.HomePagePanel.Visible = true;
             ResetCheckOutPage();
         }
-
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             this.HomePagePanel.Visible = false;
             this.CheckOutLaptopPanel.Visible = true;
         }
 
+        /// Check Out Page Methods ////////////////////////////////
         private void tbx_CheckOut_SerialNum_TextChanged(object sender, EventArgs e)
         {
             if (tbx_CheckOut_SerialNum.TextLength == 14)
@@ -45,7 +56,6 @@ namespace NFC_Project
             }
 
         }
-
         private void tbx_CheckOut_SerialNum_Enter(object sender, EventArgs e)
         {
             if (tbx_CheckOut_SerialNum.Text == "Laptop Serial Number")
@@ -54,7 +64,6 @@ namespace NFC_Project
                 lbl_CheckOut_ReadyToScanNFC.Visible = true;
             }
         }
-
         private void tbx_CheckOut_SerialNum_Leave(object sender, EventArgs e)
         {
             if (tbx_CheckOut_SerialNum.Text == "")
@@ -63,7 +72,6 @@ namespace NFC_Project
                 lbl_CheckOut_ReadyToScanNFC.Visible = false;
             }
         }
-
         private void tbxCheckOut_UniqueID_Enter(object sender, EventArgs e)
         {
             if (tbxCheckOut_UniqueID.Text == "Enter Unique ID")
@@ -71,7 +79,6 @@ namespace NFC_Project
                 tbxCheckOut_UniqueID.Text = "";
             }
         }
-
         private void tbxCheckOut_UniqueID_Leave(object sender, EventArgs e)
         {
             if (tbxCheckOut_UniqueID.Text == "")
@@ -79,7 +86,6 @@ namespace NFC_Project
                 tbxCheckOut_UniqueID.Text = "Enter Unique ID";
             }
         }
-
         private void btn_CheckOut_Rescan_Click(object sender, EventArgs e)
         {
             tbx_CheckOut_SerialNum.Enabled = true;
@@ -88,7 +94,6 @@ namespace NFC_Project
             btn_CheckOut_Rescan.Visible = false;
             tbx_CheckOut_SerialNum.Focus();
         }
-
         private void ResetCheckOutPage()
         {
             tbx_CheckOut_SerialNum.Text = "Laptop Serial Number";
@@ -98,5 +103,9 @@ namespace NFC_Project
             btn_CheckOut_Rescan.Visible = false;
             tbx_CheckOut_SerialNum.Enabled = true;
         }
+
+        /// Add Laptop Page Methods //////////////////////////////
+
+
     }
 }

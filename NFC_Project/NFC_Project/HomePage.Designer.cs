@@ -44,8 +44,8 @@
             this.tbxCheckOut_UniqueID = new System.Windows.Forms.TextBox();
             this.lblCheckOutTitle = new System.Windows.Forms.Label();
             this.AddLaptopPanel = new System.Windows.Forms.Panel();
-            this.lbl_AddLaptop_Title = new System.Windows.Forms.Label();
             this.btn_AddLaptop_Back = new System.Windows.Forms.Button();
+            this.lbl_AddLaptop_Title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -109,6 +109,7 @@
             this.btnAddLaptop.TabIndex = 4;
             this.btnAddLaptop.Text = "Add Laptop To System";
             this.btnAddLaptop.UseVisualStyleBackColor = false;
+            this.btnAddLaptop.Click += new System.EventHandler(this.btnAddLaptop_Click);
             // 
             // btnInventory
             // 
@@ -250,16 +251,6 @@
             this.AddLaptopPanel.TabIndex = 6;
             this.AddLaptopPanel.Visible = false;
             // 
-            // lbl_AddLaptop_Title
-            // 
-            this.lbl_AddLaptop_Title.AutoSize = true;
-            this.lbl_AddLaptop_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AddLaptop_Title.Location = new System.Drawing.Point(291, 47);
-            this.lbl_AddLaptop_Title.Name = "lbl_AddLaptop_Title";
-            this.lbl_AddLaptop_Title.Size = new System.Drawing.Size(269, 39);
-            this.lbl_AddLaptop_Title.TabIndex = 0;
-            this.lbl_AddLaptop_Title.Text = "Add New Laptop";
-            // 
             // btn_AddLaptop_Back
             // 
             this.btn_AddLaptop_Back.BackColor = System.Drawing.Color.White;
@@ -274,6 +265,17 @@
             this.btn_AddLaptop_Back.TabIndex = 4;
             this.btn_AddLaptop_Back.Text = "← Go Back";
             this.btn_AddLaptop_Back.UseVisualStyleBackColor = false;
+            this.btn_AddLaptop_Back.Click += new System.EventHandler(this.btn_AddLaptop_Back_Click);
+            // 
+            // lbl_AddLaptop_Title
+            // 
+            this.lbl_AddLaptop_Title.AutoSize = true;
+            this.lbl_AddLaptop_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AddLaptop_Title.Location = new System.Drawing.Point(291, 31);
+            this.lbl_AddLaptop_Title.Name = "lbl_AddLaptop_Title";
+            this.lbl_AddLaptop_Title.Size = new System.Drawing.Size(269, 39);
+            this.lbl_AddLaptop_Title.TabIndex = 0;
+            this.lbl_AddLaptop_Title.Text = "Add New Laptop";
             // 
             // HomePage
             // 
