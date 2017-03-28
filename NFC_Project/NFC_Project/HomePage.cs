@@ -234,7 +234,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Brand.Text = "Laptop Brand";
             }
         }
-
         private void tbx_AddLaptop_Model_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_Model.Text == "Laptop Model")
@@ -242,7 +241,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Model.Text = "";
             }
         }
-
         private void tbx_AddLaptop_Model_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_Model.Text))
@@ -250,7 +248,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Model.Text = "Laptop Model";
             }
         }
-
         private void tbx_AddLaptop_Processor_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_Processor.Text == "Laptop Processor")
@@ -258,7 +255,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Processor.Text = "";
             }
         }
-
         private void tbx_AddLaptop_Processor_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_Processor.Text))
@@ -266,7 +262,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Processor.Text = "Laptop Processor";
             }
         }
-
         private void tbx_AddLaptop_RAM_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_RAM.Text == "Laptop RAM")
@@ -274,7 +269,6 @@ namespace NFC_Project
                 tbx_AddLaptop_RAM.Text = "";
             }
         }
-
         private void tbx_AddLaptop_RAM_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_RAM.Text))
@@ -282,7 +276,6 @@ namespace NFC_Project
                 tbx_AddLaptop_RAM.Text = "Laptop RAM";
             }
         }
-
         private void tbx_AddLaptop_Resolution_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_Resolution.Text == "Laptop Resolution")
@@ -290,7 +283,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Resolution.Text = "";
             }
         }
-
         private void tbx_AddLaptop_Resolution_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_Resolution.Text))
@@ -298,7 +290,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Resolution.Text = "Laptop Resolution";
             }
         }
-
         private void tbx_AddLaptop_Size_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_Size.Text == "Laptop Screen Size")
@@ -306,7 +297,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Size.Text = "";
             }
         }
-
         private void tbx_AddLaptop_Size_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_Size.Text))
@@ -314,7 +304,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Size.Text = "Laptop Screen Size";
             }
         }
-
         private void tbx_AddLaptop_Condition_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_Condition.Text == "Laptop Condition")
@@ -322,7 +311,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Condition.Text = "";
             }
         }
-
         private void tbx_AddLaptop_Condition_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_Condition.Text))
@@ -330,7 +318,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Condition.Text = "Laptop Condition";
             }
         }
-
         private void tbx_AddLaptop_Memory_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_Memory.Text == "Laptop Memory")
@@ -338,7 +325,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Memory.Text = "";
             }
         }
-
         private void tbx_AddLaptop_Memory_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_Memory.Text))
@@ -346,7 +332,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Memory.Text = "Laptop Memory";
             }
         }
-
         private void tbx_AddLaptop_OSVersion_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_OSVersion.Text == "Laptop OS Version")
@@ -354,7 +339,6 @@ namespace NFC_Project
                 tbx_AddLaptop_OSVersion.Text = "";
             }
         }
-
         private void tbx_AddLaptop_OSVersion_Leave(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(tbx_AddLaptop_OSVersion.Text))
