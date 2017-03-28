@@ -61,6 +61,10 @@
             this.rdo_AddLaptop_InService_No = new System.Windows.Forms.RadioButton();
             this.dtp_AddLaptop_DateAdded = new System.Windows.Forms.DateTimePicker();
             this.lbl_AddLaptop_InServiceLabel = new System.Windows.Forms.Label();
+            this.btn_AddLaptop_SubmitButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_CheckOut_ScanStatus = new System.Windows.Forms.Label();
+            this.btn_AddLaptop_Rescan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -259,6 +263,10 @@
             // 
             // AddLaptopPanel
             // 
+            this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_Rescan);
+            this.AddLaptopPanel.Controls.Add(this.lbl_CheckOut_ScanStatus);
+            this.AddLaptopPanel.Controls.Add(this.label1);
+            this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_SubmitButton);
             this.AddLaptopPanel.Controls.Add(this.dtp_AddLaptop_DateAdded);
             this.AddLaptopPanel.Controls.Add(this.pnl_AddLaptop_InServicePanel);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Memory);
@@ -307,7 +315,7 @@
             // 
             // tbx_AddLaptop_SerialNumber
             // 
-            this.tbx_AddLaptop_SerialNumber.Location = new System.Drawing.Point(320, 126);
+            this.tbx_AddLaptop_SerialNumber.Location = new System.Drawing.Point(320, 99);
             this.tbx_AddLaptop_SerialNumber.Name = "tbx_AddLaptop_SerialNumber";
             this.tbx_AddLaptop_SerialNumber.Size = new System.Drawing.Size(201, 20);
             this.tbx_AddLaptop_SerialNumber.TabIndex = 5;
@@ -317,7 +325,7 @@
             // 
             this.tbx_AddLaptop_Condition.Location = new System.Drawing.Point(153, 212);
             this.tbx_AddLaptop_Condition.Name = "tbx_AddLaptop_Condition";
-            this.tbx_AddLaptop_Condition.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_Condition.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Condition.TabIndex = 6;
             this.tbx_AddLaptop_Condition.Text = "Laptop Condition";
             // 
@@ -325,7 +333,7 @@
             // 
             this.tbx_AddLaptop_Brand.Location = new System.Drawing.Point(153, 257);
             this.tbx_AddLaptop_Brand.Name = "tbx_AddLaptop_Brand";
-            this.tbx_AddLaptop_Brand.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_Brand.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Brand.TabIndex = 7;
             this.tbx_AddLaptop_Brand.Text = "Laptop Brand";
             // 
@@ -333,7 +341,7 @@
             // 
             this.tbx_AddLaptop_Model.Location = new System.Drawing.Point(153, 305);
             this.tbx_AddLaptop_Model.Name = "tbx_AddLaptop_Model";
-            this.tbx_AddLaptop_Model.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_Model.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Model.TabIndex = 8;
             this.tbx_AddLaptop_Model.Text = "Laptop Model";
             // 
@@ -341,7 +349,7 @@
             // 
             this.tbx_AddLaptop_Processor.Location = new System.Drawing.Point(153, 350);
             this.tbx_AddLaptop_Processor.Name = "tbx_AddLaptop_Processor";
-            this.tbx_AddLaptop_Processor.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_Processor.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Processor.TabIndex = 9;
             this.tbx_AddLaptop_Processor.Text = "Laptop Processor";
             // 
@@ -349,39 +357,39 @@
             // 
             this.tbx_AddLaptop_RAM.Location = new System.Drawing.Point(153, 399);
             this.tbx_AddLaptop_RAM.Name = "tbx_AddLaptop_RAM";
-            this.tbx_AddLaptop_RAM.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_RAM.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_RAM.TabIndex = 10;
             this.tbx_AddLaptop_RAM.Text = "Laptop RAM";
             // 
             // tbx_AddLaptop_Resolution
             // 
-            this.tbx_AddLaptop_Resolution.Location = new System.Drawing.Point(495, 212);
+            this.tbx_AddLaptop_Resolution.Location = new System.Drawing.Point(439, 212);
             this.tbx_AddLaptop_Resolution.Name = "tbx_AddLaptop_Resolution";
-            this.tbx_AddLaptop_Resolution.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_Resolution.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Resolution.TabIndex = 11;
             this.tbx_AddLaptop_Resolution.Text = "Laptop Resolution";
             // 
             // tbx_AddLaptop_Size
             // 
-            this.tbx_AddLaptop_Size.Location = new System.Drawing.Point(495, 257);
+            this.tbx_AddLaptop_Size.Location = new System.Drawing.Point(439, 257);
             this.tbx_AddLaptop_Size.Name = "tbx_AddLaptop_Size";
-            this.tbx_AddLaptop_Size.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_Size.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Size.TabIndex = 12;
             this.tbx_AddLaptop_Size.Text = "Laptop Screen Size";
             // 
             // tbx_AddLaptop_OSVersion
             // 
-            this.tbx_AddLaptop_OSVersion.Location = new System.Drawing.Point(495, 305);
+            this.tbx_AddLaptop_OSVersion.Location = new System.Drawing.Point(439, 305);
             this.tbx_AddLaptop_OSVersion.Name = "tbx_AddLaptop_OSVersion";
-            this.tbx_AddLaptop_OSVersion.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_OSVersion.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_OSVersion.TabIndex = 13;
             this.tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
             // 
             // tbx_AddLaptop_Memory
             // 
-            this.tbx_AddLaptop_Memory.Location = new System.Drawing.Point(495, 399);
+            this.tbx_AddLaptop_Memory.Location = new System.Drawing.Point(439, 399);
             this.tbx_AddLaptop_Memory.Name = "tbx_AddLaptop_Memory";
-            this.tbx_AddLaptop_Memory.Size = new System.Drawing.Size(190, 20);
+            this.tbx_AddLaptop_Memory.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Memory.TabIndex = 15;
             this.tbx_AddLaptop_Memory.Text = "Laptop Memory";
             // 
@@ -390,7 +398,7 @@
             this.pnl_AddLaptop_InServicePanel.Controls.Add(this.lbl_AddLaptop_InServiceLabel);
             this.pnl_AddLaptop_InServicePanel.Controls.Add(this.rdo_AddLaptop_InService_No);
             this.pnl_AddLaptop_InServicePanel.Controls.Add(this.rdo_AddLaptop_InService_Yes);
-            this.pnl_AddLaptop_InServicePanel.Location = new System.Drawing.Point(153, 435);
+            this.pnl_AddLaptop_InServicePanel.Location = new System.Drawing.Point(153, 427);
             this.pnl_AddLaptop_InServicePanel.Name = "pnl_AddLaptop_InServicePanel";
             this.pnl_AddLaptop_InServicePanel.Size = new System.Drawing.Size(190, 48);
             this.pnl_AddLaptop_InServicePanel.TabIndex = 16;
@@ -419,19 +427,63 @@
             // 
             // dtp_AddLaptop_DateAdded
             // 
-            this.dtp_AddLaptop_DateAdded.Location = new System.Drawing.Point(495, 350);
+            this.dtp_AddLaptop_DateAdded.Location = new System.Drawing.Point(439, 350);
             this.dtp_AddLaptop_DateAdded.Name = "dtp_AddLaptop_DateAdded";
-            this.dtp_AddLaptop_DateAdded.Size = new System.Drawing.Size(190, 20);
+            this.dtp_AddLaptop_DateAdded.Size = new System.Drawing.Size(246, 20);
             this.dtp_AddLaptop_DateAdded.TabIndex = 17;
             // 
             // lbl_AddLaptop_InServiceLabel
             // 
             this.lbl_AddLaptop_InServiceLabel.AutoSize = true;
-            this.lbl_AddLaptop_InServiceLabel.Location = new System.Drawing.Point(-3, 6);
+            this.lbl_AddLaptop_InServiceLabel.Location = new System.Drawing.Point(-3, 9);
             this.lbl_AddLaptop_InServiceLabel.Name = "lbl_AddLaptop_InServiceLabel";
             this.lbl_AddLaptop_InServiceLabel.Size = new System.Drawing.Size(97, 13);
             this.lbl_AddLaptop_InServiceLabel.TabIndex = 2;
             this.lbl_AddLaptop_InServiceLabel.Text = "Laptop In Service?";
+            // 
+            // btn_AddLaptop_SubmitButton
+            // 
+            this.btn_AddLaptop_SubmitButton.BackColor = System.Drawing.Color.White;
+            this.btn_AddLaptop_SubmitButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_AddLaptop_SubmitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btn_AddLaptop_SubmitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_AddLaptop_SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddLaptop_SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddLaptop_SubmitButton.Location = new System.Drawing.Point(302, 524);
+            this.btn_AddLaptop_SubmitButton.Name = "btn_AddLaptop_SubmitButton";
+            this.btn_AddLaptop_SubmitButton.Size = new System.Drawing.Size(241, 55);
+            this.btn_AddLaptop_SubmitButton.TabIndex = 18;
+            this.btn_AddLaptop_SubmitButton.Text = "Add Laptop";
+            this.btn_AddLaptop_SubmitButton.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(333, 168);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(173, 25);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Laptop Information";
+            // 
+            // lbl_CheckOut_ScanStatus
+            // 
+            this.lbl_CheckOut_ScanStatus.AutoSize = true;
+            this.lbl_CheckOut_ScanStatus.ForeColor = System.Drawing.Color.Red;
+            this.lbl_CheckOut_ScanStatus.Location = new System.Drawing.Point(320, 126);
+            this.lbl_CheckOut_ScanStatus.Name = "lbl_CheckOut_ScanStatus";
+            this.lbl_CheckOut_ScanStatus.Size = new System.Drawing.Size(126, 13);
+            this.lbl_CheckOut_ScanStatus.TabIndex = 20;
+            this.lbl_CheckOut_ScanStatus.Text = "Ready to Scan NFC Chip";
+            // 
+            // btn_AddLaptop_Rescan
+            // 
+            this.btn_AddLaptop_Rescan.Location = new System.Drawing.Point(527, 99);
+            this.btn_AddLaptop_Rescan.Name = "btn_AddLaptop_Rescan";
+            this.btn_AddLaptop_Rescan.Size = new System.Drawing.Size(75, 20);
+            this.btn_AddLaptop_Rescan.TabIndex = 21;
+            this.btn_AddLaptop_Rescan.Text = "Rescan";
+            this.btn_AddLaptop_Rescan.UseVisualStyleBackColor = true;
             // 
             // HomePage
             // 
@@ -490,6 +542,10 @@
         private System.Windows.Forms.TextBox tbx_AddLaptop_Brand;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Condition;
         private System.Windows.Forms.TextBox tbx_AddLaptop_SerialNumber;
+        private System.Windows.Forms.Button btn_AddLaptop_Rescan;
+        private System.Windows.Forms.Label lbl_CheckOut_ScanStatus;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_AddLaptop_SubmitButton;
     }
 }
 
