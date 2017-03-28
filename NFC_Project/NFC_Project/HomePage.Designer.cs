@@ -36,22 +36,26 @@
             this.btnInventory = new System.Windows.Forms.Button();
             this.HomePagePanel = new System.Windows.Forms.Panel();
             this.CheckOutLaptopPanel = new System.Windows.Forms.Panel();
+            this.btn_CheckOut_Rescan = new System.Windows.Forms.Button();
+            this.lbl_CheckOut_ReadyToScanNFC = new System.Windows.Forms.Label();
             this.btn_CheckOut_Back = new System.Windows.Forms.Button();
             this.btn_CheckOut_ProcessCheckOut = new System.Windows.Forms.Button();
             this.tbx_CheckOut_SerialNum = new System.Windows.Forms.TextBox();
             this.tbxCheckOut_UniqueID = new System.Windows.Forms.TextBox();
             this.lblCheckOutTitle = new System.Windows.Forms.Label();
-            this.lbl_CheckOut_ReadyToScanNFC = new System.Windows.Forms.Label();
-            this.btn_CheckOut_Rescan = new System.Windows.Forms.Button();
+            this.AddLaptopPanel = new System.Windows.Forms.Panel();
+            this.lbl_AddLaptop_Title = new System.Windows.Forms.Label();
+            this.btn_AddLaptop_Back = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
+            this.AddLaptopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(167, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(164, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(521, 235);
             this.pictureBox1.TabIndex = 1;
@@ -66,7 +70,7 @@
             this.btnCheckOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(291, 229);
+            this.btnCheckOut.Location = new System.Drawing.Point(288, 225);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(262, 74);
             this.btnCheckOut.TabIndex = 2;
@@ -83,7 +87,7 @@
             this.btnCheckIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.Location = new System.Drawing.Point(291, 322);
+            this.btnCheckIn.Location = new System.Drawing.Point(288, 318);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(262, 74);
             this.btnCheckIn.TabIndex = 3;
@@ -99,7 +103,7 @@
             this.btnAddLaptop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddLaptop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddLaptop.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddLaptop.Location = new System.Drawing.Point(291, 413);
+            this.btnAddLaptop.Location = new System.Drawing.Point(288, 409);
             this.btnAddLaptop.Name = "btnAddLaptop";
             this.btnAddLaptop.Size = new System.Drawing.Size(262, 74);
             this.btnAddLaptop.TabIndex = 4;
@@ -115,7 +119,7 @@
             this.btnInventory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventory.Location = new System.Drawing.Point(291, 505);
+            this.btnInventory.Location = new System.Drawing.Point(288, 501);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(262, 74);
             this.btnInventory.TabIndex = 5;
@@ -150,6 +154,29 @@
             this.CheckOutLaptopPanel.Size = new System.Drawing.Size(841, 617);
             this.CheckOutLaptopPanel.TabIndex = 6;
             this.CheckOutLaptopPanel.Visible = false;
+            // 
+            // btn_CheckOut_Rescan
+            // 
+            this.btn_CheckOut_Rescan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CheckOut_Rescan.Location = new System.Drawing.Point(538, 296);
+            this.btn_CheckOut_Rescan.Name = "btn_CheckOut_Rescan";
+            this.btn_CheckOut_Rescan.Size = new System.Drawing.Size(75, 20);
+            this.btn_CheckOut_Rescan.TabIndex = 6;
+            this.btn_CheckOut_Rescan.Text = "Rescan";
+            this.btn_CheckOut_Rescan.UseVisualStyleBackColor = true;
+            this.btn_CheckOut_Rescan.Visible = false;
+            this.btn_CheckOut_Rescan.Click += new System.EventHandler(this.btn_CheckOut_Rescan_Click);
+            // 
+            // lbl_CheckOut_ReadyToScanNFC
+            // 
+            this.lbl_CheckOut_ReadyToScanNFC.AutoSize = true;
+            this.lbl_CheckOut_ReadyToScanNFC.ForeColor = System.Drawing.Color.Red;
+            this.lbl_CheckOut_ReadyToScanNFC.Location = new System.Drawing.Point(291, 323);
+            this.lbl_CheckOut_ReadyToScanNFC.Name = "lbl_CheckOut_ReadyToScanNFC";
+            this.lbl_CheckOut_ReadyToScanNFC.Size = new System.Drawing.Size(126, 13);
+            this.lbl_CheckOut_ReadyToScanNFC.TabIndex = 5;
+            this.lbl_CheckOut_ReadyToScanNFC.Text = "Ready to Scan NFC Chip";
+            this.lbl_CheckOut_ReadyToScanNFC.Visible = false;
             // 
             // btn_CheckOut_Back
             // 
@@ -213,28 +240,40 @@
             this.lblCheckOutTitle.TabIndex = 0;
             this.lblCheckOutTitle.Text = "Check Out Laptop";
             // 
-            // lbl_CheckOut_ReadyToScanNFC
+            // AddLaptopPanel
             // 
-            this.lbl_CheckOut_ReadyToScanNFC.AutoSize = true;
-            this.lbl_CheckOut_ReadyToScanNFC.ForeColor = System.Drawing.Color.Red;
-            this.lbl_CheckOut_ReadyToScanNFC.Location = new System.Drawing.Point(291, 323);
-            this.lbl_CheckOut_ReadyToScanNFC.Name = "lbl_CheckOut_ReadyToScanNFC";
-            this.lbl_CheckOut_ReadyToScanNFC.Size = new System.Drawing.Size(126, 13);
-            this.lbl_CheckOut_ReadyToScanNFC.TabIndex = 5;
-            this.lbl_CheckOut_ReadyToScanNFC.Text = "Ready to Scan NFC Chip";
-            this.lbl_CheckOut_ReadyToScanNFC.Visible = false;
+            this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_Back);
+            this.AddLaptopPanel.Controls.Add(this.lbl_AddLaptop_Title);
+            this.AddLaptopPanel.Location = new System.Drawing.Point(0, 0);
+            this.AddLaptopPanel.Name = "AddLaptopPanel";
+            this.AddLaptopPanel.Size = new System.Drawing.Size(841, 617);
+            this.AddLaptopPanel.TabIndex = 6;
+            this.AddLaptopPanel.Visible = false;
             // 
-            // btn_CheckOut_Rescan
+            // lbl_AddLaptop_Title
             // 
-            this.btn_CheckOut_Rescan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CheckOut_Rescan.Location = new System.Drawing.Point(538, 296);
-            this.btn_CheckOut_Rescan.Name = "btn_CheckOut_Rescan";
-            this.btn_CheckOut_Rescan.Size = new System.Drawing.Size(75, 20);
-            this.btn_CheckOut_Rescan.TabIndex = 6;
-            this.btn_CheckOut_Rescan.Text = "Rescan";
-            this.btn_CheckOut_Rescan.UseVisualStyleBackColor = true;
-            this.btn_CheckOut_Rescan.Visible = false;
-            this.btn_CheckOut_Rescan.Click += new System.EventHandler(this.btn_CheckOut_Rescan_Click);
+            this.lbl_AddLaptop_Title.AutoSize = true;
+            this.lbl_AddLaptop_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AddLaptop_Title.Location = new System.Drawing.Point(291, 47);
+            this.lbl_AddLaptop_Title.Name = "lbl_AddLaptop_Title";
+            this.lbl_AddLaptop_Title.Size = new System.Drawing.Size(269, 39);
+            this.lbl_AddLaptop_Title.TabIndex = 0;
+            this.lbl_AddLaptop_Title.Text = "Add New Laptop";
+            // 
+            // btn_AddLaptop_Back
+            // 
+            this.btn_AddLaptop_Back.BackColor = System.Drawing.Color.White;
+            this.btn_AddLaptop_Back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_AddLaptop_Back.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_AddLaptop_Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btn_AddLaptop_Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_AddLaptop_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddLaptop_Back.Location = new System.Drawing.Point(12, 12);
+            this.btn_AddLaptop_Back.Name = "btn_AddLaptop_Back";
+            this.btn_AddLaptop_Back.Size = new System.Drawing.Size(75, 29);
+            this.btn_AddLaptop_Back.TabIndex = 4;
+            this.btn_AddLaptop_Back.Text = "← Go Back";
+            this.btn_AddLaptop_Back.UseVisualStyleBackColor = false;
             // 
             // HomePage
             // 
@@ -242,14 +281,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(841, 617);
-            this.Controls.Add(this.CheckOutLaptopPanel);
+            this.Controls.Add(this.AddLaptopPanel);
             this.Controls.Add(this.HomePagePanel);
+            this.Controls.Add(this.CheckOutLaptopPanel);
             this.Name = "HomePage";
             this.Text = "FSB NFC Laptop Rental";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.HomePagePanel.ResumeLayout(false);
             this.CheckOutLaptopPanel.ResumeLayout(false);
             this.CheckOutLaptopPanel.PerformLayout();
+            this.AddLaptopPanel.ResumeLayout(false);
+            this.AddLaptopPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -270,6 +312,9 @@
         private System.Windows.Forms.Button btn_CheckOut_Back;
         private System.Windows.Forms.Label lbl_CheckOut_ReadyToScanNFC;
         private System.Windows.Forms.Button btn_CheckOut_Rescan;
+        private System.Windows.Forms.Panel AddLaptopPanel;
+        private System.Windows.Forms.Label lbl_AddLaptop_Title;
+        private System.Windows.Forms.Button btn_AddLaptop_Back;
     }
 }
 
