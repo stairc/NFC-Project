@@ -27,6 +27,8 @@ namespace NFC_Project
         {
             this.HomePagePanel.Visible = false;
             this.AddLaptopPanel.Visible = true;
+
+            ResetAddLaptopPage();
         }
         private void btn_AddLaptop_Back_Click(object sender, EventArgs e)
         {
@@ -105,7 +107,47 @@ namespace NFC_Project
         }
 
         /// Add Laptop Page Methods //////////////////////////////
+        private void ResetAddLaptopPage()
+        {
+            btn_AddLaptop_Rescan.Visible = false;
+            lbl_AddLaptop_ScanStatus.Visible = false;
+            lbl_AddLaptop_ScanStatus.Text = "Ready to Scan NFC Chip";
 
+            DisableAddLaptopTextFields();
+        }
+
+        private void DisableAddLaptopTextFields()
+        {
+            tbx_AddLaptop_Brand.Enabled = false;
+            tbx_AddLaptop_Condition.Enabled = false;
+            tbx_AddLaptop_Memory.Enabled = false;
+            tbx_AddLaptop_Model.Enabled = false;
+            tbx_AddLaptop_OSVersion.Enabled = false;
+            tbx_AddLaptop_Processor.Enabled = false;
+            tbx_AddLaptop_RAM.Enabled = false;
+            tbx_AddLaptop_Resolution.Enabled = false;
+            tbx_AddLaptop_Size.Enabled = false;
+            rdo_AddLaptop_InService_No.Enabled = false;
+            rdo_AddLaptop_InService_Yes.Enabled = false;
+            dtp_AddLaptop_DateAdded.Enabled = false;
+            tbx_AddLaptop_SerialNum.Enabled = false;
+        }
+        private void EnableAddLaptopTextFields()
+        {
+            tbx_AddLaptop_Brand.Enabled = true;
+            tbx_AddLaptop_Condition.Enabled = true;
+            tbx_AddLaptop_Memory.Enabled = true;
+            tbx_AddLaptop_Model.Enabled = true;
+            tbx_AddLaptop_OSVersion.Enabled = true;
+            tbx_AddLaptop_Processor.Enabled = true;
+            tbx_AddLaptop_RAM.Enabled = true;
+            tbx_AddLaptop_Resolution.Enabled = true;
+            tbx_AddLaptop_Size.Enabled = true;
+            rdo_AddLaptop_InService_No.Enabled = true;
+            rdo_AddLaptop_InService_Yes.Enabled = true;
+            dtp_AddLaptop_DateAdded.Enabled = true;
+            tbx_AddLaptop_SerialNum.Enabled = true;
+        }
 
     }
 }
