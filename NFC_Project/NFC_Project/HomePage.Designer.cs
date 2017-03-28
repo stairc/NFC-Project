@@ -41,6 +41,8 @@
             this.tbx_CheckOut_SerialNum = new System.Windows.Forms.TextBox();
             this.tbxCheckOut_UniqueID = new System.Windows.Forms.TextBox();
             this.lblCheckOutTitle = new System.Windows.Forms.Label();
+            this.lbl_CheckOut_ReadyToScanNFC = new System.Windows.Forms.Label();
+            this.btn_CheckOut_Rescan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -135,6 +137,8 @@
             // 
             // CheckOutLaptopPanel
             // 
+            this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_Rescan);
+            this.CheckOutLaptopPanel.Controls.Add(this.lbl_CheckOut_ReadyToScanNFC);
             this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_Back);
             this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_ProcessCheckOut);
             this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_SerialNum);
@@ -185,6 +189,9 @@
             this.tbx_CheckOut_SerialNum.Size = new System.Drawing.Size(241, 20);
             this.tbx_CheckOut_SerialNum.TabIndex = 2;
             this.tbx_CheckOut_SerialNum.Text = "Laptop Serial Number";
+            this.tbx_CheckOut_SerialNum.TextChanged += new System.EventHandler(this.tbx_CheckOut_SerialNum_TextChanged);
+            this.tbx_CheckOut_SerialNum.Enter += new System.EventHandler(this.tbx_CheckOut_SerialNum_Enter);
+            this.tbx_CheckOut_SerialNum.Leave += new System.EventHandler(this.tbx_CheckOut_SerialNum_Leave);
             // 
             // tbxCheckOut_UniqueID
             // 
@@ -192,7 +199,9 @@
             this.tbxCheckOut_UniqueID.Name = "tbxCheckOut_UniqueID";
             this.tbxCheckOut_UniqueID.Size = new System.Drawing.Size(241, 20);
             this.tbxCheckOut_UniqueID.TabIndex = 1;
-            this.tbxCheckOut_UniqueID.Text = "unique id";
+            this.tbxCheckOut_UniqueID.Text = "Enter Unique ID";
+            this.tbxCheckOut_UniqueID.Enter += new System.EventHandler(this.tbxCheckOut_UniqueID_Enter);
+            this.tbxCheckOut_UniqueID.Leave += new System.EventHandler(this.tbxCheckOut_UniqueID_Leave);
             // 
             // lblCheckOutTitle
             // 
@@ -203,6 +212,29 @@
             this.lblCheckOutTitle.Size = new System.Drawing.Size(290, 39);
             this.lblCheckOutTitle.TabIndex = 0;
             this.lblCheckOutTitle.Text = "Check Out Laptop";
+            // 
+            // lbl_CheckOut_ReadyToScanNFC
+            // 
+            this.lbl_CheckOut_ReadyToScanNFC.AutoSize = true;
+            this.lbl_CheckOut_ReadyToScanNFC.ForeColor = System.Drawing.Color.Red;
+            this.lbl_CheckOut_ReadyToScanNFC.Location = new System.Drawing.Point(291, 323);
+            this.lbl_CheckOut_ReadyToScanNFC.Name = "lbl_CheckOut_ReadyToScanNFC";
+            this.lbl_CheckOut_ReadyToScanNFC.Size = new System.Drawing.Size(126, 13);
+            this.lbl_CheckOut_ReadyToScanNFC.TabIndex = 5;
+            this.lbl_CheckOut_ReadyToScanNFC.Text = "Ready to Scan NFC Chip";
+            this.lbl_CheckOut_ReadyToScanNFC.Visible = false;
+            // 
+            // btn_CheckOut_Rescan
+            // 
+            this.btn_CheckOut_Rescan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CheckOut_Rescan.Location = new System.Drawing.Point(538, 296);
+            this.btn_CheckOut_Rescan.Name = "btn_CheckOut_Rescan";
+            this.btn_CheckOut_Rescan.Size = new System.Drawing.Size(75, 20);
+            this.btn_CheckOut_Rescan.TabIndex = 6;
+            this.btn_CheckOut_Rescan.Text = "Rescan";
+            this.btn_CheckOut_Rescan.UseVisualStyleBackColor = true;
+            this.btn_CheckOut_Rescan.Visible = false;
+            this.btn_CheckOut_Rescan.Click += new System.EventHandler(this.btn_CheckOut_Rescan_Click);
             // 
             // HomePage
             // 
@@ -236,6 +268,8 @@
         private System.Windows.Forms.TextBox tbx_CheckOut_SerialNum;
         private System.Windows.Forms.Button btn_CheckOut_ProcessCheckOut;
         private System.Windows.Forms.Button btn_CheckOut_Back;
+        private System.Windows.Forms.Label lbl_CheckOut_ReadyToScanNFC;
+        private System.Windows.Forms.Button btn_CheckOut_Rescan;
     }
 }
 
