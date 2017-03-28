@@ -46,7 +46,7 @@
             this.AddLaptopPanel = new System.Windows.Forms.Panel();
             this.btn_AddLaptop_Back = new System.Windows.Forms.Button();
             this.lbl_AddLaptop_Title = new System.Windows.Forms.Label();
-            this.tbx_AddLaptop_LaptopID = new System.Windows.Forms.TextBox();
+            this.tbx_AddLaptop_SerialNumber = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Condition = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Brand = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Model = new System.Windows.Forms.TextBox();
@@ -63,9 +63,8 @@
             this.lbl_AddLaptop_InServiceLabel = new System.Windows.Forms.Label();
             this.btn_AddLaptop_SubmitButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbl_AddLaptop_ScanStatus = new System.Windows.Forms.Label();
+            this.lbl_CheckOut_ScanStatus = new System.Windows.Forms.Label();
             this.btn_AddLaptop_Rescan = new System.Windows.Forms.Button();
-            this.tbx_AddLaptop_SerialNum = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -264,9 +263,8 @@
             // 
             // AddLaptopPanel
             // 
-            this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_SerialNum);
             this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_Rescan);
-            this.AddLaptopPanel.Controls.Add(this.lbl_AddLaptop_ScanStatus);
+            this.AddLaptopPanel.Controls.Add(this.lbl_CheckOut_ScanStatus);
             this.AddLaptopPanel.Controls.Add(this.label1);
             this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_SubmitButton);
             this.AddLaptopPanel.Controls.Add(this.dtp_AddLaptop_DateAdded);
@@ -280,7 +278,7 @@
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Model);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Brand);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Condition);
-            this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_LaptopID);
+            this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_SerialNumber);
             this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_Back);
             this.AddLaptopPanel.Controls.Add(this.lbl_AddLaptop_Title);
             this.AddLaptopPanel.Location = new System.Drawing.Point(0, 0);
@@ -315,17 +313,17 @@
             this.lbl_AddLaptop_Title.TabIndex = 0;
             this.lbl_AddLaptop_Title.Text = "Add New Laptop";
             // 
-            // tbx_AddLaptop_LaptopID
+            // tbx_AddLaptop_SerialNumber
             // 
-            this.tbx_AddLaptop_LaptopID.Location = new System.Drawing.Point(320, 99);
-            this.tbx_AddLaptop_LaptopID.Name = "tbx_AddLaptop_LaptopID";
-            this.tbx_AddLaptop_LaptopID.Size = new System.Drawing.Size(201, 20);
-            this.tbx_AddLaptop_LaptopID.TabIndex = 5;
-            this.tbx_AddLaptop_LaptopID.Text = "Scan Laptop ID";
+            this.tbx_AddLaptop_SerialNumber.Location = new System.Drawing.Point(320, 99);
+            this.tbx_AddLaptop_SerialNumber.Name = "tbx_AddLaptop_SerialNumber";
+            this.tbx_AddLaptop_SerialNumber.Size = new System.Drawing.Size(201, 20);
+            this.tbx_AddLaptop_SerialNumber.TabIndex = 5;
+            this.tbx_AddLaptop_SerialNumber.Text = "Scan Serial Number";
             // 
             // tbx_AddLaptop_Condition
             // 
-            this.tbx_AddLaptop_Condition.Location = new System.Drawing.Point(439, 305);
+            this.tbx_AddLaptop_Condition.Location = new System.Drawing.Point(153, 212);
             this.tbx_AddLaptop_Condition.Name = "tbx_AddLaptop_Condition";
             this.tbx_AddLaptop_Condition.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_Condition.TabIndex = 6;
@@ -381,7 +379,7 @@
             // 
             // tbx_AddLaptop_OSVersion
             // 
-            this.tbx_AddLaptop_OSVersion.Location = new System.Drawing.Point(439, 444);
+            this.tbx_AddLaptop_OSVersion.Location = new System.Drawing.Point(439, 305);
             this.tbx_AddLaptop_OSVersion.Name = "tbx_AddLaptop_OSVersion";
             this.tbx_AddLaptop_OSVersion.Size = new System.Drawing.Size(246, 20);
             this.tbx_AddLaptop_OSVersion.TabIndex = 13;
@@ -468,15 +466,15 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Laptop Information";
             // 
-            // lbl_AddLaptop_ScanStatus
+            // lbl_CheckOut_ScanStatus
             // 
-            this.lbl_AddLaptop_ScanStatus.AutoSize = true;
-            this.lbl_AddLaptop_ScanStatus.ForeColor = System.Drawing.Color.Red;
-            this.lbl_AddLaptop_ScanStatus.Location = new System.Drawing.Point(320, 126);
-            this.lbl_AddLaptop_ScanStatus.Name = "lbl_AddLaptop_ScanStatus";
-            this.lbl_AddLaptop_ScanStatus.Size = new System.Drawing.Size(126, 13);
-            this.lbl_AddLaptop_ScanStatus.TabIndex = 20;
-            this.lbl_AddLaptop_ScanStatus.Text = "Ready to Scan NFC Chip";
+            this.lbl_CheckOut_ScanStatus.AutoSize = true;
+            this.lbl_CheckOut_ScanStatus.ForeColor = System.Drawing.Color.Red;
+            this.lbl_CheckOut_ScanStatus.Location = new System.Drawing.Point(320, 126);
+            this.lbl_CheckOut_ScanStatus.Name = "lbl_CheckOut_ScanStatus";
+            this.lbl_CheckOut_ScanStatus.Size = new System.Drawing.Size(126, 13);
+            this.lbl_CheckOut_ScanStatus.TabIndex = 20;
+            this.lbl_CheckOut_ScanStatus.Text = "Ready to Scan NFC Chip";
             // 
             // btn_AddLaptop_Rescan
             // 
@@ -486,14 +484,6 @@
             this.btn_AddLaptop_Rescan.TabIndex = 21;
             this.btn_AddLaptop_Rescan.Text = "Rescan";
             this.btn_AddLaptop_Rescan.UseVisualStyleBackColor = true;
-            // 
-            // tbx_AddLaptop_SerialNum
-            // 
-            this.tbx_AddLaptop_SerialNum.Location = new System.Drawing.Point(153, 212);
-            this.tbx_AddLaptop_SerialNum.Name = "tbx_AddLaptop_SerialNum";
-            this.tbx_AddLaptop_SerialNum.Size = new System.Drawing.Size(246, 20);
-            this.tbx_AddLaptop_SerialNum.TabIndex = 22;
-            this.tbx_AddLaptop_SerialNum.Text = "Laptop Serial Number";
             // 
             // HomePage
             // 
@@ -551,12 +541,11 @@
         private System.Windows.Forms.TextBox tbx_AddLaptop_Model;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Brand;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Condition;
-        private System.Windows.Forms.TextBox tbx_AddLaptop_LaptopID;
+        private System.Windows.Forms.TextBox tbx_AddLaptop_SerialNumber;
         private System.Windows.Forms.Button btn_AddLaptop_Rescan;
-        private System.Windows.Forms.Label lbl_AddLaptop_ScanStatus;
+        private System.Windows.Forms.Label lbl_CheckOut_ScanStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_AddLaptop_SubmitButton;
-        private System.Windows.Forms.TextBox tbx_AddLaptop_SerialNum;
     }
 }
 
