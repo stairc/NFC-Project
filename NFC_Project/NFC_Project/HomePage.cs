@@ -183,6 +183,7 @@ namespace NFC_Project
                     Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
                     RentalList.Add(newRent);
                     MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
+                    btn_CheckOut_Back_Click(null, null);
                 }
                 else
                 {
@@ -195,6 +196,7 @@ namespace NFC_Project
                         RentalList.Add(newRent);
 
                         MessageBox.Show("A new user has been successfully added to the system and the laptop has been checked out.", "Success", MessageBoxButtons.OK);
+                        btn_CheckOut_Back_Click(null, null);
                     }
                     else
                     {
