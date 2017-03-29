@@ -355,7 +355,7 @@
             this.btn_AddLaptop_SubmitButton.Location = new System.Drawing.Point(302, 524);
             this.btn_AddLaptop_SubmitButton.Name = "btn_AddLaptop_SubmitButton";
             this.btn_AddLaptop_SubmitButton.Size = new System.Drawing.Size(241, 55);
-            this.btn_AddLaptop_SubmitButton.TabIndex = 18;
+            this.btn_AddLaptop_SubmitButton.TabIndex = 16;
             this.btn_AddLaptop_SubmitButton.Text = "Add Laptop";
             this.btn_AddLaptop_SubmitButton.UseVisualStyleBackColor = false;
             this.btn_AddLaptop_SubmitButton.Click += new System.EventHandler(this.btn_AddLaptop_SubmitButton_Click);
@@ -423,7 +423,7 @@
             this.tbx_AddLaptop_OSVersion.Location = new System.Drawing.Point(439, 444);
             this.tbx_AddLaptop_OSVersion.Name = "tbx_AddLaptop_OSVersion";
             this.tbx_AddLaptop_OSVersion.Size = new System.Drawing.Size(246, 20);
-            this.tbx_AddLaptop_OSVersion.TabIndex = 16;
+            this.tbx_AddLaptop_OSVersion.TabIndex = 15;
             this.tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
             this.tbx_AddLaptop_OSVersion.Enter += new System.EventHandler(this.tbx_AddLaptop_OSVersion_Enter);
             this.tbx_AddLaptop_OSVersion.Leave += new System.EventHandler(this.tbx_AddLaptop_OSVersion_Leave);
