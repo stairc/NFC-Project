@@ -181,42 +181,51 @@ namespace NFC_Project
 
                 if (LaptopExists)
                 {
-                    string id = tbxCheckOut_UniqueID.Text.Trim();
-                    User MatchedUser = null;
 
-                    foreach (User u in UserList)
+                    if (!IsLaptopRentedOut(laptop))
                     {
-                        if (id == u.UniqueID)
+                        string id = tbxCheckOut_UniqueID.Text.Trim();
+                        User MatchedUser = null;
+
+                        foreach (User u in UserList)
                         {
-                            MatchedUser = u;
+                            if (id == u.UniqueID)
+                            {
+                                MatchedUser = u;
+                            }
                         }
-                    }
 
-                    if (MatchedUser != null)
-                    {
-                        Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
-                        RentalList.Add(newRent);
-                        MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
-                        btn_CheckOut_Back_Click(null, null);
-                    }
-                    else
-                    {
-                        if (IsUserDataValid())
+                        if (MatchedUser != null)
                         {
-                            User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
-                            UserList.Add(u);
-
                             Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
                             RentalList.Add(newRent);
-
-                            MessageBox.Show("A new user has been successfully added to the system and the laptop has been checked out.", "Success", MessageBoxButtons.OK);
+                            MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
                             btn_CheckOut_Back_Click(null, null);
                         }
                         else
                         {
-                            MessageBox.Show("The user data you have entered is not valid.", "Error", MessageBoxButtons.OK);
+                            if (IsUserDataValid())
+                            {
+                                User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
+                                UserList.Add(u);
+
+                                Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
+                                RentalList.Add(newRent);
+
+                                MessageBox.Show("A new user has been successfully added to the system and the laptop has been checked out.", "Success", MessageBoxButtons.OK);
+                                btn_CheckOut_Back_Click(null, null);
+                            }
+                            else
+                            {
+                                MessageBox.Show("The user data you have entered is not valid.", "Error", MessageBoxButtons.OK);
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Laptop is currently rented out by another user.", "Error", MessageBoxButtons.OK);
+                    }
+                   
                 }
                 else
                 {
@@ -617,6 +626,39 @@ namespace NFC_Project
                 CreateLaptopObject();
                 MessageBox.Show("Laptop added to system successfully.", "Success", MessageBoxButtons.OK);
                 btn_AddLaptop_Back_Click(null, null);
+            }
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////
+        /// Helper Methods
+        /// 
+
+        public Rental GetCurrentLaptopRental(string id)
+        {
+            foreach (Rental item in RentalList)
+            {
+                if (item.ReturnDate == DateTime.MaxValue &&
+                    item.LaptopID == id)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
+        public bool IsLaptopRentedOut(string id)
+        {
+            Rental r = GetCurrentLaptopRental(id);
+
+            if (r == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
