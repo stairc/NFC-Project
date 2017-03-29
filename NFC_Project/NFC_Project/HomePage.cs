@@ -129,31 +129,100 @@ namespace NFC_Project
 
         private void btn_CheckOut_LookupUser_Click(object sender, EventArgs e)
         {
-            string id = tbxCheckOut_UniqueID.Text.Trim();
-            User MatchedUser = null;
-
-            foreach (User u in UserList)
+            if (tbxCheckOut_UniqueID.Text != "Enter Unique ID" &&
+                !String.IsNullOrWhiteSpace(tbxCheckOut_UniqueID.Text))
             {
-                if (id == u.UniqueID)
+                string id = tbxCheckOut_UniqueID.Text.Trim();
+                User MatchedUser = null;
+
+                foreach (User u in UserList)
                 {
-                    MatchedUser = u;
+                    if (id == u.UniqueID)
+                    {
+                        MatchedUser = u;
+                    }
+                }
+
+                if (MatchedUser != null)
+                {
+                    lbl_CheckOut_UserFound.Visible = true;
+                    lbl_CheckOut_UserFound.Text = "User Found Successfully";
+                    AssignUserDataToFields(MatchedUser);
+                }
+                else
+                {
+                    lbl_CheckOut_UserFound.Visible = true;
+                    lbl_CheckOut_UserFound.Text = "User Does Not Exist - Enter Information";
+                    ResetCheckOutUserFields();
+                    EnableCheckOutUSerFields();
                 }
             }
 
-            if (MatchedUser != null)
+        }
+
+        private void btn_CheckOut_ProcessCheckOut_Click(object sender, EventArgs e)
+        {
+            if (tbx_CheckOut_SerialNum.Text != "" &&
+                tbx_CheckOut_SerialNum.Text != "Scan Laptop ID Tag" &&
+                tbxCheckOut_UniqueID.Text != "Enter Unique ID" &&
+                tbxCheckOut_UniqueID.Text != "")
             {
-                lbl_CheckOut_UserFound.Visible = true;
-                lbl_CheckOut_UserFound.Text = "User Found Successfully";
-                AssignUserDataToFields(MatchedUser);
+                string id = tbxCheckOut_UniqueID.Text.Trim();
+                User MatchedUser = null;
+
+                foreach (User u in UserList)
+                {
+                    if (id == u.UniqueID)
+                    {
+                        MatchedUser = u;
+                    }
+                }
+
+                if (MatchedUser != null)
+                {
+                    Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
+                    RentalList.Add(newRent);
+                    MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (IsUserDataValid())
+                    {
+                        User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
+                        UserList.Add(u);
+
+                        Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
+                        RentalList.Add(newRent);
+
+                        MessageBox.Show("A new user has been successfully added to the system and the laptop has been checked out.", "Success", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("The user data you have entered is not valid.", "Error", MessageBoxButtons.OK);
+                    }
+                }
             }
             else
             {
-                lbl_CheckOut_UserFound.Visible = true;
-                lbl_CheckOut_UserFound.Text = "User Does Not Exist - Enter Information";
-                ResetCheckOutUserFields();
-                EnableCheckOutUSerFields();
+                MessageBox.Show("Please enter a unique ID and scan the laptop ID tag.", "Data Invalid", MessageBoxButtons.OK);
+            }
+        }
+
+        private bool IsUserDataValid()
+        {
+            if (tbx_CheckOut_FirstName.Text == "Enter First Name" ||
+                tbx_CheckOut_LastName.Text == "Enter Last Name" ||
+                tbx_CheckOut_UserEmail.Text == "Enter Email" ||
+                tbx_CheckOut_UserPhone.Text == "Enter Phone Number" ||
+                String.IsNullOrWhiteSpace(tbx_CheckOut_FirstName.Text) ||
+                String.IsNullOrWhiteSpace(tbx_CheckOut_LastName.Text) ||
+                String.IsNullOrWhiteSpace(tbx_CheckOut_UserEmail.Text) ||
+                String.IsNullOrWhiteSpace(tbx_CheckOut_UserPhone.Text))
+            {
+                return false;
             }
 
+            return true;
         }
 
         private void DisableCheckOutUserFields()
@@ -483,7 +552,5 @@ namespace NFC_Project
                 tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
             }
         }
-
-
     }
 }

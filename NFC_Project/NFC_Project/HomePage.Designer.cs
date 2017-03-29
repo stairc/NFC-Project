@@ -244,6 +244,7 @@
             this.btn_CheckOut_ProcessCheckOut.TabIndex = 3;
             this.btn_CheckOut_ProcessCheckOut.Text = "Check Out";
             this.btn_CheckOut_ProcessCheckOut.UseVisualStyleBackColor = false;
+            this.btn_CheckOut_ProcessCheckOut.Click += new System.EventHandler(this.btn_CheckOut_ProcessCheckOut_Click);
             // 
             // tbx_CheckOut_SerialNum
             // 
