@@ -399,11 +399,29 @@ namespace NFC_Project
         {
             if (tbx_AddLaptop_LaptopID.TextLength == 14)
             {
-                lbl_AddLaptop_ScanStatus.Text = "Laptop ID Scanned Succesfully";
-                btn_AddLaptop_Rescan.Visible = true;
-                tbx_AddLaptop_LaptopID.Enabled = false;
+                bool LaptopExists = false;
+                foreach (Laptop item in LaptopList)
+                {
+                    if (tbx_AddLaptop_LaptopID.Text == item.LaptopID)
+                    {
+                        LaptopExists = true;
+                    }
+                }
 
-                EnableAddLaptopTextFields();
+                if (!LaptopExists)
+                {
+                    lbl_AddLaptop_ScanStatus.Text = "Laptop ID Scanned Succesfully";
+                    btn_AddLaptop_Rescan.Visible = true;
+                    tbx_AddLaptop_LaptopID.Enabled = false;
+
+                    EnableAddLaptopTextFields();
+                }
+                else
+                {
+                    MessageBox.Show("That laptop ID is already in use by another laptop. Please scan a different tag.", "ID In Use", MessageBoxButtons.OK);
+                    btn_AddLaptop_Rescan_Click(null, null);
+                }
+                
             }
         }
         private void tbx_AddLaptop_LaptopID_Enter(object sender, EventArgs e)
@@ -585,6 +603,19 @@ namespace NFC_Project
                                   service, tbx_AddLaptop_Memory.Text, tbx_AddLaptop_OSVersion.Text);
 
             LaptopList.Add(l);
+        }
+        private bool IsAddNewLaptopDataValid()
+        {
+            // IMPLEMENT
+            return true;
+        }
+
+        private void btn_AddLaptop_SubmitButton_Click(object sender, EventArgs e)
+        {
+            if (IsAddNewLaptopDataValid())
+            {
+
+            }
         }
     }
 }

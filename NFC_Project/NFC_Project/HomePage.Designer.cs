@@ -358,6 +358,7 @@
             this.btn_AddLaptop_SubmitButton.TabIndex = 18;
             this.btn_AddLaptop_SubmitButton.Text = "Add Laptop";
             this.btn_AddLaptop_SubmitButton.UseVisualStyleBackColor = false;
+            this.btn_AddLaptop_SubmitButton.Click += new System.EventHandler(this.btn_AddLaptop_SubmitButton_Click);
             // 
             // dtp_AddLaptop_DateAdded
             // 
