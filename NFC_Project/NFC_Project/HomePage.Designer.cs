@@ -611,9 +611,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(841, 617);
-            this.Controls.Add(this.CheckOutLaptopPanel);
             this.Controls.Add(this.AddLaptopPanel);
             this.Controls.Add(this.HomePagePanel);
+            this.Controls.Add(this.CheckOutLaptopPanel);
             this.Name = "HomePage";
             this.Text = "FSB NFC Laptop Rental";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

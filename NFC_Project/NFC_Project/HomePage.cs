@@ -123,6 +123,7 @@ namespace NFC_Project
             lbl_CheckOut_ReadyToScanNFC.Text = "Ready to Scan NFC Chip";
             btn_CheckOut_Rescan.Visible = false;
             tbx_CheckOut_SerialNum.Enabled = true;
+            lbl_CheckOut_UserFound.Visible = false;
             DisableCheckOutUserFields();
             ResetCheckOutUserFields();
         }
@@ -167,42 +168,61 @@ namespace NFC_Project
                 tbxCheckOut_UniqueID.Text != "Enter Unique ID" &&
                 tbxCheckOut_UniqueID.Text != "")
             {
-                string id = tbxCheckOut_UniqueID.Text.Trim();
-                User MatchedUser = null;
+                string laptop = tbx_CheckOut_SerialNum.Text;
+                bool LaptopExists = false;
 
-                foreach (User u in UserList)
+                foreach (Laptop l in LaptopList)
                 {
-                    if (id == u.UniqueID)
+                    if (l.LaptopID == laptop)
                     {
-                        MatchedUser = u;
+                        LaptopExists = true;
                     }
                 }
 
-                if (MatchedUser != null)
+                if (LaptopExists)
                 {
-                    Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
-                    RentalList.Add(newRent);
-                    MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
-                    btn_CheckOut_Back_Click(null, null);
-                }
-                else
-                {
-                    if (IsUserDataValid())
-                    {
-                        User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
-                        UserList.Add(u);
+                    string id = tbxCheckOut_UniqueID.Text.Trim();
+                    User MatchedUser = null;
 
+                    foreach (User u in UserList)
+                    {
+                        if (id == u.UniqueID)
+                        {
+                            MatchedUser = u;
+                        }
+                    }
+
+                    if (MatchedUser != null)
+                    {
                         Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
                         RentalList.Add(newRent);
-
-                        MessageBox.Show("A new user has been successfully added to the system and the laptop has been checked out.", "Success", MessageBoxButtons.OK);
+                        MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
                         btn_CheckOut_Back_Click(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("The user data you have entered is not valid.", "Error", MessageBoxButtons.OK);
+                        if (IsUserDataValid())
+                        {
+                            User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
+                            UserList.Add(u);
+
+                            Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
+                            RentalList.Add(newRent);
+
+                            MessageBox.Show("A new user has been successfully added to the system and the laptop has been checked out.", "Success", MessageBoxButtons.OK);
+                            btn_CheckOut_Back_Click(null, null);
+                        }
+                        else
+                        {
+                            MessageBox.Show("The user data you have entered is not valid.", "Error", MessageBoxButtons.OK);
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("The laptop you have scanned does not exist. Please add it to the system and then try again.", "Laptop Does Not Exist", MessageBoxButtons.OK);
+                }
+                
             }
             else
             {
@@ -553,6 +573,18 @@ namespace NFC_Project
             {
                 tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
             }
+        }
+
+        private void CreateLaptopObject()
+        {
+            bool service = (rdo_AddLaptop_InService_Yes.Checked) ? true : false;
+
+            Laptop l = new Laptop(tbx_AddLaptop_LaptopID.Text, tbx_AddLaptop_SerialNum.Text, tbx_AddLaptop_Condition.Text,
+                                  tbx_AddLaptop_Brand.Text, tbx_AddLaptop_Model.Text, tbx_AddLaptop_Processor.Text, tbx_AddLaptop_RAM.Text,
+                                  tbx_AddLaptop_Resolution.Text, tbx_AddLaptop_Size.Text, dtp_AddLaptop_DateAdded.Value,
+                                  service, tbx_AddLaptop_Memory.Text, tbx_AddLaptop_OSVersion.Text);
+
+            LaptopList.Add(l);
         }
     }
 }
