@@ -60,7 +60,7 @@ namespace NFC_Project
         }
         private void tbx_CheckOut_SerialNum_Enter(object sender, EventArgs e)
         {
-            if (tbx_CheckOut_SerialNum.Text == "Scan Laptop ID")
+            if (tbx_CheckOut_SerialNum.Text == "Scan Laptop ID Tag")
             {
                 tbx_CheckOut_SerialNum.Text = "";
                 lbl_CheckOut_ReadyToScanNFC.Visible = true;
