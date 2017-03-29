@@ -67,6 +67,16 @@ namespace NFC_Project
             this.CheckOutLaptopPanel.Visible = true;
             DisableCheckOutUserFields();
         }
+        private void btn_Return_Back_Click(object sender, EventArgs e)
+        {
+            this.ReturnLaptopPanel.Visible = false;
+            this.HomePagePanel.Visible = true;
+        }
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            this.HomePagePanel.Visible = false;
+            this.ReturnLaptopPanel.Visible = true;
+        }
 
         /// Check Out Page Methods ////////////////////////////////
         private void tbx_CheckOut_SerialNum_TextChanged(object sender, EventArgs e)
@@ -631,6 +641,10 @@ namespace NFC_Project
             }
         }
 
+        /// Return Laptop Page Methods //////////////////////////////////////////
+
+        
+
 
         /////////////////////////////////////////////////////////////////////////
         /// Helper Methods
@@ -663,5 +677,7 @@ namespace NFC_Project
                 return true;
             }
         }
+
+
     }
 }
