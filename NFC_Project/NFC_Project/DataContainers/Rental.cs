@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NFC_Project.DataContainers
 {
-    class Rental
+    public class Rental
     {
         public Guid RentalID { get; set; }
         public string UniqueID { get; set; }

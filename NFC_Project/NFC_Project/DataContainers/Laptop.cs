@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NFC_Project.DataContainers
 {
-    class Laptop
+    public class Laptop
     {
         public string LaptopID { get; set; }
         public string SerialNumber { get; set; }

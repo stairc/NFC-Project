@@ -7,14 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NFC_Project.DataContainers;
 
 namespace NFC_Project
 {
     public partial class HomePage : Form
     {
+
+        public List<Laptop> LaptopList;
+        public List<Rental> RentalList;
+        public List<User> UserList;
+
         public HomePage()
         {
             InitializeComponent();
+
+            LaptopList = new List<Laptop>();
+            RentalList = new List<Rental>();
+            UserList = new List<User>();
+
+            AddTestData();
+        }
+
+        private void AddTestData()
+        {
+            UserList.Add(new User("staircd", "Cameron", "Stair", "staircd@miamioh.edu", "5135601882"));
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,6 +63,7 @@ namespace NFC_Project
         {
             this.HomePagePanel.Visible = false;
             this.CheckOutLaptopPanel.Visible = true;
+            DisableCheckOutUserFields();
         }
 
         /// Check Out Page Methods ////////////////////////////////
@@ -104,6 +123,124 @@ namespace NFC_Project
             lbl_CheckOut_ReadyToScanNFC.Text = "Ready to Scan NFC Chip";
             btn_CheckOut_Rescan.Visible = false;
             tbx_CheckOut_SerialNum.Enabled = true;
+            DisableCheckOutUserFields();
+            ResetCheckOutUserFields();
+        }
+
+        private void btn_CheckOut_LookupUser_Click(object sender, EventArgs e)
+        {
+            string id = tbxCheckOut_UniqueID.Text.Trim();
+            User MatchedUser = null;
+
+            foreach (User u in UserList)
+            {
+                if (id == u.UniqueID)
+                {
+                    MatchedUser = u;
+                }
+            }
+
+            if (MatchedUser != null)
+            {
+                lbl_CheckOut_UserFound.Visible = true;
+                lbl_CheckOut_UserFound.Text = "User Found Successfully";
+                AssignUserDataToFields(MatchedUser);
+            }
+            else
+            {
+                lbl_CheckOut_UserFound.Visible = true;
+                lbl_CheckOut_UserFound.Text = "User Does Not Exist - Enter Information";
+                ResetCheckOutUserFields();
+                EnableCheckOutUSerFields();
+            }
+
+        }
+
+        private void DisableCheckOutUserFields()
+        {
+            tbx_CheckOut_FirstName.Enabled = false;
+            tbx_CheckOut_LastName.Enabled = false;
+            tbx_CheckOut_UserEmail.Enabled = false;
+            tbx_CheckOut_UserPhone.Enabled = false;
+        }
+        private void EnableCheckOutUSerFields()
+        {
+            tbx_CheckOut_FirstName.Enabled = true;
+            tbx_CheckOut_LastName.Enabled = true;
+            tbx_CheckOut_UserEmail.Enabled = true;
+            tbx_CheckOut_UserPhone.Enabled = true;
+        }
+        private void ResetCheckOutUserFields()
+        {
+            tbx_CheckOut_FirstName.Text = "Enter First Name";
+            tbx_CheckOut_LastName.Text = "Enter Last Name";
+            tbx_CheckOut_UserEmail.Text = "Enter Email";
+            tbx_CheckOut_UserPhone.Text = "Enter Phone Number";
+        }
+
+        private void AssignUserDataToFields(User user)
+        {
+            tbx_CheckOut_FirstName.Text = user.FirstName;
+            tbx_CheckOut_LastName.Text = user.LastName;
+            tbx_CheckOut_UserEmail.Text = user.EmailAddress;
+            tbx_CheckOut_UserPhone.Text = user.PhoneNumber;
+        }
+
+        private void tbx_CheckOut_FirstName_Enter(object sender, EventArgs e)
+        {
+            if (tbx_CheckOut_FirstName.Text == "Enter First Name")
+            {
+                tbx_CheckOut_FirstName.Text = "";
+            }
+        }
+        private void tbx_CheckOut_FirstName_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(tbx_CheckOut_FirstName.Text))
+            {
+                tbx_CheckOut_FirstName.Text = "Enter First Name";
+            }
+        }
+        private void tbx_CheckOut_LastName_Enter(object sender, EventArgs e)
+        {
+            if (tbx_CheckOut_LastName.Text == "Enter Last Name")
+            {
+                tbx_CheckOut_LastName.Text = "";
+            }
+        }
+        private void tbx_CheckOut_LastName_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(tbx_CheckOut_LastName.Text))
+            {
+                tbx_CheckOut_LastName.Text = "Enter Last Name";
+            }
+        }
+        private void tbx_CheckOut_UserEmail_Enter(object sender, EventArgs e)
+        {
+            if (tbx_CheckOut_UserEmail.Text == "Enter Email")
+            {
+                tbx_CheckOut_UserEmail.Text = "";
+            }
+        }
+        private void tbx_CheckOut_UserEmail_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(tbx_CheckOut_UserEmail.Text))
+            {
+                tbx_CheckOut_UserEmail.Text = "Enter Email";
+            }
+        }
+        private void tbx_CheckOut_UserPhone_Enter(object sender, EventArgs e)
+        {
+            if (tbx_CheckOut_UserPhone.Text == "Enter Phone Number")
+            {
+                tbx_CheckOut_UserPhone.Text = "";
+            }
+        }
+        private void tbx_CheckOut_UserPhone_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(tbx_CheckOut_UserPhone.Text))
+            {
+                tbx_CheckOut_UserPhone.Text = "Enter Phone Number";
+            }
         }
 
         /// Add Laptop Page Methods //////////////////////////////
@@ -346,5 +483,7 @@ namespace NFC_Project
                 tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
             }
         }
+
+
     }
 }
