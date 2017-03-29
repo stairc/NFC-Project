@@ -76,6 +76,7 @@ namespace NFC_Project
         {
             this.HomePagePanel.Visible = false;
             this.ReturnLaptopPanel.Visible = true;
+            ResetReturnPage();
         }
 
         /// Check Out Page Methods ////////////////////////////////
@@ -643,7 +644,108 @@ namespace NFC_Project
 
         /// Return Laptop Page Methods //////////////////////////////////////////
 
-        
+        private void ResetReturnPage()
+        {
+            lbl_Return_ScanStatus.Visible = false;
+            tbx_Return_LaptopID.Text = "Scan Laptop ID Tag";
+            lbl_Return_ScanStatus.Text = "Ready to Scan NFC Chip";
+            btn_Return_Rescan.Visible = false;
+            tbx_Return_LaptopID.Enabled = true;
+
+            lbl_Return_CheckoutText.Visible = false;
+            lbl_Return_OverdueText.Visible = false;
+            lbl_Return_RentalIDText.Visible = false;
+            lbl_Return_UserText.Visible = false;
+        }
+
+        private void tbx_Return_LaptopID_Enter(object sender, EventArgs e)
+        {
+            if (tbx_Return_LaptopID.Text == "Scan Laptop ID Tag")
+            {
+                tbx_Return_LaptopID.Text = "";
+                lbl_Return_ScanStatus.Visible = true;
+            }
+        }
+
+        private void tbx_Return_LaptopID_Leave(object sender, EventArgs e)
+        {
+            if (tbx_Return_LaptopID.Text == "")
+            {
+                tbx_Return_LaptopID.Text = "Scan Laptop ID Tag";
+                lbl_Return_ScanStatus.Visible = false;
+            }
+        }
+
+        private void btn_Return_Rescan_Click(object sender, EventArgs e)
+        {
+            tbx_Return_LaptopID.Enabled = true;
+            lbl_Return_ScanStatus.Text = "Ready to Scan NFC Chip";
+            tbx_Return_LaptopID.Text = "";
+            btn_Return_Rescan.Visible = false;
+            tbx_Return_LaptopID.Focus();
+
+            lbl_Return_CheckoutText.Visible = false;
+            lbl_Return_OverdueText.Visible = false;
+            lbl_Return_RentalIDText.Visible = false;
+            lbl_Return_UserText.Visible = false;
+        }
+
+        private void tbx_Return_LaptopID_TextChanged(object sender, EventArgs e)
+        {
+            if (tbx_Return_LaptopID.TextLength == 14)
+            {
+                tbx_Return_LaptopID.Enabled = false;
+
+                Rental r = null;
+                foreach (Rental item in RentalList)
+                {
+                    if (item.LaptopID == tbx_Return_LaptopID.Text &&
+                        item.ReturnDate == DateTime.MaxValue)
+                    {
+                        r = item;
+                    }
+                }
+
+                if (r != null)
+                {
+                    btn_Return_Rescan.Visible = true;
+                    lbl_Return_ScanStatus.Text = "Rental Found Successfully";
+                    
+
+                    lbl_Return_UserText.Text = r.UniqueID;
+                    lbl_Return_UserText.Visible = true;
+                    lbl_Return_CheckoutText.Text = r.CheckOutDate.ToShortDateString();
+                    lbl_Return_CheckoutText.Visible = true;
+                    lbl_Return_OverdueText.Text = (r.IsOverDue) ? "Yes" : "No";
+                    lbl_Return_OverdueText.Visible = true;
+                    lbl_Return_RentalIDText.Text = r.RentalID.ToString();
+                    lbl_Return_RentalIDText.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("The laptop you specified either does not exist or is not currently checked out.", "Error", MessageBoxButtons.OK);
+                    btn_Return_Rescan_Click(null, null);
+                }
+            }
+        }
+
+        private void btn_Return_ProcessReturn_Click(object sender, EventArgs e)
+        {
+            if (tbx_Return_LaptopID.Enabled == false)
+            {
+                string guid = lbl_Return_RentalIDText.Text;
+
+                foreach (Rental item in RentalList)
+                {
+                    if (item.RentalID.ToString() == guid)
+                    {
+                        item.ReturnDate = DateTime.Now;
+                        MessageBox.Show("Yout laptop has been succssfully checked back in.", "Success", MessageBoxButtons.OK);
+                        btn_Return_Back_Click(null, null);
+                    }
+                }
+            }
+        }
 
 
         /////////////////////////////////////////////////////////////////////////
@@ -677,7 +779,6 @@ namespace NFC_Project
                 return true;
             }
         }
-
 
     }
 }

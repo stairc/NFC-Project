@@ -83,13 +83,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Return_UserText = new System.Windows.Forms.Label();
             this.lbl_Return_Checkout = new System.Windows.Forms.Label();
-            this.lbl_Return_ReturnDate = new System.Windows.Forms.Label();
+            this.lbl_Return_RentalID = new System.Windows.Forms.Label();
             this.lbl_Return_Overdue = new System.Windows.Forms.Label();
             this.lbl_Return_CheckoutText = new System.Windows.Forms.Label();
-            this.lbl_Return_ReturnDateText = new System.Windows.Forms.Label();
+            this.lbl_Return_RentalIDText = new System.Windows.Forms.Label();
             this.lbl_Return_OverdueText = new System.Windows.Forms.Label();
             this.btn_Return_Rescan = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_Return_ScanStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -628,7 +628,7 @@
             // 
             // ReturnLaptopPanel
             // 
-            this.ReturnLaptopPanel.Controls.Add(this.label2);
+            this.ReturnLaptopPanel.Controls.Add(this.lbl_Return_ScanStatus);
             this.ReturnLaptopPanel.Controls.Add(this.btn_Return_Rescan);
             this.ReturnLaptopPanel.Controls.Add(this.panel1);
             this.ReturnLaptopPanel.Controls.Add(this.tbx_Return_LaptopID);
@@ -681,6 +681,7 @@
             this.btn_Return_ProcessReturn.TabIndex = 6;
             this.btn_Return_ProcessReturn.Text = "Return Laptop";
             this.btn_Return_ProcessReturn.UseVisualStyleBackColor = false;
+            this.btn_Return_ProcessReturn.Click += new System.EventHandler(this.btn_Return_ProcessReturn_Click);
             // 
             // tbx_Return_LaptopID
             // 
@@ -689,6 +690,9 @@
             this.tbx_Return_LaptopID.Size = new System.Drawing.Size(241, 20);
             this.tbx_Return_LaptopID.TabIndex = 7;
             this.tbx_Return_LaptopID.Text = "Scan Laptop ID Tag";
+            this.tbx_Return_LaptopID.TextChanged += new System.EventHandler(this.tbx_Return_LaptopID_TextChanged);
+            this.tbx_Return_LaptopID.Enter += new System.EventHandler(this.tbx_Return_LaptopID_Enter);
+            this.tbx_Return_LaptopID.Leave += new System.EventHandler(this.tbx_Return_LaptopID_Leave);
             // 
             // lbl_RentalInfoTitle
             // 
@@ -712,10 +716,10 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.lbl_Return_OverdueText);
-            this.panel1.Controls.Add(this.lbl_Return_ReturnDateText);
+            this.panel1.Controls.Add(this.lbl_Return_RentalIDText);
             this.panel1.Controls.Add(this.lbl_Return_CheckoutText);
             this.panel1.Controls.Add(this.lbl_Return_Overdue);
-            this.panel1.Controls.Add(this.lbl_Return_ReturnDate);
+            this.panel1.Controls.Add(this.lbl_Return_RentalID);
             this.panel1.Controls.Add(this.lbl_Return_Checkout);
             this.panel1.Controls.Add(this.lbl_Return_UserText);
             this.panel1.Controls.Add(this.lbl_Rental_User);
@@ -744,14 +748,14 @@
             this.lbl_Return_Checkout.TabIndex = 11;
             this.lbl_Return_Checkout.Text = "Checkout Date:";
             // 
-            // lbl_Return_ReturnDate
+            // lbl_Return_RentalID
             // 
-            this.lbl_Return_ReturnDate.AutoSize = true;
-            this.lbl_Return_ReturnDate.Location = new System.Drawing.Point(-3, 115);
-            this.lbl_Return_ReturnDate.Name = "lbl_Return_ReturnDate";
-            this.lbl_Return_ReturnDate.Size = new System.Drawing.Size(96, 13);
-            this.lbl_Return_ReturnDate.TabIndex = 12;
-            this.lbl_Return_ReturnDate.Text = "Scheduled Return:";
+            this.lbl_Return_RentalID.AutoSize = true;
+            this.lbl_Return_RentalID.Location = new System.Drawing.Point(-3, 115);
+            this.lbl_Return_RentalID.Name = "lbl_Return_RentalID";
+            this.lbl_Return_RentalID.Size = new System.Drawing.Size(55, 13);
+            this.lbl_Return_RentalID.TabIndex = 12;
+            this.lbl_Return_RentalID.Text = "Rental ID:";
             // 
             // lbl_Return_Overdue
             // 
@@ -772,15 +776,15 @@
             this.lbl_Return_CheckoutText.Text = "[checkout]";
             this.lbl_Return_CheckoutText.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // lbl_Return_ReturnDateText
+            // lbl_Return_RentalIDText
             // 
-            this.lbl_Return_ReturnDateText.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_Return_ReturnDateText.Location = new System.Drawing.Point(88, 115);
-            this.lbl_Return_ReturnDateText.Name = "lbl_Return_ReturnDateText";
-            this.lbl_Return_ReturnDateText.Size = new System.Drawing.Size(149, 13);
-            this.lbl_Return_ReturnDateText.TabIndex = 15;
-            this.lbl_Return_ReturnDateText.Text = "[return date]";
-            this.lbl_Return_ReturnDateText.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbl_Return_RentalIDText.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_Return_RentalIDText.Location = new System.Drawing.Point(88, 115);
+            this.lbl_Return_RentalIDText.Name = "lbl_Return_RentalIDText";
+            this.lbl_Return_RentalIDText.Size = new System.Drawing.Size(149, 13);
+            this.lbl_Return_RentalIDText.TabIndex = 15;
+            this.lbl_Return_RentalIDText.Text = "[return date]";
+            this.lbl_Return_RentalIDText.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lbl_Return_OverdueText
             // 
@@ -800,17 +804,19 @@
             this.btn_Return_Rescan.TabIndex = 11;
             this.btn_Return_Rescan.Text = "Rescan";
             this.btn_Return_Rescan.UseVisualStyleBackColor = true;
+            this.btn_Return_Rescan.Visible = false;
+            this.btn_Return_Rescan.Click += new System.EventHandler(this.btn_Return_Rescan_Click);
             // 
-            // label2
+            // lbl_Return_ScanStatus
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(301, 130);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Ready to Scan NFC Tag";
-            this.label2.Visible = false;
+            this.lbl_Return_ScanStatus.AutoSize = true;
+            this.lbl_Return_ScanStatus.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Return_ScanStatus.Location = new System.Drawing.Point(301, 130);
+            this.lbl_Return_ScanStatus.Name = "lbl_Return_ScanStatus";
+            this.lbl_Return_ScanStatus.Size = new System.Drawing.Size(124, 13);
+            this.lbl_Return_ScanStatus.TabIndex = 12;
+            this.lbl_Return_ScanStatus.Text = "Ready to Scan NFC Tag";
+            this.lbl_Return_ScanStatus.Visible = false;
             // 
             // HomePage
             // 
@@ -892,16 +898,16 @@
         private System.Windows.Forms.Button btn_Return_Back;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl_Return_OverdueText;
-        private System.Windows.Forms.Label lbl_Return_ReturnDateText;
+        private System.Windows.Forms.Label lbl_Return_RentalIDText;
         private System.Windows.Forms.Label lbl_Return_CheckoutText;
         private System.Windows.Forms.Label lbl_Return_Overdue;
-        private System.Windows.Forms.Label lbl_Return_ReturnDate;
+        private System.Windows.Forms.Label lbl_Return_RentalID;
         private System.Windows.Forms.Label lbl_Return_Checkout;
         private System.Windows.Forms.Label lbl_Return_UserText;
         private System.Windows.Forms.Label lbl_Rental_User;
         private System.Windows.Forms.Label lbl_RentalInfoTitle;
         private System.Windows.Forms.TextBox tbx_Return_LaptopID;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_Return_ScanStatus;
         private System.Windows.Forms.Button btn_Return_Rescan;
     }
 }
