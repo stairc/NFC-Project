@@ -614,7 +614,9 @@ namespace NFC_Project
         {
             if (IsAddNewLaptopDataValid())
             {
-
+                CreateLaptopObject();
+                MessageBox.Show("Laptop added to system successfully.", "Success", MessageBoxButtons.OK);
+                btn_AddLaptop_Back_Click(null, null);
             }
         }
     }
