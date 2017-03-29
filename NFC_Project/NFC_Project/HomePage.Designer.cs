@@ -309,7 +309,7 @@
             this.tbx_AddLaptop_SerialNum.Location = new System.Drawing.Point(153, 212);
             this.tbx_AddLaptop_SerialNum.Name = "tbx_AddLaptop_SerialNum";
             this.tbx_AddLaptop_SerialNum.Size = new System.Drawing.Size(246, 20);
-            this.tbx_AddLaptop_SerialNum.TabIndex = 22;
+            this.tbx_AddLaptop_SerialNum.TabIndex = 6;
             this.tbx_AddLaptop_SerialNum.Text = "Laptop Serial Number";
             this.tbx_AddLaptop_SerialNum.Enter += new System.EventHandler(this.tbx_AddLaptop_SerialNum_Enter);
             this.tbx_AddLaptop_SerialNum.Leave += new System.EventHandler(this.tbx_AddLaptop_SerialNum_Leave);
@@ -365,7 +365,7 @@
             this.dtp_AddLaptop_DateAdded.Location = new System.Drawing.Point(439, 350);
             this.dtp_AddLaptop_DateAdded.Name = "dtp_AddLaptop_DateAdded";
             this.dtp_AddLaptop_DateAdded.Size = new System.Drawing.Size(246, 20);
-            this.dtp_AddLaptop_DateAdded.TabIndex = 17;
+            this.dtp_AddLaptop_DateAdded.TabIndex = 14;
             // 
             // pnl_AddLaptop_InServicePanel
             // 
@@ -423,7 +423,7 @@
             this.tbx_AddLaptop_OSVersion.Location = new System.Drawing.Point(439, 444);
             this.tbx_AddLaptop_OSVersion.Name = "tbx_AddLaptop_OSVersion";
             this.tbx_AddLaptop_OSVersion.Size = new System.Drawing.Size(246, 20);
-            this.tbx_AddLaptop_OSVersion.TabIndex = 13;
+            this.tbx_AddLaptop_OSVersion.TabIndex = 16;
             this.tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
             this.tbx_AddLaptop_OSVersion.Enter += new System.EventHandler(this.tbx_AddLaptop_OSVersion_Enter);
             this.tbx_AddLaptop_OSVersion.Leave += new System.EventHandler(this.tbx_AddLaptop_OSVersion_Leave);
@@ -493,7 +493,7 @@
             this.tbx_AddLaptop_Condition.Location = new System.Drawing.Point(439, 305);
             this.tbx_AddLaptop_Condition.Name = "tbx_AddLaptop_Condition";
             this.tbx_AddLaptop_Condition.Size = new System.Drawing.Size(246, 20);
-            this.tbx_AddLaptop_Condition.TabIndex = 6;
+            this.tbx_AddLaptop_Condition.TabIndex = 13;
             this.tbx_AddLaptop_Condition.Text = "Laptop Condition";
             this.tbx_AddLaptop_Condition.Enter += new System.EventHandler(this.tbx_AddLaptop_Condition_Enter);
             this.tbx_AddLaptop_Condition.Leave += new System.EventHandler(this.tbx_AddLaptop_Condition_Leave);
