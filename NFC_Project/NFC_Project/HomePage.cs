@@ -119,7 +119,7 @@ namespace NFC_Project
         }
         private void ResetCheckOutPage()
         {
-            tbx_CheckOut_SerialNum.Text = "Laptop Serial Number";
+            tbx_CheckOut_SerialNum.Text = "Scan Laptop ID Tag";
             tbxCheckOut_UniqueID.Text = "Enter Unique ID";
             lbl_CheckOut_ReadyToScanNFC.Visible = false;
             lbl_CheckOut_ReadyToScanNFC.Text = "Ready to Scan NFC Chip";
