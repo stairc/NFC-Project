@@ -27,6 +27,11 @@ namespace NFC_Project
             UserList = new List<User>();
 
             AddTestData();
+
+            CheckOutLaptopPanel.Visible = false;
+            ReturnLaptopPanel.Visible = false;
+            AddLaptopPanel.Visible = false;
+            CheckInventoryPanel.Visible = false;
         }
 
         private void AddTestData()
@@ -35,11 +40,6 @@ namespace NFC_Project
             //UserList.Add(new User("stairlj", "Landen", "Stair", "stairlj@miamioh.edu", "5135601991"));
 
             LaptopList.Add(new Laptop("11111111111111", "9999-9999", "Good", "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// Naviagtion Methods ////////////////////////////////////
@@ -87,6 +87,9 @@ namespace NFC_Project
         {
             this.HomePagePanel.Visible = false;
             this.CheckInventoryPanel.Visible = true;
+
+            //TODO: REMOVE THIS
+            PopulateAllLaptopTable();
         }
 
         /// Check Out Page Methods ////////////////////////////////
@@ -715,6 +718,108 @@ namespace NFC_Project
             }
         }
 
+        /// Check Inventory Page Methods ////////////////////////////////////////
+
+        private void PopulateAllLaptopTable()
+        {
+            // Check current rows in the table and remove extra ones
+            int rows = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount;
+            int laptops = LaptopList.Count;
+
+            if (rows == 1 && laptops == 0)
+            {
+                tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = 2;
+                tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+                Label noItemsAvailable = new Label();
+                noItemsAvailable.Text = "No Data To Display";
+                noItemsAvailable.Anchor = AnchorStyles.None;
+                tbl_CheckInventory_AllLaptopsDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
+                tbl_CheckInventory_AllLaptopsDisplayTable.SetColumnSpan(noItemsAvailable, 4);
+                tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(noItemsAvailable, 0, 1);
+            }
+            else if (laptops > 0)
+            {
+                // remove rows from already populated table
+                if (rows > 1)
+                {
+                    tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = 1;
+
+                    int numControls = tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Count;
+
+                    for (int i = numControls - 1; i > 3; i--)
+                    {
+                        tbl_CheckInventory_AllLaptopsDisplayTable.Controls.RemoveAt(i);
+                    }
+                }
+
+                // Add all laptops to table
+                int currentRow = 1;
+                for (int i = 0; i < laptops; i++)
+                {
+                    AddEntryToAllLaptopTable(i, currentRow);
+                    currentRow++;
+                }
+
+                // Add placeholder row at bottom
+                tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount + 1;
+                tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+            }
+        }
+
+        private void AddEntryToAllLaptopTable(int laptopIndex, int row)
+        {
+            Laptop l = LaptopList[laptopIndex];
+
+
+            // Create labels
+            Label serial = new Label()
+            {
+                Text = l.LaptopID,
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Cursor = Cursors.Hand
+            };
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(serial, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(serial, 0);
+
+            Label dateAdded = new Label()
+            {
+                Text = l.DateAdded.ToShortDateString(),
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(dateAdded, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(dateAdded, 1);
+
+            Label inService = new Label()
+            {
+                Text = (l.InService == true) ? "Yes" : "No",
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(inService, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(inService, 2);
+
+            Label currentState = new Label()
+            {
+                Text = (IsLaptopRentedOut(l.LaptopID)) ? "Rented Out" : "Inventory",
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(currentState, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(currentState, 3);
+
+            //Add labels into a new row on the table
+            tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount + 1;
+            tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(serial);
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(dateAdded);
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(inService);
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(currentState);
+
+        }
 
         /////////////////////////////////////////////////////////////////////////
         /// Helper Methods
@@ -747,7 +852,5 @@ namespace NFC_Project
                 return true;
             }
         }
-
-
     }
 }
