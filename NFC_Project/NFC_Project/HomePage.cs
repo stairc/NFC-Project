@@ -78,6 +78,16 @@ namespace NFC_Project
             this.ReturnLaptopPanel.Visible = true;
             ResetReturnPage();
         }
+        private void btn_CheckInventory_Back_Click(object sender, EventArgs e)
+        {
+            this.HomePagePanel.Visible = true;
+            this.CheckInventoryPanel.Visible = false;
+        }
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+            this.HomePagePanel.Visible = false;
+            this.CheckInventoryPanel.Visible = true;
+        }
 
         /// Check Out Page Methods ////////////////////////////////
         private void tbx_CheckOut_SerialNum_TextChanged(object sender, EventArgs e)
@@ -737,5 +747,7 @@ namespace NFC_Project
                 return true;
             }
         }
+
+
     }
 }
