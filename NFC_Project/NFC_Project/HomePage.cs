@@ -283,16 +283,6 @@ namespace NFC_Project
             tbx_CheckOut_UserPassword.Text = "Enter Password";
         }
 
-        private void AssignUserDataToFields(User user)
-        {
-            //TODO: FIX THIS SHIT
-
-            //tbx_CheckOut_FirstName.Text = user.FirstName;
-            //tbx_CheckOut_LastName.Text = user.LastName;
-            //tbx_CheckOut_UserEmail.Text = user.EmailAddress;
-            //tbx_CheckOut_UserPhone.Text = user.PhoneNumber;
-        }
-
         private void tbx_CheckOut_FirstName_Enter(object sender, EventArgs e)
         {
             if (tbx_CheckOut_UserUniqueID.Text == "Enter Unique ID")
