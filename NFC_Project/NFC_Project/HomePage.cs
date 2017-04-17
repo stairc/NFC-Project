@@ -40,6 +40,9 @@ namespace NFC_Project
             //UserList.Add(new User("stairlj", "Landen", "Stair", "stairlj@miamioh.edu", "5135601991"));
 
             LaptopList.Add(new Laptop("11111111111111", "9999-9999", "Good", "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
+            LaptopList.Add(new Laptop("12345678901234", "1559-7895", "Bad", "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
+            LaptopList.Add(new Laptop("98765432109876", "1111-1234", "Good", "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today.AddDays(-5), true, "1TB", "Windows 10"));
+
         }
 
         /// Naviagtion Methods ////////////////////////////////////
@@ -88,8 +91,7 @@ namespace NFC_Project
             this.HomePagePanel.Visible = false;
             this.CheckInventoryPanel.Visible = true;
 
-            //TODO: REMOVE THIS
-            PopulateAllLaptopTable();
+            btn_CheckOut_RefeshData_Click(null, null);
         }
 
         /// Check Out Page Methods ////////////////////////////////
@@ -767,7 +769,6 @@ namespace NFC_Project
 
             }
         }
-
         private void AddEntryToAllLaptopTable(int laptopIndex, int row)
         {
             Laptop l = LaptopList[laptopIndex];
@@ -813,12 +814,37 @@ namespace NFC_Project
 
             //Add labels into a new row on the table
             tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount + 1;
-            tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(serial);
             tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(dateAdded);
             tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(inService);
             tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(currentState);
 
+        }
+
+        private void PopulateRentedLaptopTable()
+        {
+
+        }
+        private void AddEntryToRentedLaptopTable(int laptopIndex, int row)
+        {
+
+        }
+
+        private void PopulateAvailableLaptopTable()
+        {
+
+        }
+        private void AddEntryToAvailableLaptopTable(int laptopIndex, int row)
+        {
+
+        }
+
+        private void btn_CheckOut_RefeshData_Click(object sender, EventArgs e)
+        {
+            PopulateAllLaptopTable();
+            PopulateRentedLaptopTable();
+            PopulateAvailableLaptopTable();
         }
 
         /////////////////////////////////////////////////////////////////////////
