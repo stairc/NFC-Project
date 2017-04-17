@@ -31,8 +31,8 @@ namespace NFC_Project
 
         private void AddTestData()
         {
-            UserList.Add(new User("staircd", "Cameron", "Stair", "staircd@miamioh.edu", "5135601882"));
-            UserList.Add(new User("stairlj", "Landen", "Stair", "stairlj@miamioh.edu", "5135601991"));
+            //UserList.Add(new User("staircd", "Cameron", "Stair", "staircd@miamioh.edu", "5135601882"));
+            //UserList.Add(new User("stairlj", "Landen", "Stair", "stairlj@miamioh.edu", "5135601991"));
 
             LaptopList.Add(new Laptop("11111111111111", "9999-9999", "Good", "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
         }
@@ -65,7 +65,7 @@ namespace NFC_Project
         {
             this.HomePagePanel.Visible = false;
             this.CheckOutLaptopPanel.Visible = true;
-            DisableCheckOutUserFields();
+            ResetCheckOutPage();
         }
         private void btn_Return_Back_Click(object sender, EventArgs e)
         {
@@ -90,6 +90,16 @@ namespace NFC_Project
             }
 
         }
+        private void tbxCheckOut_UserSerialNum_TextChanged(object sender, EventArgs e)
+        {
+            if (tbx_CheckOut_UserSerialNum.TextLength == 14)
+            {
+                lbl_CheckOut_UserFound.Text = "Miami ID Scanned Succesfully";
+                btn_CheckOut_RescanID.Visible = true;
+                tbx_CheckOut_UserSerialNum.Enabled = false;
+                DisableCheckOutUserFields();
+            }
+        }
         private void tbx_CheckOut_SerialNum_Enter(object sender, EventArgs e)
         {
             if (tbx_CheckOut_SerialNum.Text == "Scan Laptop ID Tag")
@@ -108,16 +118,18 @@ namespace NFC_Project
         }
         private void tbxCheckOut_UniqueID_Enter(object sender, EventArgs e)
         {
-            if (tbxCheckOut_UniqueID.Text == "Enter Unique ID")
+            if (tbx_CheckOut_UserSerialNum.Text == "Scan Miami ID")
             {
-                tbxCheckOut_UniqueID.Text = "";
+                tbx_CheckOut_UserSerialNum.Text = "";
+                lbl_CheckOut_UserFound.Visible = true;
             }
         }
         private void tbxCheckOut_UniqueID_Leave(object sender, EventArgs e)
         {
-            if (tbxCheckOut_UniqueID.Text == "")
+            if (String.IsNullOrWhiteSpace(tbx_CheckOut_UserSerialNum.Text))
             {
-                tbxCheckOut_UniqueID.Text = "Enter Unique ID";
+                tbx_CheckOut_UserSerialNum.Text = "Scan Miami ID";
+                lbl_CheckOut_UserFound.Visible = false;
             }
         }
         private void btn_CheckOut_Rescan_Click(object sender, EventArgs e)
@@ -131,45 +143,29 @@ namespace NFC_Project
         private void ResetCheckOutPage()
         {
             tbx_CheckOut_SerialNum.Text = "Scan Laptop ID Tag";
-            tbxCheckOut_UniqueID.Text = "Enter Unique ID";
+            tbx_CheckOut_UserSerialNum.Text = "Scan Miami ID";
+            tbx_CheckOut_UserSerialNum.Enabled = true;
             lbl_CheckOut_ReadyToScanNFC.Visible = false;
             lbl_CheckOut_ReadyToScanNFC.Text = "Ready to Scan NFC Chip";
+            lbl_CheckOut_UserFound.Text = "Ready to Scan Miami ID";
+            lbl_CheckOut_UserFound.Visible = false;
             btn_CheckOut_Rescan.Visible = false;
             tbx_CheckOut_SerialNum.Enabled = true;
-            lbl_CheckOut_UserFound.Visible = false;
-            DisableCheckOutUserFields();
+            btn_CheckOut_RescanID.Visible = false;
             ResetCheckOutUserFields();
         }
 
-        private void btn_CheckOut_LookupUser_Click(object sender, EventArgs e)
+        private void btn_CheckOut_RescanID_Click(object sender, EventArgs e)
         {
-            if (tbxCheckOut_UniqueID.Text != "Enter Unique ID" &&
-                !String.IsNullOrWhiteSpace(tbxCheckOut_UniqueID.Text))
+            if (tbx_CheckOut_UserSerialNum.Text != "Scan Miami ID" &&
+                !String.IsNullOrWhiteSpace(tbx_CheckOut_UserSerialNum.Text))
             {
-                string id = tbxCheckOut_UniqueID.Text.Trim();
-                User MatchedUser = null;
-
-                foreach (User u in UserList)
-                {
-                    if (id == u.UniqueID)
-                    {
-                        MatchedUser = u;
-                    }
-                }
-
-                if (MatchedUser != null)
-                {
-                    lbl_CheckOut_UserFound.Visible = true;
-                    lbl_CheckOut_UserFound.Text = "User Found Successfully";
-                    AssignUserDataToFields(MatchedUser);
-                }
-                else
-                {
-                    lbl_CheckOut_UserFound.Visible = true;
-                    lbl_CheckOut_UserFound.Text = "User Does Not Exist - Enter Information";
-                    ResetCheckOutUserFields();
-                    EnableCheckOutUSerFields();
-                }
+                tbx_CheckOut_UserSerialNum.Text = "";
+                tbx_CheckOut_UserSerialNum.Enabled = true;
+                tbx_CheckOut_UserSerialNum.Focus();
+                lbl_CheckOut_UserFound.Text = "Ready to Scan Miami ID";
+                EnableCheckOutUSerFields();
+                btn_CheckOut_RescanID.Visible = false;
             }
 
         }
@@ -178,8 +174,8 @@ namespace NFC_Project
         {
             if (tbx_CheckOut_SerialNum.Text != "" &&
                 tbx_CheckOut_SerialNum.Text != "Scan Laptop ID Tag" &&
-                tbxCheckOut_UniqueID.Text != "Enter Unique ID" &&
-                tbxCheckOut_UniqueID.Text != "")
+                tbx_CheckOut_UserSerialNum.Text != "Enter Unique ID" &&
+                tbx_CheckOut_UserSerialNum.Text != "")
             {
                 string laptop = tbx_CheckOut_SerialNum.Text;
                 bool LaptopExists = false;
@@ -197,7 +193,7 @@ namespace NFC_Project
 
                     if (!IsLaptopRentedOut(laptop))
                     {
-                        string id = tbxCheckOut_UniqueID.Text.Trim();
+                        string id = tbx_CheckOut_UserSerialNum.Text.Trim();
                         User MatchedUser = null;
 
                         foreach (User u in UserList)
@@ -219,8 +215,9 @@ namespace NFC_Project
                         {
                             if (IsUserDataValid())
                             {
-                                User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
-                                UserList.Add(u);
+                                //TODO: FIX THIS SHIT
+                                //User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
+                                //UserList.Add(u);
 
                                 Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
                                 RentalList.Add(newRent);
@@ -252,16 +249,17 @@ namespace NFC_Project
             }
         }
 
+        private void btn_CheckOut_UserLogin_Click(object sender, EventArgs e)
+        {
+            //TODO: Implement PHP user checking here
+        }
+
         private bool IsUserDataValid()
         {
-            if (tbx_CheckOut_FirstName.Text == "Enter First Name" ||
-                tbx_CheckOut_LastName.Text == "Enter Last Name" ||
-                tbx_CheckOut_UserEmail.Text == "Enter Email" ||
-                tbx_CheckOut_UserPhone.Text == "Enter Phone Number" ||
-                String.IsNullOrWhiteSpace(tbx_CheckOut_FirstName.Text) ||
-                String.IsNullOrWhiteSpace(tbx_CheckOut_LastName.Text) ||
-                String.IsNullOrWhiteSpace(tbx_CheckOut_UserEmail.Text) ||
-                String.IsNullOrWhiteSpace(tbx_CheckOut_UserPhone.Text))
+            if (tbx_CheckOut_UserUniqueID.Text == "Enter Unique ID" ||
+                tbx_CheckOut_UserPassword.Text == "Enter Password" ||
+                String.IsNullOrWhiteSpace(tbx_CheckOut_UserUniqueID.Text) ||
+                String.IsNullOrWhiteSpace(tbx_CheckOut_UserPassword.Text))
             {
                 return false;
             }
@@ -271,88 +269,58 @@ namespace NFC_Project
 
         private void DisableCheckOutUserFields()
         {
-            tbx_CheckOut_FirstName.Enabled = false;
-            tbx_CheckOut_LastName.Enabled = false;
-            tbx_CheckOut_UserEmail.Enabled = false;
-            tbx_CheckOut_UserPhone.Enabled = false;
+            tbx_CheckOut_UserUniqueID.Enabled = false;
+            tbx_CheckOut_UserPassword.Enabled = false;
         }
         private void EnableCheckOutUSerFields()
         {
-            tbx_CheckOut_FirstName.Enabled = true;
-            tbx_CheckOut_LastName.Enabled = true;
-            tbx_CheckOut_UserEmail.Enabled = true;
-            tbx_CheckOut_UserPhone.Enabled = true;
+            tbx_CheckOut_UserUniqueID.Enabled = true;
+            tbx_CheckOut_UserPassword.Enabled = true;
         }
         private void ResetCheckOutUserFields()
         {
-            tbx_CheckOut_FirstName.Text = "Enter First Name";
-            tbx_CheckOut_LastName.Text = "Enter Last Name";
-            tbx_CheckOut_UserEmail.Text = "Enter Email";
-            tbx_CheckOut_UserPhone.Text = "Enter Phone Number";
+            tbx_CheckOut_UserUniqueID.Text = "Enter Unique ID";
+            tbx_CheckOut_UserPassword.Text = "Enter Password";
         }
 
         private void AssignUserDataToFields(User user)
         {
-            tbx_CheckOut_FirstName.Text = user.FirstName;
-            tbx_CheckOut_LastName.Text = user.LastName;
-            tbx_CheckOut_UserEmail.Text = user.EmailAddress;
-            tbx_CheckOut_UserPhone.Text = user.PhoneNumber;
+            //TODO: FIX THIS SHIT
+
+            //tbx_CheckOut_FirstName.Text = user.FirstName;
+            //tbx_CheckOut_LastName.Text = user.LastName;
+            //tbx_CheckOut_UserEmail.Text = user.EmailAddress;
+            //tbx_CheckOut_UserPhone.Text = user.PhoneNumber;
         }
 
         private void tbx_CheckOut_FirstName_Enter(object sender, EventArgs e)
         {
-            if (tbx_CheckOut_FirstName.Text == "Enter First Name")
+            if (tbx_CheckOut_UserUniqueID.Text == "Enter Unique ID")
             {
-                tbx_CheckOut_FirstName.Text = "";
+                tbx_CheckOut_UserUniqueID.Text = "";
             }
         }
         private void tbx_CheckOut_FirstName_Leave(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(tbx_CheckOut_FirstName.Text))
+            if (String.IsNullOrWhiteSpace(tbx_CheckOut_UserUniqueID.Text))
             {
-                tbx_CheckOut_FirstName.Text = "Enter First Name";
+                tbx_CheckOut_UserUniqueID.Text = "Enter Unique ID";
             }
         }
         private void tbx_CheckOut_LastName_Enter(object sender, EventArgs e)
         {
-            if (tbx_CheckOut_LastName.Text == "Enter Last Name")
+            if (tbx_CheckOut_UserPassword.Text == "Enter Password")
             {
-                tbx_CheckOut_LastName.Text = "";
+                tbx_CheckOut_UserPassword.Text = "";
+                tbx_CheckOut_UserPassword.UseSystemPasswordChar = true;
             }
         }
         private void tbx_CheckOut_LastName_Leave(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(tbx_CheckOut_LastName.Text))
+            if (String.IsNullOrWhiteSpace(tbx_CheckOut_UserPassword.Text))
             {
-                tbx_CheckOut_LastName.Text = "Enter Last Name";
-            }
-        }
-        private void tbx_CheckOut_UserEmail_Enter(object sender, EventArgs e)
-        {
-            if (tbx_CheckOut_UserEmail.Text == "Enter Email")
-            {
-                tbx_CheckOut_UserEmail.Text = "";
-            }
-        }
-        private void tbx_CheckOut_UserEmail_Leave(object sender, EventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(tbx_CheckOut_UserEmail.Text))
-            {
-                tbx_CheckOut_UserEmail.Text = "Enter Email";
-            }
-        }
-        private void tbx_CheckOut_UserPhone_Enter(object sender, EventArgs e)
-        {
-            if (tbx_CheckOut_UserPhone.Text == "Enter Phone Number")
-            {
-                tbx_CheckOut_UserPhone.Text = "";
-            }
-        }
-        private void tbx_CheckOut_UserPhone_Leave(object sender, EventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(tbx_CheckOut_UserPhone.Text))
-            {
-                tbx_CheckOut_UserPhone.Text = "Enter Phone Number";
+                tbx_CheckOut_UserPassword.Text = "Enter Password";
+                tbx_CheckOut_UserPassword.UseSystemPasswordChar = false;
             }
         }
 
@@ -779,6 +747,5 @@ namespace NFC_Project
                 return true;
             }
         }
-
     }
 }

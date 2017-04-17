@@ -38,17 +38,15 @@
             this.CheckOutLaptopPanel = new System.Windows.Forms.Panel();
             this.lbl_CheckOut_UserFound = new System.Windows.Forms.Label();
             this.lbl_CheckOut_UserInformation = new System.Windows.Forms.Label();
-            this.btn_CheckOut_LookupUser = new System.Windows.Forms.Button();
-            this.tbx_CheckOut_UserPhone = new System.Windows.Forms.TextBox();
-            this.tbx_CheckOut_UserEmail = new System.Windows.Forms.TextBox();
-            this.tbx_CheckOut_LastName = new System.Windows.Forms.TextBox();
-            this.tbx_CheckOut_FirstName = new System.Windows.Forms.TextBox();
+            this.btn_CheckOut_RescanID = new System.Windows.Forms.Button();
+            this.tbx_CheckOut_UserPassword = new System.Windows.Forms.TextBox();
+            this.tbx_CheckOut_UserUniqueID = new System.Windows.Forms.TextBox();
             this.btn_CheckOut_Rescan = new System.Windows.Forms.Button();
             this.lbl_CheckOut_ReadyToScanNFC = new System.Windows.Forms.Label();
             this.btn_CheckOut_Back = new System.Windows.Forms.Button();
             this.btn_CheckOut_ProcessCheckOut = new System.Windows.Forms.Button();
             this.tbx_CheckOut_SerialNum = new System.Windows.Forms.TextBox();
-            this.tbxCheckOut_UniqueID = new System.Windows.Forms.TextBox();
+            this.tbx_CheckOut_UserSerialNum = new System.Windows.Forms.TextBox();
             this.lblCheckOutTitle = new System.Windows.Forms.Label();
             this.AddLaptopPanel = new System.Windows.Forms.Panel();
             this.tbx_AddLaptop_SerialNum = new System.Windows.Forms.TextBox();
@@ -74,22 +72,23 @@
             this.btn_AddLaptop_Back = new System.Windows.Forms.Button();
             this.lbl_AddLaptop_Title = new System.Windows.Forms.Label();
             this.ReturnLaptopPanel = new System.Windows.Forms.Panel();
-            this.lbl_Return_Title = new System.Windows.Forms.Label();
-            this.btn_Return_Back = new System.Windows.Forms.Button();
-            this.btn_Return_ProcessReturn = new System.Windows.Forms.Button();
-            this.tbx_Return_LaptopID = new System.Windows.Forms.TextBox();
-            this.lbl_RentalInfoTitle = new System.Windows.Forms.Label();
-            this.lbl_Rental_User = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_Return_UserText = new System.Windows.Forms.Label();
-            this.lbl_Return_Checkout = new System.Windows.Forms.Label();
-            this.lbl_Return_RentalID = new System.Windows.Forms.Label();
-            this.lbl_Return_Overdue = new System.Windows.Forms.Label();
-            this.lbl_Return_CheckoutText = new System.Windows.Forms.Label();
-            this.lbl_Return_RentalIDText = new System.Windows.Forms.Label();
-            this.lbl_Return_OverdueText = new System.Windows.Forms.Label();
-            this.btn_Return_Rescan = new System.Windows.Forms.Button();
             this.lbl_Return_ScanStatus = new System.Windows.Forms.Label();
+            this.btn_Return_Rescan = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_Return_OverdueText = new System.Windows.Forms.Label();
+            this.lbl_Return_RentalIDText = new System.Windows.Forms.Label();
+            this.lbl_Return_CheckoutText = new System.Windows.Forms.Label();
+            this.lbl_Return_Overdue = new System.Windows.Forms.Label();
+            this.lbl_Return_RentalID = new System.Windows.Forms.Label();
+            this.lbl_Return_Checkout = new System.Windows.Forms.Label();
+            this.lbl_Return_UserText = new System.Windows.Forms.Label();
+            this.lbl_Rental_User = new System.Windows.Forms.Label();
+            this.lbl_RentalInfoTitle = new System.Windows.Forms.Label();
+            this.tbx_Return_LaptopID = new System.Windows.Forms.TextBox();
+            this.btn_Return_ProcessReturn = new System.Windows.Forms.Button();
+            this.btn_Return_Back = new System.Windows.Forms.Button();
+            this.lbl_Return_Title = new System.Windows.Forms.Label();
+            this.btn_CheckOut_UserLogin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -190,19 +189,18 @@
             // 
             // CheckOutLaptopPanel
             // 
+            this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_UserLogin);
             this.CheckOutLaptopPanel.Controls.Add(this.lbl_CheckOut_UserFound);
             this.CheckOutLaptopPanel.Controls.Add(this.lbl_CheckOut_UserInformation);
-            this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_LookupUser);
-            this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_UserPhone);
-            this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_UserEmail);
-            this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_LastName);
-            this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_FirstName);
+            this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_RescanID);
+            this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_UserPassword);
+            this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_UserUniqueID);
             this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_Rescan);
             this.CheckOutLaptopPanel.Controls.Add(this.lbl_CheckOut_ReadyToScanNFC);
             this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_Back);
             this.CheckOutLaptopPanel.Controls.Add(this.btn_CheckOut_ProcessCheckOut);
             this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_SerialNum);
-            this.CheckOutLaptopPanel.Controls.Add(this.tbxCheckOut_UniqueID);
+            this.CheckOutLaptopPanel.Controls.Add(this.tbx_CheckOut_UserSerialNum);
             this.CheckOutLaptopPanel.Controls.Add(this.lblCheckOutTitle);
             this.CheckOutLaptopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CheckOutLaptopPanel.Location = new System.Drawing.Point(0, 0);
@@ -228,59 +226,40 @@
             this.lbl_CheckOut_UserInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckOut_UserInformation.Location = new System.Drawing.Point(151, 186);
             this.lbl_CheckOut_UserInformation.Name = "lbl_CheckOut_UserInformation";
-            this.lbl_CheckOut_UserInformation.Size = new System.Drawing.Size(154, 25);
+            this.lbl_CheckOut_UserInformation.Size = new System.Drawing.Size(123, 25);
             this.lbl_CheckOut_UserInformation.TabIndex = 12;
-            this.lbl_CheckOut_UserInformation.Text = "User Information";
+            this.lbl_CheckOut_UserInformation.Text = "User Lookup";
             // 
-            // btn_CheckOut_LookupUser
+            // btn_CheckOut_RescanID
             // 
-            this.btn_CheckOut_LookupUser.Location = new System.Drawing.Point(538, 124);
-            this.btn_CheckOut_LookupUser.Name = "btn_CheckOut_LookupUser";
-            this.btn_CheckOut_LookupUser.Size = new System.Drawing.Size(75, 20);
-            this.btn_CheckOut_LookupUser.TabIndex = 11;
-            this.btn_CheckOut_LookupUser.Text = "Lookup";
-            this.btn_CheckOut_LookupUser.UseVisualStyleBackColor = true;
-            this.btn_CheckOut_LookupUser.Click += new System.EventHandler(this.btn_CheckOut_LookupUser_Click);
+            this.btn_CheckOut_RescanID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CheckOut_RescanID.Location = new System.Drawing.Point(538, 124);
+            this.btn_CheckOut_RescanID.Name = "btn_CheckOut_RescanID";
+            this.btn_CheckOut_RescanID.Size = new System.Drawing.Size(75, 20);
+            this.btn_CheckOut_RescanID.TabIndex = 11;
+            this.btn_CheckOut_RescanID.Text = "Rescan";
+            this.btn_CheckOut_RescanID.UseVisualStyleBackColor = true;
+            this.btn_CheckOut_RescanID.Click += new System.EventHandler(this.btn_CheckOut_RescanID_Click);
             // 
-            // tbx_CheckOut_UserPhone
+            // tbx_CheckOut_UserPassword
             // 
-            this.tbx_CheckOut_UserPhone.Location = new System.Drawing.Point(440, 281);
-            this.tbx_CheckOut_UserPhone.Name = "tbx_CheckOut_UserPhone";
-            this.tbx_CheckOut_UserPhone.Size = new System.Drawing.Size(241, 20);
-            this.tbx_CheckOut_UserPhone.TabIndex = 10;
-            this.tbx_CheckOut_UserPhone.Text = "Enter Phone Number";
-            this.tbx_CheckOut_UserPhone.Enter += new System.EventHandler(this.tbx_CheckOut_UserPhone_Enter);
-            this.tbx_CheckOut_UserPhone.Leave += new System.EventHandler(this.tbx_CheckOut_UserPhone_Leave);
+            this.tbx_CheckOut_UserPassword.Location = new System.Drawing.Point(440, 229);
+            this.tbx_CheckOut_UserPassword.Name = "tbx_CheckOut_UserPassword";
+            this.tbx_CheckOut_UserPassword.Size = new System.Drawing.Size(241, 20);
+            this.tbx_CheckOut_UserPassword.TabIndex = 8;
+            this.tbx_CheckOut_UserPassword.Text = "Enter Password";
+            this.tbx_CheckOut_UserPassword.Enter += new System.EventHandler(this.tbx_CheckOut_LastName_Enter);
+            this.tbx_CheckOut_UserPassword.Leave += new System.EventHandler(this.tbx_CheckOut_LastName_Leave);
             // 
-            // tbx_CheckOut_UserEmail
+            // tbx_CheckOut_UserUniqueID
             // 
-            this.tbx_CheckOut_UserEmail.Location = new System.Drawing.Point(154, 281);
-            this.tbx_CheckOut_UserEmail.Name = "tbx_CheckOut_UserEmail";
-            this.tbx_CheckOut_UserEmail.Size = new System.Drawing.Size(241, 20);
-            this.tbx_CheckOut_UserEmail.TabIndex = 9;
-            this.tbx_CheckOut_UserEmail.Text = "Enter Email";
-            this.tbx_CheckOut_UserEmail.Enter += new System.EventHandler(this.tbx_CheckOut_UserEmail_Enter);
-            this.tbx_CheckOut_UserEmail.Leave += new System.EventHandler(this.tbx_CheckOut_UserEmail_Leave);
-            // 
-            // tbx_CheckOut_LastName
-            // 
-            this.tbx_CheckOut_LastName.Location = new System.Drawing.Point(440, 229);
-            this.tbx_CheckOut_LastName.Name = "tbx_CheckOut_LastName";
-            this.tbx_CheckOut_LastName.Size = new System.Drawing.Size(241, 20);
-            this.tbx_CheckOut_LastName.TabIndex = 8;
-            this.tbx_CheckOut_LastName.Text = "Enter Last Name";
-            this.tbx_CheckOut_LastName.Enter += new System.EventHandler(this.tbx_CheckOut_LastName_Enter);
-            this.tbx_CheckOut_LastName.Leave += new System.EventHandler(this.tbx_CheckOut_LastName_Leave);
-            // 
-            // tbx_CheckOut_FirstName
-            // 
-            this.tbx_CheckOut_FirstName.Location = new System.Drawing.Point(154, 229);
-            this.tbx_CheckOut_FirstName.Name = "tbx_CheckOut_FirstName";
-            this.tbx_CheckOut_FirstName.Size = new System.Drawing.Size(241, 20);
-            this.tbx_CheckOut_FirstName.TabIndex = 7;
-            this.tbx_CheckOut_FirstName.Text = "Enter First Name";
-            this.tbx_CheckOut_FirstName.Enter += new System.EventHandler(this.tbx_CheckOut_FirstName_Enter);
-            this.tbx_CheckOut_FirstName.Leave += new System.EventHandler(this.tbx_CheckOut_FirstName_Leave);
+            this.tbx_CheckOut_UserUniqueID.Location = new System.Drawing.Point(154, 229);
+            this.tbx_CheckOut_UserUniqueID.Name = "tbx_CheckOut_UserUniqueID";
+            this.tbx_CheckOut_UserUniqueID.Size = new System.Drawing.Size(241, 20);
+            this.tbx_CheckOut_UserUniqueID.TabIndex = 7;
+            this.tbx_CheckOut_UserUniqueID.Text = "Enter Unique ID";
+            this.tbx_CheckOut_UserUniqueID.Enter += new System.EventHandler(this.tbx_CheckOut_FirstName_Enter);
+            this.tbx_CheckOut_UserUniqueID.Leave += new System.EventHandler(this.tbx_CheckOut_FirstName_Leave);
             // 
             // btn_CheckOut_Rescan
             // 
@@ -348,15 +327,16 @@
             this.tbx_CheckOut_SerialNum.Enter += new System.EventHandler(this.tbx_CheckOut_SerialNum_Enter);
             this.tbx_CheckOut_SerialNum.Leave += new System.EventHandler(this.tbx_CheckOut_SerialNum_Leave);
             // 
-            // tbxCheckOut_UniqueID
+            // tbx_CheckOut_UserSerialNum
             // 
-            this.tbxCheckOut_UniqueID.Location = new System.Drawing.Point(291, 124);
-            this.tbxCheckOut_UniqueID.Name = "tbxCheckOut_UniqueID";
-            this.tbxCheckOut_UniqueID.Size = new System.Drawing.Size(241, 20);
-            this.tbxCheckOut_UniqueID.TabIndex = 1;
-            this.tbxCheckOut_UniqueID.Text = "Enter Unique ID";
-            this.tbxCheckOut_UniqueID.Enter += new System.EventHandler(this.tbxCheckOut_UniqueID_Enter);
-            this.tbxCheckOut_UniqueID.Leave += new System.EventHandler(this.tbxCheckOut_UniqueID_Leave);
+            this.tbx_CheckOut_UserSerialNum.Location = new System.Drawing.Point(291, 124);
+            this.tbx_CheckOut_UserSerialNum.Name = "tbx_CheckOut_UserSerialNum";
+            this.tbx_CheckOut_UserSerialNum.Size = new System.Drawing.Size(241, 20);
+            this.tbx_CheckOut_UserSerialNum.TabIndex = 1;
+            this.tbx_CheckOut_UserSerialNum.Text = "Scan Miami ID";
+            this.tbx_CheckOut_UserSerialNum.TextChanged += new System.EventHandler(this.tbxCheckOut_UserSerialNum_TextChanged);
+            this.tbx_CheckOut_UserSerialNum.Enter += new System.EventHandler(this.tbxCheckOut_UniqueID_Enter);
+            this.tbx_CheckOut_UserSerialNum.Leave += new System.EventHandler(this.tbxCheckOut_UniqueID_Leave);
             // 
             // lblCheckOutTitle
             // 
@@ -641,77 +621,27 @@
             this.ReturnLaptopPanel.TabIndex = 6;
             this.ReturnLaptopPanel.Visible = false;
             // 
-            // lbl_Return_Title
+            // lbl_Return_ScanStatus
             // 
-            this.lbl_Return_Title.AutoSize = true;
-            this.lbl_Return_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Return_Title.Location = new System.Drawing.Point(308, 23);
-            this.lbl_Return_Title.Name = "lbl_Return_Title";
-            this.lbl_Return_Title.Size = new System.Drawing.Size(232, 39);
-            this.lbl_Return_Title.TabIndex = 0;
-            this.lbl_Return_Title.Text = "Return Laptop";
+            this.lbl_Return_ScanStatus.AutoSize = true;
+            this.lbl_Return_ScanStatus.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Return_ScanStatus.Location = new System.Drawing.Point(301, 130);
+            this.lbl_Return_ScanStatus.Name = "lbl_Return_ScanStatus";
+            this.lbl_Return_ScanStatus.Size = new System.Drawing.Size(124, 13);
+            this.lbl_Return_ScanStatus.TabIndex = 12;
+            this.lbl_Return_ScanStatus.Text = "Ready to Scan NFC Tag";
+            this.lbl_Return_ScanStatus.Visible = false;
             // 
-            // btn_Return_Back
+            // btn_Return_Rescan
             // 
-            this.btn_Return_Back.BackColor = System.Drawing.Color.White;
-            this.btn_Return_Back.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Return_Back.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btn_Return_Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.btn_Return_Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_Return_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Return_Back.Location = new System.Drawing.Point(12, 12);
-            this.btn_Return_Back.Name = "btn_Return_Back";
-            this.btn_Return_Back.Size = new System.Drawing.Size(75, 29);
-            this.btn_Return_Back.TabIndex = 5;
-            this.btn_Return_Back.Text = "← Go Back";
-            this.btn_Return_Back.UseVisualStyleBackColor = false;
-            this.btn_Return_Back.Click += new System.EventHandler(this.btn_Return_Back_Click);
-            // 
-            // btn_Return_ProcessReturn
-            // 
-            this.btn_Return_ProcessReturn.BackColor = System.Drawing.Color.White;
-            this.btn_Return_ProcessReturn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btn_Return_ProcessReturn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.btn_Return_ProcessReturn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_Return_ProcessReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Return_ProcessReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Return_ProcessReturn.Location = new System.Drawing.Point(301, 524);
-            this.btn_Return_ProcessReturn.Name = "btn_Return_ProcessReturn";
-            this.btn_Return_ProcessReturn.Size = new System.Drawing.Size(241, 55);
-            this.btn_Return_ProcessReturn.TabIndex = 6;
-            this.btn_Return_ProcessReturn.Text = "Return Laptop";
-            this.btn_Return_ProcessReturn.UseVisualStyleBackColor = false;
-            this.btn_Return_ProcessReturn.Click += new System.EventHandler(this.btn_Return_ProcessReturn_Click);
-            // 
-            // tbx_Return_LaptopID
-            // 
-            this.tbx_Return_LaptopID.Location = new System.Drawing.Point(301, 103);
-            this.tbx_Return_LaptopID.Name = "tbx_Return_LaptopID";
-            this.tbx_Return_LaptopID.Size = new System.Drawing.Size(241, 20);
-            this.tbx_Return_LaptopID.TabIndex = 7;
-            this.tbx_Return_LaptopID.Text = "Scan Laptop ID Tag";
-            this.tbx_Return_LaptopID.TextChanged += new System.EventHandler(this.tbx_Return_LaptopID_TextChanged);
-            this.tbx_Return_LaptopID.Enter += new System.EventHandler(this.tbx_Return_LaptopID_Enter);
-            this.tbx_Return_LaptopID.Leave += new System.EventHandler(this.tbx_Return_LaptopID_Leave);
-            // 
-            // lbl_RentalInfoTitle
-            // 
-            this.lbl_RentalInfoTitle.AutoSize = true;
-            this.lbl_RentalInfoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RentalInfoTitle.Location = new System.Drawing.Point(65, 0);
-            this.lbl_RentalInfoTitle.Name = "lbl_RentalInfoTitle";
-            this.lbl_RentalInfoTitle.Size = new System.Drawing.Size(104, 25);
-            this.lbl_RentalInfoTitle.TabIndex = 8;
-            this.lbl_RentalInfoTitle.Text = "Rental Info";
-            // 
-            // lbl_Rental_User
-            // 
-            this.lbl_Rental_User.AutoSize = true;
-            this.lbl_Rental_User.Location = new System.Drawing.Point(-3, 46);
-            this.lbl_Rental_User.Name = "lbl_Rental_User";
-            this.lbl_Rental_User.Size = new System.Drawing.Size(68, 13);
-            this.lbl_Rental_User.TabIndex = 9;
-            this.lbl_Rental_User.Text = "Laptop User:";
+            this.btn_Return_Rescan.Location = new System.Drawing.Point(549, 103);
+            this.btn_Return_Rescan.Name = "btn_Return_Rescan";
+            this.btn_Return_Rescan.Size = new System.Drawing.Size(75, 19);
+            this.btn_Return_Rescan.TabIndex = 11;
+            this.btn_Return_Rescan.Text = "Rescan";
+            this.btn_Return_Rescan.UseVisualStyleBackColor = true;
+            this.btn_Return_Rescan.Visible = false;
+            this.btn_Return_Rescan.Click += new System.EventHandler(this.btn_Return_Rescan_Click);
             // 
             // panel1
             // 
@@ -729,52 +659,15 @@
             this.panel1.Size = new System.Drawing.Size(237, 244);
             this.panel1.TabIndex = 10;
             // 
-            // lbl_Return_UserText
+            // lbl_Return_OverdueText
             // 
-            this.lbl_Return_UserText.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_Return_UserText.Location = new System.Drawing.Point(88, 46);
-            this.lbl_Return_UserText.Name = "lbl_Return_UserText";
-            this.lbl_Return_UserText.Size = new System.Drawing.Size(149, 13);
-            this.lbl_Return_UserText.TabIndex = 10;
-            this.lbl_Return_UserText.Text = "[Users name here]";
-            this.lbl_Return_UserText.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lbl_Return_Checkout
-            // 
-            this.lbl_Return_Checkout.AutoSize = true;
-            this.lbl_Return_Checkout.Location = new System.Drawing.Point(-3, 79);
-            this.lbl_Return_Checkout.Name = "lbl_Return_Checkout";
-            this.lbl_Return_Checkout.Size = new System.Drawing.Size(82, 13);
-            this.lbl_Return_Checkout.TabIndex = 11;
-            this.lbl_Return_Checkout.Text = "Checkout Date:";
-            // 
-            // lbl_Return_RentalID
-            // 
-            this.lbl_Return_RentalID.AutoSize = true;
-            this.lbl_Return_RentalID.Location = new System.Drawing.Point(-3, 115);
-            this.lbl_Return_RentalID.Name = "lbl_Return_RentalID";
-            this.lbl_Return_RentalID.Size = new System.Drawing.Size(55, 13);
-            this.lbl_Return_RentalID.TabIndex = 12;
-            this.lbl_Return_RentalID.Text = "Rental ID:";
-            // 
-            // lbl_Return_Overdue
-            // 
-            this.lbl_Return_Overdue.AutoSize = true;
-            this.lbl_Return_Overdue.Location = new System.Drawing.Point(-3, 148);
-            this.lbl_Return_Overdue.Name = "lbl_Return_Overdue";
-            this.lbl_Return_Overdue.Size = new System.Drawing.Size(65, 13);
-            this.lbl_Return_Overdue.TabIndex = 13;
-            this.lbl_Return_Overdue.Text = "Is Overdue?";
-            // 
-            // lbl_Return_CheckoutText
-            // 
-            this.lbl_Return_CheckoutText.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_Return_CheckoutText.Location = new System.Drawing.Point(88, 79);
-            this.lbl_Return_CheckoutText.Name = "lbl_Return_CheckoutText";
-            this.lbl_Return_CheckoutText.Size = new System.Drawing.Size(149, 13);
-            this.lbl_Return_CheckoutText.TabIndex = 14;
-            this.lbl_Return_CheckoutText.Text = "[checkout]";
-            this.lbl_Return_CheckoutText.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbl_Return_OverdueText.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_Return_OverdueText.Location = new System.Drawing.Point(88, 148);
+            this.lbl_Return_OverdueText.Name = "lbl_Return_OverdueText";
+            this.lbl_Return_OverdueText.Size = new System.Drawing.Size(149, 13);
+            this.lbl_Return_OverdueText.TabIndex = 16;
+            this.lbl_Return_OverdueText.Text = "[overdue]";
+            this.lbl_Return_OverdueText.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lbl_Return_RentalIDText
             // 
@@ -786,37 +679,135 @@
             this.lbl_Return_RentalIDText.Text = "[return date]";
             this.lbl_Return_RentalIDText.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // lbl_Return_OverdueText
+            // lbl_Return_CheckoutText
             // 
-            this.lbl_Return_OverdueText.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_Return_OverdueText.Location = new System.Drawing.Point(88, 148);
-            this.lbl_Return_OverdueText.Name = "lbl_Return_OverdueText";
-            this.lbl_Return_OverdueText.Size = new System.Drawing.Size(149, 13);
-            this.lbl_Return_OverdueText.TabIndex = 16;
-            this.lbl_Return_OverdueText.Text = "[overdue]";
-            this.lbl_Return_OverdueText.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbl_Return_CheckoutText.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_Return_CheckoutText.Location = new System.Drawing.Point(88, 79);
+            this.lbl_Return_CheckoutText.Name = "lbl_Return_CheckoutText";
+            this.lbl_Return_CheckoutText.Size = new System.Drawing.Size(149, 13);
+            this.lbl_Return_CheckoutText.TabIndex = 14;
+            this.lbl_Return_CheckoutText.Text = "[checkout]";
+            this.lbl_Return_CheckoutText.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // btn_Return_Rescan
+            // lbl_Return_Overdue
             // 
-            this.btn_Return_Rescan.Location = new System.Drawing.Point(549, 103);
-            this.btn_Return_Rescan.Name = "btn_Return_Rescan";
-            this.btn_Return_Rescan.Size = new System.Drawing.Size(75, 19);
-            this.btn_Return_Rescan.TabIndex = 11;
-            this.btn_Return_Rescan.Text = "Rescan";
-            this.btn_Return_Rescan.UseVisualStyleBackColor = true;
-            this.btn_Return_Rescan.Visible = false;
-            this.btn_Return_Rescan.Click += new System.EventHandler(this.btn_Return_Rescan_Click);
+            this.lbl_Return_Overdue.AutoSize = true;
+            this.lbl_Return_Overdue.Location = new System.Drawing.Point(-3, 148);
+            this.lbl_Return_Overdue.Name = "lbl_Return_Overdue";
+            this.lbl_Return_Overdue.Size = new System.Drawing.Size(65, 13);
+            this.lbl_Return_Overdue.TabIndex = 13;
+            this.lbl_Return_Overdue.Text = "Is Overdue?";
             // 
-            // lbl_Return_ScanStatus
+            // lbl_Return_RentalID
             // 
-            this.lbl_Return_ScanStatus.AutoSize = true;
-            this.lbl_Return_ScanStatus.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Return_ScanStatus.Location = new System.Drawing.Point(301, 130);
-            this.lbl_Return_ScanStatus.Name = "lbl_Return_ScanStatus";
-            this.lbl_Return_ScanStatus.Size = new System.Drawing.Size(124, 13);
-            this.lbl_Return_ScanStatus.TabIndex = 12;
-            this.lbl_Return_ScanStatus.Text = "Ready to Scan NFC Tag";
-            this.lbl_Return_ScanStatus.Visible = false;
+            this.lbl_Return_RentalID.AutoSize = true;
+            this.lbl_Return_RentalID.Location = new System.Drawing.Point(-3, 115);
+            this.lbl_Return_RentalID.Name = "lbl_Return_RentalID";
+            this.lbl_Return_RentalID.Size = new System.Drawing.Size(55, 13);
+            this.lbl_Return_RentalID.TabIndex = 12;
+            this.lbl_Return_RentalID.Text = "Rental ID:";
+            // 
+            // lbl_Return_Checkout
+            // 
+            this.lbl_Return_Checkout.AutoSize = true;
+            this.lbl_Return_Checkout.Location = new System.Drawing.Point(-3, 79);
+            this.lbl_Return_Checkout.Name = "lbl_Return_Checkout";
+            this.lbl_Return_Checkout.Size = new System.Drawing.Size(82, 13);
+            this.lbl_Return_Checkout.TabIndex = 11;
+            this.lbl_Return_Checkout.Text = "Checkout Date:";
+            // 
+            // lbl_Return_UserText
+            // 
+            this.lbl_Return_UserText.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_Return_UserText.Location = new System.Drawing.Point(88, 46);
+            this.lbl_Return_UserText.Name = "lbl_Return_UserText";
+            this.lbl_Return_UserText.Size = new System.Drawing.Size(149, 13);
+            this.lbl_Return_UserText.TabIndex = 10;
+            this.lbl_Return_UserText.Text = "[Users name here]";
+            this.lbl_Return_UserText.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lbl_Rental_User
+            // 
+            this.lbl_Rental_User.AutoSize = true;
+            this.lbl_Rental_User.Location = new System.Drawing.Point(-3, 46);
+            this.lbl_Rental_User.Name = "lbl_Rental_User";
+            this.lbl_Rental_User.Size = new System.Drawing.Size(68, 13);
+            this.lbl_Rental_User.TabIndex = 9;
+            this.lbl_Rental_User.Text = "Laptop User:";
+            // 
+            // lbl_RentalInfoTitle
+            // 
+            this.lbl_RentalInfoTitle.AutoSize = true;
+            this.lbl_RentalInfoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_RentalInfoTitle.Location = new System.Drawing.Point(65, 0);
+            this.lbl_RentalInfoTitle.Name = "lbl_RentalInfoTitle";
+            this.lbl_RentalInfoTitle.Size = new System.Drawing.Size(104, 25);
+            this.lbl_RentalInfoTitle.TabIndex = 8;
+            this.lbl_RentalInfoTitle.Text = "Rental Info";
+            // 
+            // tbx_Return_LaptopID
+            // 
+            this.tbx_Return_LaptopID.Location = new System.Drawing.Point(301, 103);
+            this.tbx_Return_LaptopID.Name = "tbx_Return_LaptopID";
+            this.tbx_Return_LaptopID.Size = new System.Drawing.Size(241, 20);
+            this.tbx_Return_LaptopID.TabIndex = 7;
+            this.tbx_Return_LaptopID.Text = "Scan Laptop ID Tag";
+            this.tbx_Return_LaptopID.TextChanged += new System.EventHandler(this.tbx_Return_LaptopID_TextChanged);
+            this.tbx_Return_LaptopID.Enter += new System.EventHandler(this.tbx_Return_LaptopID_Enter);
+            this.tbx_Return_LaptopID.Leave += new System.EventHandler(this.tbx_Return_LaptopID_Leave);
+            // 
+            // btn_Return_ProcessReturn
+            // 
+            this.btn_Return_ProcessReturn.BackColor = System.Drawing.Color.White;
+            this.btn_Return_ProcessReturn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Return_ProcessReturn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btn_Return_ProcessReturn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_Return_ProcessReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Return_ProcessReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Return_ProcessReturn.Location = new System.Drawing.Point(301, 524);
+            this.btn_Return_ProcessReturn.Name = "btn_Return_ProcessReturn";
+            this.btn_Return_ProcessReturn.Size = new System.Drawing.Size(241, 55);
+            this.btn_Return_ProcessReturn.TabIndex = 6;
+            this.btn_Return_ProcessReturn.Text = "Return Laptop";
+            this.btn_Return_ProcessReturn.UseVisualStyleBackColor = false;
+            this.btn_Return_ProcessReturn.Click += new System.EventHandler(this.btn_Return_ProcessReturn_Click);
+            // 
+            // btn_Return_Back
+            // 
+            this.btn_Return_Back.BackColor = System.Drawing.Color.White;
+            this.btn_Return_Back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Return_Back.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Return_Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btn_Return_Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_Return_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Return_Back.Location = new System.Drawing.Point(12, 12);
+            this.btn_Return_Back.Name = "btn_Return_Back";
+            this.btn_Return_Back.Size = new System.Drawing.Size(75, 29);
+            this.btn_Return_Back.TabIndex = 5;
+            this.btn_Return_Back.Text = "← Go Back";
+            this.btn_Return_Back.UseVisualStyleBackColor = false;
+            this.btn_Return_Back.Click += new System.EventHandler(this.btn_Return_Back_Click);
+            // 
+            // lbl_Return_Title
+            // 
+            this.lbl_Return_Title.AutoSize = true;
+            this.lbl_Return_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Return_Title.Location = new System.Drawing.Point(308, 23);
+            this.lbl_Return_Title.Name = "lbl_Return_Title";
+            this.lbl_Return_Title.Size = new System.Drawing.Size(232, 39);
+            this.lbl_Return_Title.TabIndex = 0;
+            this.lbl_Return_Title.Text = "Return Laptop";
+            // 
+            // btn_CheckOut_UserLogin
+            // 
+            this.btn_CheckOut_UserLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CheckOut_UserLogin.Location = new System.Drawing.Point(687, 229);
+            this.btn_CheckOut_UserLogin.Name = "btn_CheckOut_UserLogin";
+            this.btn_CheckOut_UserLogin.Size = new System.Drawing.Size(75, 20);
+            this.btn_CheckOut_UserLogin.TabIndex = 14;
+            this.btn_CheckOut_UserLogin.Text = "Login";
+            this.btn_CheckOut_UserLogin.UseVisualStyleBackColor = true;
+            this.btn_CheckOut_UserLogin.Click += new System.EventHandler(this.btn_CheckOut_UserLogin_Click);
             // 
             // HomePage
             // 
@@ -824,10 +815,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(841, 617);
-            this.Controls.Add(this.ReturnLaptopPanel);
-            this.Controls.Add(this.HomePagePanel);
             this.Controls.Add(this.CheckOutLaptopPanel);
             this.Controls.Add(this.AddLaptopPanel);
+            this.Controls.Add(this.ReturnLaptopPanel);
+            this.Controls.Add(this.HomePagePanel);
             this.Name = "HomePage";
             this.Text = "FSB NFC Laptop Rental";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -856,7 +847,7 @@
         private System.Windows.Forms.Panel HomePagePanel;
         private System.Windows.Forms.Panel CheckOutLaptopPanel;
         private System.Windows.Forms.Label lblCheckOutTitle;
-        private System.Windows.Forms.TextBox tbxCheckOut_UniqueID;
+        private System.Windows.Forms.TextBox tbx_CheckOut_UserSerialNum;
         private System.Windows.Forms.TextBox tbx_CheckOut_SerialNum;
         private System.Windows.Forms.Button btn_CheckOut_ProcessCheckOut;
         private System.Windows.Forms.Button btn_CheckOut_Back;
@@ -886,11 +877,9 @@
         private System.Windows.Forms.Button btn_AddLaptop_SubmitButton;
         private System.Windows.Forms.TextBox tbx_AddLaptop_SerialNum;
         private System.Windows.Forms.Label lbl_CheckOut_UserInformation;
-        private System.Windows.Forms.Button btn_CheckOut_LookupUser;
-        private System.Windows.Forms.TextBox tbx_CheckOut_UserPhone;
-        private System.Windows.Forms.TextBox tbx_CheckOut_UserEmail;
-        private System.Windows.Forms.TextBox tbx_CheckOut_LastName;
-        private System.Windows.Forms.TextBox tbx_CheckOut_FirstName;
+        private System.Windows.Forms.Button btn_CheckOut_RescanID;
+        private System.Windows.Forms.TextBox tbx_CheckOut_UserPassword;
+        private System.Windows.Forms.TextBox tbx_CheckOut_UserUniqueID;
         private System.Windows.Forms.Label lbl_CheckOut_UserFound;
         private System.Windows.Forms.Panel ReturnLaptopPanel;
         private System.Windows.Forms.Label lbl_Return_Title;
@@ -909,6 +898,7 @@
         private System.Windows.Forms.TextBox tbx_Return_LaptopID;
         private System.Windows.Forms.Label lbl_Return_ScanStatus;
         private System.Windows.Forms.Button btn_Return_Rescan;
+        private System.Windows.Forms.Button btn_CheckOut_UserLogin;
     }
 }
 
