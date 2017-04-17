@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NFC_Project.DataContainers;
+using Oracle.ManagedDataAccess.Client;
 
 namespace NFC_Project
 {
@@ -824,7 +825,7 @@ namespace NFC_Project
 
         private void PopulateRentedLaptopTable()
         {
-
+            
         }
         private void AddEntryToRentedLaptopTable(int laptopIndex, int row)
         {
