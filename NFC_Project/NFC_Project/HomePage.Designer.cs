@@ -36,15 +36,24 @@
             this.btnInventory = new System.Windows.Forms.Button();
             this.HomePagePanel = new System.Windows.Forms.Panel();
             this.CheckInventoryPanel = new System.Windows.Forms.Panel();
+            this.lbl_CheckInventory_AvailableLaptopCount = new System.Windows.Forms.Label();
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle = new System.Windows.Forms.Label();
             this.btn_CheckOut_RefeshData = new System.Windows.Forms.Button();
             this.tab_CheckInventory_TabControl = new System.Windows.Forms.TabControl();
             this.tab_CheckInventory_AllLaptops = new System.Windows.Forms.TabPage();
             this.tbl_CheckInventory_AllLaptopsDisplayTable = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_CheckInventory_TableHeaders_DeviceType = new System.Windows.Forms.Label();
             this.lbl_CheckInventory_TableHeaders_OS = new System.Windows.Forms.Label();
             this.lbl_CheckInventory_TableHeaders_RAM = new System.Windows.Forms.Label();
             this.lbl_CheckInventory_TableHeaders_Processor = new System.Windows.Forms.Label();
             this.lbl_CheckInventory_TableHeaders_LaptopSerialNum = new System.Windows.Forms.Label();
             this.tab_CheckInventory_AvailableLaptops = new System.Windows.Forms.TabPage();
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_CheckInventory_TableHeaders_DeviceType2 = new System.Windows.Forms.Label();
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops = new System.Windows.Forms.Label();
+            this.lbl_CheckInventory_TableHeaders_Processor2 = new System.Windows.Forms.Label();
+            this.lbl_CheckInventory_TableHeaders_RAM2 = new System.Windows.Forms.Label();
+            this.lbl_CheckInventory_TableHeaders_OSVersion2 = new System.Windows.Forms.Label();
             this.tab_CheckInventory_RentedLaptops = new System.Windows.Forms.TabPage();
             this.tbl_CheckInventory_RentedLaptopsDisplayTable = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_CheckInventory_TableHeaders_SendReminder = new System.Windows.Forms.Label();
@@ -107,15 +116,6 @@
             this.btn_Return_ProcessReturn = new System.Windows.Forms.Button();
             this.btn_Return_Back = new System.Windows.Forms.Button();
             this.lbl_Return_Title = new System.Windows.Forms.Label();
-            this.lbl_CheckInventory_TableHeaders_DeviceType = new System.Windows.Forms.Label();
-            this.lbl_CheckInventory_TableHeaders_RAM2 = new System.Windows.Forms.Label();
-            this.lbl_CheckInventory_TableHeaders_Processor2 = new System.Windows.Forms.Label();
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops = new System.Windows.Forms.Label();
-            this.lbl_CheckInventory_TableHeaders_DeviceType2 = new System.Windows.Forms.Label();
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_CheckInventory_TableHeaders_OSVersion2 = new System.Windows.Forms.Label();
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle = new System.Windows.Forms.Label();
-            this.lbl_CheckInventory_AvailableLaptopCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckInventoryPanel.SuspendLayout();
@@ -123,6 +123,7 @@
             this.tab_CheckInventory_AllLaptops.SuspendLayout();
             this.tbl_CheckInventory_AllLaptopsDisplayTable.SuspendLayout();
             this.tab_CheckInventory_AvailableLaptops.SuspendLayout();
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.SuspendLayout();
             this.tab_CheckInventory_RentedLaptops.SuspendLayout();
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.SuspendLayout();
             this.CheckOutLaptopPanel.SuspendLayout();
@@ -130,7 +131,6 @@
             this.pnl_AddLaptop_InServicePanel.SuspendLayout();
             this.ReturnLaptopPanel.SuspendLayout();
             this.pnl_ReturnLaptop_RentalInfoDisplayPanel.SuspendLayout();
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -236,6 +236,28 @@
             this.CheckInventoryPanel.Size = new System.Drawing.Size(840, 616);
             this.CheckInventoryPanel.TabIndex = 6;
             // 
+            // lbl_CheckInventory_AvailableLaptopCount
+            // 
+            this.lbl_CheckInventory_AvailableLaptopCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_AvailableLaptopCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_AvailableLaptopCount.Location = new System.Drawing.Point(710, 87);
+            this.lbl_CheckInventory_AvailableLaptopCount.Name = "lbl_CheckInventory_AvailableLaptopCount";
+            this.lbl_CheckInventory_AvailableLaptopCount.Size = new System.Drawing.Size(39, 23);
+            this.lbl_CheckInventory_AvailableLaptopCount.TabIndex = 9;
+            this.lbl_CheckInventory_AvailableLaptopCount.Text = "10";
+            this.lbl_CheckInventory_AvailableLaptopCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_CheckInventory_AvailalbeLaptopsTitle
+            // 
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Location = new System.Drawing.Point(505, 87);
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Name = "lbl_CheckInventory_AvailalbeLaptopsTitle";
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Size = new System.Drawing.Size(205, 23);
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.TabIndex = 8;
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Text = "Currently Available Laptops:";
+            this.lbl_CheckInventory_AvailalbeLaptopsTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // btn_CheckOut_RefeshData
             // 
             this.btn_CheckOut_RefeshData.BackColor = System.Drawing.Color.White;
@@ -291,9 +313,23 @@
             this.tbl_CheckInventory_AllLaptopsDisplayTable.Location = new System.Drawing.Point(2, 2);
             this.tbl_CheckInventory_AllLaptopsDisplayTable.Name = "tbl_CheckInventory_AllLaptopsDisplayTable";
             this.tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = 1;
-            this.tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 399F));
+            this.tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tbl_CheckInventory_AllLaptopsDisplayTable.Size = new System.Drawing.Size(653, 399);
             this.tbl_CheckInventory_AllLaptopsDisplayTable.TabIndex = 0;
+            // 
+            // lbl_CheckInventory_TableHeaders_DeviceType
+            // 
+            this.lbl_CheckInventory_TableHeaders_DeviceType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_TableHeaders_DeviceType.AutoSize = true;
+            this.lbl_CheckInventory_TableHeaders_DeviceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_TableHeaders_DeviceType.Location = new System.Drawing.Point(189, 1);
+            this.lbl_CheckInventory_TableHeaders_DeviceType.Name = "lbl_CheckInventory_TableHeaders_DeviceType";
+            this.lbl_CheckInventory_TableHeaders_DeviceType.Size = new System.Drawing.Size(109, 400);
+            this.lbl_CheckInventory_TableHeaders_DeviceType.TabIndex = 4;
+            this.lbl_CheckInventory_TableHeaders_DeviceType.Text = "Device Type";
+            this.lbl_CheckInventory_TableHeaders_DeviceType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_CheckInventory_TableHeaders_OS
             // 
@@ -304,7 +340,7 @@
             this.lbl_CheckInventory_TableHeaders_OS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckInventory_TableHeaders_OS.Location = new System.Drawing.Point(537, 1);
             this.lbl_CheckInventory_TableHeaders_OS.Name = "lbl_CheckInventory_TableHeaders_OS";
-            this.lbl_CheckInventory_TableHeaders_OS.Size = new System.Drawing.Size(112, 399);
+            this.lbl_CheckInventory_TableHeaders_OS.Size = new System.Drawing.Size(112, 400);
             this.lbl_CheckInventory_TableHeaders_OS.TabIndex = 3;
             this.lbl_CheckInventory_TableHeaders_OS.Text = "Operating System";
             this.lbl_CheckInventory_TableHeaders_OS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -318,7 +354,7 @@
             this.lbl_CheckInventory_TableHeaders_RAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckInventory_TableHeaders_RAM.Location = new System.Drawing.Point(421, 1);
             this.lbl_CheckInventory_TableHeaders_RAM.Name = "lbl_CheckInventory_TableHeaders_RAM";
-            this.lbl_CheckInventory_TableHeaders_RAM.Size = new System.Drawing.Size(109, 399);
+            this.lbl_CheckInventory_TableHeaders_RAM.Size = new System.Drawing.Size(109, 400);
             this.lbl_CheckInventory_TableHeaders_RAM.TabIndex = 2;
             this.lbl_CheckInventory_TableHeaders_RAM.Text = "RAM";
             this.lbl_CheckInventory_TableHeaders_RAM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -332,7 +368,7 @@
             this.lbl_CheckInventory_TableHeaders_Processor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckInventory_TableHeaders_Processor.Location = new System.Drawing.Point(305, 1);
             this.lbl_CheckInventory_TableHeaders_Processor.Name = "lbl_CheckInventory_TableHeaders_Processor";
-            this.lbl_CheckInventory_TableHeaders_Processor.Size = new System.Drawing.Size(109, 399);
+            this.lbl_CheckInventory_TableHeaders_Processor.Size = new System.Drawing.Size(109, 400);
             this.lbl_CheckInventory_TableHeaders_Processor.TabIndex = 1;
             this.lbl_CheckInventory_TableHeaders_Processor.Text = "Processor";
             this.lbl_CheckInventory_TableHeaders_Processor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -360,6 +396,97 @@
             this.tab_CheckInventory_AvailableLaptops.Text = "Available Laptops";
             this.tab_CheckInventory_AvailableLaptops.UseVisualStyleBackColor = true;
             // 
+            // tbl_CheckInventory_AvailableLaptopDisplayTable
+            // 
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnCount = 5;
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_DeviceType2, 1, 0);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops, 0, 0);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_Processor2, 2, 0);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_RAM2, 3, 0);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_OSVersion2, 4, 0);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Location = new System.Drawing.Point(2, 2);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Name = "tbl_CheckInventory_AvailableLaptopDisplayTable";
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = 1;
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 399F));
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Size = new System.Drawing.Size(653, 399);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.TabIndex = 1;
+            // 
+            // lbl_CheckInventory_TableHeaders_DeviceType2
+            // 
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.AutoSize = true;
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.Location = new System.Drawing.Point(189, 1);
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.Name = "lbl_CheckInventory_TableHeaders_DeviceType2";
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.Size = new System.Drawing.Size(109, 399);
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.TabIndex = 1;
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.Text = "Device Type";
+            this.lbl_CheckInventory_TableHeaders_DeviceType2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops
+            // 
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.AutoSize = true;
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Location = new System.Drawing.Point(4, 1);
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Name = "lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops";
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Size = new System.Drawing.Size(178, 399);
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.TabIndex = 0;
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Text = "Laptop Serial Number";
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_CheckInventory_TableHeaders_Processor2
+            // 
+            this.lbl_CheckInventory_TableHeaders_Processor2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_TableHeaders_Processor2.AutoSize = true;
+            this.lbl_CheckInventory_TableHeaders_Processor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_TableHeaders_Processor2.Location = new System.Drawing.Point(305, 1);
+            this.lbl_CheckInventory_TableHeaders_Processor2.Name = "lbl_CheckInventory_TableHeaders_Processor2";
+            this.lbl_CheckInventory_TableHeaders_Processor2.Size = new System.Drawing.Size(109, 399);
+            this.lbl_CheckInventory_TableHeaders_Processor2.TabIndex = 3;
+            this.lbl_CheckInventory_TableHeaders_Processor2.Text = "Processor";
+            this.lbl_CheckInventory_TableHeaders_Processor2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_CheckInventory_TableHeaders_RAM2
+            // 
+            this.lbl_CheckInventory_TableHeaders_RAM2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_TableHeaders_RAM2.AutoSize = true;
+            this.lbl_CheckInventory_TableHeaders_RAM2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_TableHeaders_RAM2.Location = new System.Drawing.Point(421, 1);
+            this.lbl_CheckInventory_TableHeaders_RAM2.Name = "lbl_CheckInventory_TableHeaders_RAM2";
+            this.lbl_CheckInventory_TableHeaders_RAM2.Size = new System.Drawing.Size(109, 399);
+            this.lbl_CheckInventory_TableHeaders_RAM2.TabIndex = 2;
+            this.lbl_CheckInventory_TableHeaders_RAM2.Text = "RAM";
+            this.lbl_CheckInventory_TableHeaders_RAM2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_CheckInventory_TableHeaders_OSVersion2
+            // 
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.AutoSize = true;
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.Location = new System.Drawing.Point(537, 1);
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.Name = "lbl_CheckInventory_TableHeaders_OSVersion2";
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.Size = new System.Drawing.Size(112, 399);
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.TabIndex = 4;
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.Text = "Operating System";
+            this.lbl_CheckInventory_TableHeaders_OSVersion2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tab_CheckInventory_RentedLaptops
             // 
             this.tab_CheckInventory_RentedLaptops.Controls.Add(this.tbl_CheckInventory_RentedLaptopsDisplayTable);
@@ -385,7 +512,7 @@
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.Location = new System.Drawing.Point(2, 2);
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.Name = "tbl_CheckInventory_RentedLaptopsDisplayTable";
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount = 1;
-            this.tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 399F));
+            this.tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.Size = new System.Drawing.Size(653, 399);
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.TabIndex = 2;
             // 
@@ -398,7 +525,7 @@
             this.lbl_CheckInventory_TableHeaders_SendReminder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckInventory_TableHeaders_SendReminder.Location = new System.Drawing.Point(460, 1);
             this.lbl_CheckInventory_TableHeaders_SendReminder.Name = "lbl_CheckInventory_TableHeaders_SendReminder";
-            this.lbl_CheckInventory_TableHeaders_SendReminder.Size = new System.Drawing.Size(189, 399);
+            this.lbl_CheckInventory_TableHeaders_SendReminder.Size = new System.Drawing.Size(189, 400);
             this.lbl_CheckInventory_TableHeaders_SendReminder.TabIndex = 3;
             this.lbl_CheckInventory_TableHeaders_SendReminder.Text = "Notification";
             this.lbl_CheckInventory_TableHeaders_SendReminder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -412,7 +539,7 @@
             this.lbl_CheckInventory_TableHeaders_LaptopUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckInventory_TableHeaders_LaptopUser.Location = new System.Drawing.Point(266, 1);
             this.lbl_CheckInventory_TableHeaders_LaptopUser.Name = "lbl_CheckInventory_TableHeaders_LaptopUser";
-            this.lbl_CheckInventory_TableHeaders_LaptopUser.Size = new System.Drawing.Size(187, 399);
+            this.lbl_CheckInventory_TableHeaders_LaptopUser.Size = new System.Drawing.Size(187, 400);
             this.lbl_CheckInventory_TableHeaders_LaptopUser.TabIndex = 2;
             this.lbl_CheckInventory_TableHeaders_LaptopUser.Text = "Laptop Holder";
             this.lbl_CheckInventory_TableHeaders_LaptopUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -426,7 +553,7 @@
             this.lbl_CheckInventory_TableHeaders_RentalID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckInventory_TableHeaders_RentalID.Location = new System.Drawing.Point(198, 1);
             this.lbl_CheckInventory_TableHeaders_RentalID.Name = "lbl_CheckInventory_TableHeaders_RentalID";
-            this.lbl_CheckInventory_TableHeaders_RentalID.Size = new System.Drawing.Size(61, 399);
+            this.lbl_CheckInventory_TableHeaders_RentalID.Size = new System.Drawing.Size(61, 400);
             this.lbl_CheckInventory_TableHeaders_RentalID.TabIndex = 1;
             this.lbl_CheckInventory_TableHeaders_RentalID.Text = "Rental ID";
             this.lbl_CheckInventory_TableHeaders_RentalID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -440,7 +567,7 @@
             this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.Location = new System.Drawing.Point(4, 1);
             this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.Name = "lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops";
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.Size = new System.Drawing.Size(187, 399);
+            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.Size = new System.Drawing.Size(187, 400);
             this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.TabIndex = 0;
             this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.Text = "Laptop Serial Number";
             this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_RentedLaptops.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -496,7 +623,7 @@
             // btn_CheckOut_UserLogin
             // 
             this.btn_CheckOut_UserLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CheckOut_UserLogin.Location = new System.Drawing.Point(154, 263);
+            this.btn_CheckOut_UserLogin.Location = new System.Drawing.Point(149, 407);
             this.btn_CheckOut_UserLogin.Name = "btn_CheckOut_UserLogin";
             this.btn_CheckOut_UserLogin.Size = new System.Drawing.Size(75, 21);
             this.btn_CheckOut_UserLogin.TabIndex = 14;
@@ -509,7 +636,7 @@
             // 
             this.lbl_CheckOut_UserFound.AutoSize = true;
             this.lbl_CheckOut_UserFound.ForeColor = System.Drawing.Color.Red;
-            this.lbl_CheckOut_UserFound.Location = new System.Drawing.Point(288, 150);
+            this.lbl_CheckOut_UserFound.Location = new System.Drawing.Point(283, 276);
             this.lbl_CheckOut_UserFound.Name = "lbl_CheckOut_UserFound";
             this.lbl_CheckOut_UserFound.Size = new System.Drawing.Size(124, 13);
             this.lbl_CheckOut_UserFound.TabIndex = 13;
@@ -520,7 +647,7 @@
             // 
             this.lbl_CheckOut_UserInformation.AutoSize = true;
             this.lbl_CheckOut_UserInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckOut_UserInformation.Location = new System.Drawing.Point(151, 186);
+            this.lbl_CheckOut_UserInformation.Location = new System.Drawing.Point(146, 330);
             this.lbl_CheckOut_UserInformation.Name = "lbl_CheckOut_UserInformation";
             this.lbl_CheckOut_UserInformation.Size = new System.Drawing.Size(123, 25);
             this.lbl_CheckOut_UserInformation.TabIndex = 12;
@@ -529,7 +656,7 @@
             // btn_CheckOut_RescanID
             // 
             this.btn_CheckOut_RescanID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CheckOut_RescanID.Location = new System.Drawing.Point(538, 124);
+            this.btn_CheckOut_RescanID.Location = new System.Drawing.Point(533, 250);
             this.btn_CheckOut_RescanID.Name = "btn_CheckOut_RescanID";
             this.btn_CheckOut_RescanID.Size = new System.Drawing.Size(75, 20);
             this.btn_CheckOut_RescanID.TabIndex = 11;
@@ -539,7 +666,7 @@
             // 
             // tbx_CheckOut_UserPassword
             // 
-            this.tbx_CheckOut_UserPassword.Location = new System.Drawing.Point(440, 229);
+            this.tbx_CheckOut_UserPassword.Location = new System.Drawing.Point(435, 373);
             this.tbx_CheckOut_UserPassword.Name = "tbx_CheckOut_UserPassword";
             this.tbx_CheckOut_UserPassword.Size = new System.Drawing.Size(241, 20);
             this.tbx_CheckOut_UserPassword.TabIndex = 8;
@@ -549,7 +676,7 @@
             // 
             // tbx_CheckOut_UserUniqueID
             // 
-            this.tbx_CheckOut_UserUniqueID.Location = new System.Drawing.Point(154, 229);
+            this.tbx_CheckOut_UserUniqueID.Location = new System.Drawing.Point(149, 373);
             this.tbx_CheckOut_UserUniqueID.Name = "tbx_CheckOut_UserUniqueID";
             this.tbx_CheckOut_UserUniqueID.Size = new System.Drawing.Size(241, 20);
             this.tbx_CheckOut_UserUniqueID.TabIndex = 7;
@@ -560,7 +687,7 @@
             // btn_CheckOut_Rescan
             // 
             this.btn_CheckOut_Rescan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CheckOut_Rescan.Location = new System.Drawing.Point(538, 365);
+            this.btn_CheckOut_Rescan.Location = new System.Drawing.Point(533, 146);
             this.btn_CheckOut_Rescan.Name = "btn_CheckOut_Rescan";
             this.btn_CheckOut_Rescan.Size = new System.Drawing.Size(75, 20);
             this.btn_CheckOut_Rescan.TabIndex = 6;
@@ -573,7 +700,7 @@
             // 
             this.lbl_CheckOut_ReadyToScanNFC.AutoSize = true;
             this.lbl_CheckOut_ReadyToScanNFC.ForeColor = System.Drawing.Color.Red;
-            this.lbl_CheckOut_ReadyToScanNFC.Location = new System.Drawing.Point(291, 392);
+            this.lbl_CheckOut_ReadyToScanNFC.Location = new System.Drawing.Point(286, 173);
             this.lbl_CheckOut_ReadyToScanNFC.Name = "lbl_CheckOut_ReadyToScanNFC";
             this.lbl_CheckOut_ReadyToScanNFC.Size = new System.Drawing.Size(126, 13);
             this.lbl_CheckOut_ReadyToScanNFC.TabIndex = 5;
@@ -614,7 +741,7 @@
             // 
             // tbx_CheckOut_SerialNum
             // 
-            this.tbx_CheckOut_SerialNum.Location = new System.Drawing.Point(291, 365);
+            this.tbx_CheckOut_SerialNum.Location = new System.Drawing.Point(286, 146);
             this.tbx_CheckOut_SerialNum.Name = "tbx_CheckOut_SerialNum";
             this.tbx_CheckOut_SerialNum.Size = new System.Drawing.Size(241, 20);
             this.tbx_CheckOut_SerialNum.TabIndex = 2;
@@ -625,7 +752,7 @@
             // 
             // tbx_CheckOut_UserSerialNum
             // 
-            this.tbx_CheckOut_UserSerialNum.Location = new System.Drawing.Point(291, 124);
+            this.tbx_CheckOut_UserSerialNum.Location = new System.Drawing.Point(286, 250);
             this.tbx_CheckOut_UserSerialNum.Name = "tbx_CheckOut_UserSerialNum";
             this.tbx_CheckOut_UserSerialNum.Size = new System.Drawing.Size(241, 20);
             this.tbx_CheckOut_UserSerialNum.TabIndex = 1;
@@ -1094,144 +1221,17 @@
             this.lbl_Return_Title.TabIndex = 0;
             this.lbl_Return_Title.Text = "Return Laptop";
             // 
-            // lbl_CheckInventory_TableHeaders_DeviceType
-            // 
-            this.lbl_CheckInventory_TableHeaders_DeviceType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_TableHeaders_DeviceType.AutoSize = true;
-            this.lbl_CheckInventory_TableHeaders_DeviceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_TableHeaders_DeviceType.Location = new System.Drawing.Point(189, 1);
-            this.lbl_CheckInventory_TableHeaders_DeviceType.Name = "lbl_CheckInventory_TableHeaders_DeviceType";
-            this.lbl_CheckInventory_TableHeaders_DeviceType.Size = new System.Drawing.Size(109, 399);
-            this.lbl_CheckInventory_TableHeaders_DeviceType.TabIndex = 4;
-            this.lbl_CheckInventory_TableHeaders_DeviceType.Text = "Device Type";
-            this.lbl_CheckInventory_TableHeaders_DeviceType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_CheckInventory_TableHeaders_RAM2
-            // 
-            this.lbl_CheckInventory_TableHeaders_RAM2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_TableHeaders_RAM2.AutoSize = true;
-            this.lbl_CheckInventory_TableHeaders_RAM2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_TableHeaders_RAM2.Location = new System.Drawing.Point(421, 1);
-            this.lbl_CheckInventory_TableHeaders_RAM2.Name = "lbl_CheckInventory_TableHeaders_RAM2";
-            this.lbl_CheckInventory_TableHeaders_RAM2.Size = new System.Drawing.Size(109, 398);
-            this.lbl_CheckInventory_TableHeaders_RAM2.TabIndex = 2;
-            this.lbl_CheckInventory_TableHeaders_RAM2.Text = "RAM";
-            this.lbl_CheckInventory_TableHeaders_RAM2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_CheckInventory_TableHeaders_Processor2
-            // 
-            this.lbl_CheckInventory_TableHeaders_Processor2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_TableHeaders_Processor2.AutoSize = true;
-            this.lbl_CheckInventory_TableHeaders_Processor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_TableHeaders_Processor2.Location = new System.Drawing.Point(305, 1);
-            this.lbl_CheckInventory_TableHeaders_Processor2.Name = "lbl_CheckInventory_TableHeaders_Processor2";
-            this.lbl_CheckInventory_TableHeaders_Processor2.Size = new System.Drawing.Size(109, 398);
-            this.lbl_CheckInventory_TableHeaders_Processor2.TabIndex = 3;
-            this.lbl_CheckInventory_TableHeaders_Processor2.Text = "Processor";
-            this.lbl_CheckInventory_TableHeaders_Processor2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops
-            // 
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.AutoSize = true;
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Location = new System.Drawing.Point(4, 1);
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Name = "lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops";
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Size = new System.Drawing.Size(178, 398);
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.TabIndex = 0;
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.Text = "Laptop Serial Number";
-            this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_CheckInventory_TableHeaders_DeviceType2
-            // 
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.AutoSize = true;
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.Location = new System.Drawing.Point(189, 1);
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.Name = "lbl_CheckInventory_TableHeaders_DeviceType2";
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.Size = new System.Drawing.Size(109, 398);
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.TabIndex = 1;
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.Text = "Device Type";
-            this.lbl_CheckInventory_TableHeaders_DeviceType2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbl_CheckInventory_AvailableLaptopDisplayTable
-            // 
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnCount = 5;
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_DeviceType2, 1, 0);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_LaptopSerialNumber_AvailableLaptops, 0, 0);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_Processor2, 2, 0);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_RAM2, 3, 0);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(this.lbl_CheckInventory_TableHeaders_OSVersion2, 4, 0);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Location = new System.Drawing.Point(2, 2);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Name = "tbl_CheckInventory_AvailableLaptopDisplayTable";
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = 1;
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 398F));
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.Size = new System.Drawing.Size(653, 399);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.TabIndex = 1;
-            // 
-            // lbl_CheckInventory_TableHeaders_OSVersion2
-            // 
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.AutoSize = true;
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.Location = new System.Drawing.Point(537, 1);
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.Name = "lbl_CheckInventory_TableHeaders_OSVersion2";
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.Size = new System.Drawing.Size(112, 398);
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.TabIndex = 4;
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.Text = "Operating System";
-            this.lbl_CheckInventory_TableHeaders_OSVersion2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_CheckInventory_AvailalbeLaptopsTitle
-            // 
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Location = new System.Drawing.Point(505, 87);
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Name = "lbl_CheckInventory_AvailalbeLaptopsTitle";
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Size = new System.Drawing.Size(205, 23);
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.TabIndex = 8;
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.Text = "Currently Available Laptops:";
-            this.lbl_CheckInventory_AvailalbeLaptopsTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_CheckInventory_AvailableLaptopCount
-            // 
-            this.lbl_CheckInventory_AvailableLaptopCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_CheckInventory_AvailableLaptopCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckInventory_AvailableLaptopCount.Location = new System.Drawing.Point(710, 87);
-            this.lbl_CheckInventory_AvailableLaptopCount.Name = "lbl_CheckInventory_AvailableLaptopCount";
-            this.lbl_CheckInventory_AvailableLaptopCount.Size = new System.Drawing.Size(39, 23);
-            this.lbl_CheckInventory_AvailableLaptopCount.TabIndex = 9;
-            this.lbl_CheckInventory_AvailableLaptopCount.Text = "10";
-            this.lbl_CheckInventory_AvailableLaptopCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(841, 617);
-            this.Controls.Add(this.CheckInventoryPanel);
-            this.Controls.Add(this.HomePagePanel);
             this.Controls.Add(this.CheckOutLaptopPanel);
             this.Controls.Add(this.AddLaptopPanel);
             this.Controls.Add(this.ReturnLaptopPanel);
+            this.Controls.Add(this.CheckInventoryPanel);
+            this.Controls.Add(this.HomePagePanel);
             this.Name = "HomePage";
             this.Text = "FSB NFC Laptop Rental";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1243,6 +1243,8 @@
             this.tbl_CheckInventory_AllLaptopsDisplayTable.ResumeLayout(false);
             this.tbl_CheckInventory_AllLaptopsDisplayTable.PerformLayout();
             this.tab_CheckInventory_AvailableLaptops.ResumeLayout(false);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ResumeLayout(false);
+            this.tbl_CheckInventory_AvailableLaptopDisplayTable.PerformLayout();
             this.tab_CheckInventory_RentedLaptops.ResumeLayout(false);
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.ResumeLayout(false);
             this.tbl_CheckInventory_RentedLaptopsDisplayTable.PerformLayout();
@@ -1256,8 +1258,6 @@
             this.ReturnLaptopPanel.PerformLayout();
             this.pnl_ReturnLaptop_RentalInfoDisplayPanel.ResumeLayout(false);
             this.pnl_ReturnLaptop_RentalInfoDisplayPanel.PerformLayout();
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.ResumeLayout(false);
-            this.tbl_CheckInventory_AvailableLaptopDisplayTable.PerformLayout();
             this.ResumeLayout(false);
 
         }
