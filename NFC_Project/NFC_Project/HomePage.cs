@@ -1038,7 +1038,7 @@ namespace NFC_Project
 
                     int numControls = tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Count;
 
-                    for (int i = numControls - 1; i > 3; i--)
+                    for (int i = numControls - 1; i > 4; i--)
                     {
                         tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.RemoveAt(i);
                     }
@@ -1065,7 +1065,7 @@ namespace NFC_Project
 
                     int numControls = tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Count;
 
-                    for (int i = numControls - 1; i > 3; i--)
+                    for (int i = numControls - 1; i > 4; i--)
                     {
                         tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.RemoveAt(i);
                     }
@@ -1089,8 +1089,6 @@ namespace NFC_Project
         private void AddEntryToAvailableLaptopTable(string laptopID, int row)
         {
             Laptop l = GetLaptopData(laptopID);
-            Rental r = GetMostRecentRental(laptopID);
-
 
             // Create labels
             Label serial = new Label()
@@ -1103,41 +1101,50 @@ namespace NFC_Project
             tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(serial, row);
             tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(serial, 0);
 
-            Label rentalID = new Label()
+            Label type = new Label()
             {
-                Text = (r == null) ? "--" : r.RentalID.ToString(),
-                Anchor = AnchorStyles.None,
-                TextAlign = ContentAlignment.MiddleCenter,
-                AutoSize = true
-            };
-            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(rentalID, row);
-            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(rentalID, 1);
-
-            Label lastUser = new Label()
-            {
-                Text = (r == null) ? "--" : r.UniqueID,
+                Text = l.Type.ToString(),
                 Anchor = AnchorStyles.None,
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(lastUser, row);
-            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(lastUser, 2);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(type, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(type, 1);
 
-            Label condition = new Label()
+            Label processor = new Label()
             {
-                Text =  "TODO", //l.Condition,
+                Text = l.Processor,
                 Anchor = AnchorStyles.None,
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(condition, row);
-            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(condition, 3);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(processor, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(processor, 2);
+
+            Label ram = new Label()
+            {
+                Text = l.RAM,
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(ram, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(ram, 3);
+
+            Label os = new Label()
+            {
+                Text = l.OSVersion.ToString(),
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(os, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(os, 4);
 
             //Add labels into a new row on the table
             tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount + 1;
             tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(serial);
-            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(rentalID);
-            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(lastUser);
-            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(condition);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(type);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(processor);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(ram);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(os);
         }
 
         private void btn_CheckOut_RefeshData_Click(object sender, EventArgs e)
