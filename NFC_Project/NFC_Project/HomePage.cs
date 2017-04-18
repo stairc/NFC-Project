@@ -339,6 +339,8 @@ namespace NFC_Project
         /// Add Laptop Page Methods //////////////////////////////
         private void ResetAddLaptopPage()
         {
+            // Reset the add laptop page for next use
+
             btn_AddLaptop_Rescan.Visible = false;
             lbl_AddLaptop_ScanStatus.Visible = false;
             lbl_AddLaptop_ScanStatus.Text = "Ready to Scan NFC Chip";
@@ -350,6 +352,8 @@ namespace NFC_Project
 
         private void ResetAddLaptopTextFields()
         {
+            // Resets the add laptop text fields for next use
+
             tbx_AddLaptop_Brand.Text = "Laptop Brand";
             tbx_AddLaptop_Condition.Text = "Laptop Condition";
             tbx_AddLaptop_Memory.Text = "Laptop Memory";
@@ -366,6 +370,7 @@ namespace NFC_Project
         }
         private void DisableAddLaptopTextFields()
         {
+            // Disables text entry until a valid laptop tag is scanned
             tbx_AddLaptop_Brand.Enabled = false;
             tbx_AddLaptop_Condition.Enabled = false;
             tbx_AddLaptop_Memory.Enabled = false;
@@ -382,6 +387,7 @@ namespace NFC_Project
         }
         private void EnableAddLaptopTextFields()
         {
+            // Enables laptop fields for edit after a valid ID is entered
             tbx_AddLaptop_Brand.Enabled = true;
             tbx_AddLaptop_Condition.Enabled = true;
             tbx_AddLaptop_Memory.Enabled = true;
@@ -399,8 +405,10 @@ namespace NFC_Project
 
         private void tbx_AddLaptop_LaptopID_TextChanged(object sender, EventArgs e)
         {
+            // Detect when a laptop tag is scanned
             if (tbx_AddLaptop_LaptopID.TextLength == 14)
             {
+                // Check if the laptop exists in the system
                 bool LaptopExists = false;
                 foreach (Laptop item in LaptopList)
                 {
@@ -410,22 +418,39 @@ namespace NFC_Project
                     }
                 }
 
-                if (!LaptopExists)
+                if (!LaptopExists) // Laptop does not exist
                 {
+                    // Allow rescan if needed
                     lbl_AddLaptop_ScanStatus.Text = "Laptop ID Scanned Succesfully";
                     btn_AddLaptop_Rescan.Visible = true;
                     tbx_AddLaptop_LaptopID.Enabled = false;
 
+                    // Allow data entry into fields
                     EnableAddLaptopTextFields();
                 }
-                else
+                else // Laptop already exists
                 {
+                    // Alert user and reset Laptop ID textbox
                     MessageBox.Show("That laptop ID is already in use by another laptop. Please scan a different tag.", "ID In Use", MessageBoxButtons.OK);
                     btn_AddLaptop_Rescan_Click(null, null);
                 }
                 
             }
         }
+        private void btn_AddLaptop_Rescan_Click(object sender, EventArgs e)
+        {
+            // Reset laptop scanning process
+            tbx_AddLaptop_LaptopID.Enabled = true;
+            lbl_AddLaptop_ScanStatus.Text = "Ready to Scan NFC Chip";
+            tbx_AddLaptop_LaptopID.Text = "";
+            btn_AddLaptop_Rescan.Visible = false;
+            tbx_AddLaptop_LaptopID.Focus();
+
+            DisableAddLaptopTextFields();
+            ResetAddLaptopTextFields();
+        }
+
+        // Methods to handle focusing of the textboxes
         private void tbx_AddLaptop_LaptopID_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_LaptopID.Text == "Scan Laptop ID Tag")
@@ -442,18 +467,6 @@ namespace NFC_Project
                 lbl_AddLaptop_ScanStatus.Visible = false;
             }
         }
-        private void btn_AddLaptop_Rescan_Click(object sender, EventArgs e)
-        {
-            tbx_AddLaptop_LaptopID.Enabled = true;
-            lbl_AddLaptop_ScanStatus.Text = "Ready to Scan NFC Chip";
-            tbx_AddLaptop_LaptopID.Text = "";
-            btn_AddLaptop_Rescan.Visible = false;
-            tbx_AddLaptop_LaptopID.Focus();
-
-            DisableAddLaptopTextFields();
-            ResetAddLaptopTextFields();
-        }
-
         private void tbx_AddLaptop_SerialNum_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_SerialNum.Text == "Laptop Serial Number")
@@ -597,6 +610,8 @@ namespace NFC_Project
 
         private void CreateLaptopObject()
         {
+            // Create a new laptop object and add it to the laptop list
+
             bool service = (rdo_AddLaptop_InService_Yes.Checked) ? true : false;
 
             Laptop l = new Laptop(tbx_AddLaptop_LaptopID.Text, tbx_AddLaptop_SerialNum.Text, tbx_AddLaptop_Condition.Text,
@@ -604,18 +619,22 @@ namespace NFC_Project
                                   tbx_AddLaptop_Resolution.Text, tbx_AddLaptop_Size.Text, dtp_AddLaptop_DateAdded.Value,
                                   service, tbx_AddLaptop_Memory.Text, tbx_AddLaptop_OSVersion.Text);
 
+            //TODO: Add laptop to database instead of list
             LaptopList.Add(l);
         }
         private bool IsAddNewLaptopDataValid()
         {
-            // IMPLEMENT
+            // TODO: IMPLEMENT LAPTOP DATA VALIDATION
             return true;
         }
 
         private void btn_AddLaptop_SubmitButton_Click(object sender, EventArgs e)
         {
+            // Check if new data is valid for laptop
             if (IsAddNewLaptopDataValid())
             {
+
+                // Create the laptop object and notify user
                 CreateLaptopObject();
                 MessageBox.Show("Laptop added to system successfully.", "Success", MessageBoxButtons.OK);
                 btn_AddLaptop_Back_Click(null, null);
@@ -626,6 +645,7 @@ namespace NFC_Project
 
         private void ResetReturnPage()
         {
+            // Resets the return page to original form for next use
             lbl_Return_ScanStatus.Visible = false;
             tbx_Return_LaptopID.Text = "Scan Laptop ID Tag";
             lbl_Return_ScanStatus.Text = "Ready to Scan NFC Chip";
@@ -638,6 +658,7 @@ namespace NFC_Project
             lbl_Return_UserText.Visible = false;
         }
 
+        // Methods to handle the focus of the textboxes
         private void tbx_Return_LaptopID_Enter(object sender, EventArgs e)
         {
             if (tbx_Return_LaptopID.Text == "Scan Laptop ID Tag")
@@ -646,7 +667,6 @@ namespace NFC_Project
                 lbl_Return_ScanStatus.Visible = true;
             }
         }
-
         private void tbx_Return_LaptopID_Leave(object sender, EventArgs e)
         {
             if (tbx_Return_LaptopID.Text == "")
@@ -658,6 +678,7 @@ namespace NFC_Project
 
         private void btn_Return_Rescan_Click(object sender, EventArgs e)
         {
+            // Resets the textbox and alert text for a rescan
             tbx_Return_LaptopID.Enabled = true;
             lbl_Return_ScanStatus.Text = "Ready to Scan NFC Chip";
             tbx_Return_LaptopID.Text = "";
@@ -672,10 +693,12 @@ namespace NFC_Project
 
         private void tbx_Return_LaptopID_TextChanged(object sender, EventArgs e)
         {
+            // Check if the text is 14 characters long and is therefore a scanned code
             if (tbx_Return_LaptopID.TextLength == 14)
             {
                 tbx_Return_LaptopID.Enabled = false;
 
+                // Find the rental assocaited with the laptop
                 Rental r = null;
                 foreach (Rental item in RentalList)
                 {
@@ -686,12 +709,13 @@ namespace NFC_Project
                     }
                 }
 
+                // Check if rental was found
                 if (r != null)
                 {
                     btn_Return_Rescan.Visible = true;
                     lbl_Return_ScanStatus.Text = "Rental Found Successfully";
                     
-
+                    // Populate the data fields with the rental information
                     lbl_Return_UserText.Text = r.UniqueID;
                     lbl_Return_UserText.Visible = true;
                     lbl_Return_CheckoutText.Text = r.CheckOutDate.ToShortDateString();
@@ -701,8 +725,9 @@ namespace NFC_Project
                     lbl_Return_RentalIDText.Text = r.RentalID.ToString();
                     lbl_Return_RentalIDText.Visible = true;
                 }
-                else
+                else // rental not found
                 {
+                    // Alert user that rental was not found
                     MessageBox.Show("The laptop you specified either does not exist or is not currently checked out.", "Error", MessageBoxButtons.OK);
                     btn_Return_Rescan_Click(null, null);
                 }
@@ -711,14 +736,17 @@ namespace NFC_Project
 
         private void btn_Return_ProcessReturn_Click(object sender, EventArgs e)
         {
+            // Make sure a Laptop ID has been entered
             if (tbx_Return_LaptopID.Enabled == false)
             {
+                // Find rental to be closed
                 string guid = lbl_Return_RentalIDText.Text;
 
                 foreach (Rental item in RentalList)
                 {
                     if (item.RentalID.ToString() == guid)
                     {
+                        // rental found - close rental, notify user and return to main page
                         item.ReturnDate = DateTime.Now;
                         MessageBox.Show("Yout laptop has been succssfully checked back in.", "Success", MessageBoxButtons.OK);
                         btn_Return_Back_Click(null, null);
@@ -731,10 +759,11 @@ namespace NFC_Project
 
         private void PopulateAllLaptopTable()
         {
-            // Check current rows in the table and remove extra ones
+            // Check current rows in the table and get data for correct table creation
             int rows = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount;
             int laptops = LaptopList.Count;
 
+            // Check if there are no laptops in system
             if (laptops == 0)
             {
                 tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Clear();
@@ -753,9 +782,11 @@ namespace NFC_Project
                     }
                 }
 
+                // add new row for "No Data" text
                 tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = 2;
                 tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
+                // Create and display "No data" text in the table
                 Label noItemsAvailable = new Label();
                 noItemsAvailable.Text = "No Data To Display";
                 noItemsAvailable.Anchor = AnchorStyles.None;
@@ -763,7 +794,7 @@ namespace NFC_Project
                 tbl_CheckInventory_AllLaptopsDisplayTable.SetColumnSpan(noItemsAvailable, 4);
                 tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(noItemsAvailable, 0, 1);
             }
-            else if (laptops > 0)
+            else if (laptops > 0) // there are laptops in the system
             {
                 // remove rows from already populated table
                 if (rows > 1)
@@ -850,9 +881,12 @@ namespace NFC_Project
         {
             // Check current rows in the table and remove extra ones
             int rows = tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount;
+
+            // Get data for correct table creation
             List<string> rentedLaptopIDs = GetListOfCurrentlyRentedLaptops();
             int laptops = rentedLaptopIDs.Count;
 
+            // Check if there are no currently rented laptops
             if (laptops == 0)
             {
                 tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Clear();
@@ -871,9 +905,11 @@ namespace NFC_Project
                     }
                 }
 
+                // add new row for "no data" text
                 tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount = 2;
                 tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
+                // create and display "no data" text
                 Label noItemsAvailable = new Label();
                 noItemsAvailable.Text = "No Data To Display";
                 noItemsAvailable.Anchor = AnchorStyles.None;
@@ -881,7 +917,7 @@ namespace NFC_Project
                 tbl_CheckInventory_RentedLaptopsDisplayTable.SetColumnSpan(noItemsAvailable, 4);
                 tbl_CheckInventory_RentedLaptopsDisplayTable.Controls.Add(noItemsAvailable, 0, 1);
             }
-            else if (laptops > 0)
+            else if (laptops > 0) //there are rented laptops
             {
                 // remove rows from already populated table
                 if (rows > 1)
@@ -971,9 +1007,12 @@ namespace NFC_Project
         {
             // Check current rows in the table and remove extra ones
             int rows = tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount;
+
+            // Get data for correct table creation
             List<string> availableLaptopIDs = GetListOfCurrentlyAvailableLaptops();
             int laptops = availableLaptopIDs.Count;
 
+            // Check if there are available no laptops
             if (laptops == 0)
             {
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Clear();
@@ -992,9 +1031,11 @@ namespace NFC_Project
                     }
                 }
 
+                // add row for "no data" text
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = 2;
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
+                // create and display "no data" text
                 Label noItemsAvailable = new Label();
                 noItemsAvailable.Text = "No Data To Display";
                 noItemsAvailable.Anchor = AnchorStyles.None;
@@ -1002,7 +1043,7 @@ namespace NFC_Project
                 tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumnSpan(noItemsAvailable, 4);
                 tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(noItemsAvailable, 0, 1);
             }
-            else if (laptops > 0)
+            else if (laptops > 0) // laptops are available
             {
                 // remove rows from already populated table
                 if (rows > 1)
@@ -1088,14 +1129,20 @@ namespace NFC_Project
 
         private void btn_CheckOut_RefeshData_Click(object sender, EventArgs e)
         {
+            // refresh the data in the tables
+
+            // delete current row styles in the tables
+            // Correct row styles will be added for each item in the Populate methods
             tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Clear();
             tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Clear();
             tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Clear();
 
+            // Create row style for header row
             tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
 
+            // Populate individual tables with records
             PopulateAllLaptopTable();
             PopulateRentedLaptopTable();
             PopulateAvailableLaptopTable();
@@ -1103,7 +1150,16 @@ namespace NFC_Project
 
         private void Email_Click(object sender, EventArgs e)
         {
+            // TODO: Implement this
             MessageBox.Show("Implement this");
+
+            // Get unique id from Miami ID
+
+            // Create email address for that unique id
+
+            // Create email using STMP
+
+            // Send Email
         }
 
         /////////////////////////////////////////////////////////////////////////
