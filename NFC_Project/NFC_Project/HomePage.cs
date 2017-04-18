@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NFC_Project.DataContainers;
 using Oracle.ManagedDataAccess.Client;
+using System.DirectoryServices;
 
 namespace NFC_Project
 {
@@ -34,6 +35,7 @@ namespace NFC_Project
 
             //DBManager db = new DBManager();
             //db.Connect();
+            LDAP();
         }
 
         private void AddTestData()
@@ -1266,6 +1268,26 @@ namespace NFC_Project
             }
 
             return null;
+        }
+
+        public void LDAP()
+        {
+            DirectoryEntry entry = new DirectoryEntry("LDAP://directory.miamioh.edu:636");
+            entry.AuthenticationType = AuthenticationTypes.None;
+
+            DirectorySearcher des = new DirectorySearcher(entry, "(&(ou = People)(dc=muohio)(dc=edu)(uid=*stair*))");
+
+            var result = des.FindAll();
+        }
+
+        public bool IsUserIDUniqueID(string id)
+        {
+            if (id.Length == 14)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
