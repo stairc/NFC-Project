@@ -95,6 +95,8 @@ namespace NFC_Project
             this.HomePagePanel.Visible = false;
             this.CheckInventoryPanel.Visible = true;
 
+            tab_CheckInventory_TabControl.SelectedIndex = 0;
+
             btn_CheckOut_RefeshData_Click(null, null);
         }
 
@@ -193,7 +195,7 @@ namespace NFC_Project
         {
             if (tbx_CheckOut_SerialNum.Text != "" &&
                 tbx_CheckOut_SerialNum.Text != "Scan Laptop ID Tag" &&
-                tbx_CheckOut_UserSerialNum.Text != "Enter Unique ID" &&
+                tbx_CheckOut_UserSerialNum.Text != "Scan Miami ID" &&
                 tbx_CheckOut_UserSerialNum.Text != "")
             {
                 string laptop = tbx_CheckOut_SerialNum.Text;
@@ -215,15 +217,16 @@ namespace NFC_Project
                         string id = tbx_CheckOut_UserSerialNum.Text.Trim();
                         User MatchedUser = null;
 
-                        foreach (User u in UserList)
-                        {
-                            if (id == u.UniqueID)
-                            {
-                                MatchedUser = u;
-                            }
-                        }
+                        //foreach (User u in UserList)
+                        //{
+                        //    if (id == u.UniqueID)
+                        //    {
+                        //        MatchedUser = u;
+                        //    }
+                        //}
 
-                        if (MatchedUser != null)
+                        if (id != "")
+                        //if (MatchedUser != null)
                         {
                             Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
                             RentalList.Add(newRent);
@@ -786,6 +789,7 @@ namespace NFC_Project
                 // Add placeholder row at bottom
                 tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount + 1;
                 tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                tbl_CheckInventory_AllLaptopsDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
 
             }
         }
@@ -903,6 +907,7 @@ namespace NFC_Project
                 // Add placeholder row at bottom
                 tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount = tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount + 1;
                 tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                tbl_CheckInventory_RentedLaptopsDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
 
             }
         }
@@ -1023,6 +1028,7 @@ namespace NFC_Project
                 // Add placeholder row at bottom
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount + 1;
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                tbl_CheckInventory_AvailableLaptopDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
 
             }
         }
@@ -1137,7 +1143,6 @@ namespace NFC_Project
 
             return mostRecentRental;
         }
-
 
         public bool IsLaptopRentedOut(string id)
         {
