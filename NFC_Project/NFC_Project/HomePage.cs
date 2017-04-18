@@ -41,6 +41,7 @@ namespace NFC_Project
             //UserList.Add(new User("stairlj", "Landen", "Stair", "stairlj@miamioh.edu", "5135601991"));
 
             RentalList.Add(new Rental("046A2AAAD72C80", "11111111111111"));
+            RentalList.Add(new Rental(Guid.NewGuid().ToString(), "046A2AAAD72C80", "98765432109876", new DateTime(2017, 4, 15).Ticks, new DateTime(2017, 4, 16).Ticks));
 
             LaptopList.Add(new Laptop("11111111111111", "9999-9999", "Good", "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
             LaptopList.Add(new Laptop("12345678901234", "1559-7895", "Bad", "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
@@ -929,25 +930,126 @@ namespace NFC_Project
             tbl_CheckInventory_RentedLaptopsDisplayTable.Controls.Add(email);
         }
 
-        private void Email_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Implement this");
-        }
-
         private void PopulateAvailableLaptopTable()
         {
+            // Check current rows in the table and remove extra ones
+            int rows = tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount;
+            List<string> availableLaptopIDs = GetListOfCurrentlyAvailableLaptops();
+            int laptops = availableLaptopIDs.Count;
 
+            if (rows == 1 && laptops == 0)
+            {
+                tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = 2;
+                tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+                Label noItemsAvailable = new Label();
+                noItemsAvailable.Text = "No Data To Display";
+                noItemsAvailable.Anchor = AnchorStyles.None;
+                tbl_CheckInventory_AvailableLaptopDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
+                tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumnSpan(noItemsAvailable, 4);
+                tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(noItemsAvailable, 0, 1);
+            }
+            else if (laptops > 0)
+            {
+                // remove rows from already populated table
+                if (rows > 1)
+                {
+                    tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = 1;
+
+                    int numControls = tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Count;
+
+                    for (int i = numControls - 1; i > 3; i--)
+                    {
+                        tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.RemoveAt(i);
+                    }
+                }
+
+                // Add all laptops to table
+                int currentRow = 1;
+                for (int i = 0; i < laptops; i++)
+                {
+                    AddEntryToAvailableLaptopTable(availableLaptopIDs[i], currentRow);
+                    currentRow++;
+                }
+
+                // Add placeholder row at bottom
+                tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount + 1;
+                tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+            }
         }
-        private void AddEntryToAvailableLaptopTable(int laptopIndex, int row)
+        private void AddEntryToAvailableLaptopTable(string laptopID, int row)
         {
-    
+            Laptop l = GetLaptopData(laptopID);
+            Rental r = GetMostRecentRental(laptopID);
+
+
+            // Create labels
+            Label serial = new Label()
+            {
+                Text = l.LaptopID,
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Cursor = Cursors.Hand
+            };
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(serial, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(serial, 0);
+
+            Label rentalID = new Label()
+            {
+                Text = (r == null) ? "--" : r.RentalID.ToString(),
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter,
+                AutoSize = true
+            };
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(rentalID, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(rentalID, 1);
+
+            Label lastUser = new Label()
+            {
+                Text = (r == null) ? "--" : r.UniqueID,
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(lastUser, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(lastUser, 2);
+
+            Label condition = new Label()
+            {
+                Text = l.Condition,
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(condition, row);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(condition, 3);
+
+            //Add labels into a new row on the table
+            tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount + 1;
+            tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(serial);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(rentalID);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(lastUser);
+            tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(condition);
         }
 
         private void btn_CheckOut_RefeshData_Click(object sender, EventArgs e)
         {
+            tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Clear();
+            tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Clear();
+            tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Clear();
+
+            tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+
             PopulateAllLaptopTable();
             PopulateRentedLaptopTable();
             PopulateAvailableLaptopTable();
+        }
+
+        private void Email_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Implement this");
         }
 
         /////////////////////////////////////////////////////////////////////////
@@ -967,6 +1069,27 @@ namespace NFC_Project
 
             return null;
         }
+
+        public Rental GetMostRecentRental(string id)
+        {
+            Rental mostRecentRental = null;
+
+            foreach (Rental item in RentalList)
+            {
+                if (item.ReturnDate != DateTime.MaxValue &&
+                    item.LaptopID == id)
+                {
+                    if (mostRecentRental == null || item.ReturnDate > mostRecentRental.ReturnDate)
+                    {
+                        mostRecentRental = item;
+                    }
+
+                }
+            }
+
+            return mostRecentRental;
+        }
+
 
         public bool IsLaptopRentedOut(string id)
         {
@@ -995,6 +1118,34 @@ namespace NFC_Project
             }
 
             return laptops;
+        }
+
+        public List<string> GetListOfCurrentlyAvailableLaptops()
+        {
+            List<string> laptops = new List<string>();
+
+            foreach (Laptop item in LaptopList)
+            {
+                if (!IsLaptopRentedOut(item.LaptopID) && item.InService)
+                {
+                    laptops.Add(item.LaptopID);
+                }
+            }
+
+            return laptops;
+        }
+
+        public Laptop GetLaptopData(string laptopID)
+        {
+            foreach (Laptop item in LaptopList)
+            {
+                if (item.LaptopID == laptopID)
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
     }
 }
