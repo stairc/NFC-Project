@@ -8,9 +8,14 @@ namespace NFC_Project.DataContainers
 {
     public class Laptop
     {
+        public enum DeviceTypes
+        {
+            AllInOne, Laptop, SurfacePro, iPad, Other
+        }
+
         public string LaptopID { get; set; }
         public string SerialNumber { get; set; }
-        public string Condition { get; set; } // Change to type of device // Add to table
+        public DeviceTypes Type { get; set; } //
         public string Brand { get; set; }
         public string Model { get; set; }
         public string Processor { get; set; } //
@@ -22,13 +27,13 @@ namespace NFC_Project.DataContainers
         public string Memory { get; set; }
         public string OSVersion { get; set; } //
 
-        public Laptop(string id, string serial, string cond, string brand,
+        public Laptop(string id, string serial, DeviceTypes type, string brand,
                       string model, string processor, string ram, string resolution,
                       string size, DateTime date, bool service, string mem, string os)
         {
             LaptopID = id;
             SerialNumber = serial;
-            Condition = cond;
+            Type = type;
             Brand = brand;
             Model = model;
             Processor = processor;
