@@ -13,6 +13,11 @@ namespace NFC_Project.DataContainers
             AllInOne, Laptop, SurfacePro, iPad, Other
         }
 
+        public enum OperatingSystems
+        {
+            Windows, MacOS, iOS, ChromeOS, Other
+        }
+
         public string LaptopID { get; set; }
         public string SerialNumber { get; set; }
         public DeviceTypes Type { get; set; } //
@@ -25,11 +30,11 @@ namespace NFC_Project.DataContainers
         public DateTime DateAdded { get; set; }
         public bool InService { get; set; }
         public string Memory { get; set; }
-        public string OSVersion { get; set; } //
+        public OperatingSystems OSVersion { get; set; } //
 
         public Laptop(string id, string serial, DeviceTypes type, string brand,
                       string model, string processor, string ram, string resolution,
-                      string size, DateTime date, bool service, string mem, string os)
+                      string size, DateTime date, bool service, string mem, OperatingSystems os)
         {
             LaptopID = id;
             SerialNumber = serial;

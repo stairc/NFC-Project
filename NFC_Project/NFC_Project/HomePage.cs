@@ -34,8 +34,8 @@ namespace NFC_Project
             AddLaptopPanel.Visible = false;
             CheckInventoryPanel.Visible = false;
 
-            DBManager db = new DBManager();
-            db.Connect();
+            //DBManager db = new DBManager();
+            //db.Connect();
         }
 
         private void AddTestData()
@@ -46,9 +46,9 @@ namespace NFC_Project
             RentalList.Add(new Rental("046A2AAAD72C80", "11111111111111"));
             RentalList.Add(new Rental(Guid.NewGuid().ToString(), "046A2AAAD72C80", "98765432109876", new DateTime(2017, 4, 15).Ticks, new DateTime(2017, 4, 16).Ticks));
 
-            LaptopList.Add(new Laptop("11111111111111", "9999-9999", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
-            LaptopList.Add(new Laptop("12345678901234", "1559-7895", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", "Windows 10"));
-            LaptopList.Add(new Laptop("98765432109876", "1111-1234", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today.AddDays(-5), true, "1TB", "Windows 10"));
+            LaptopList.Add(new Laptop("11111111111111", "9999-9999", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", Laptop.OperatingSystems.Windows));
+            LaptopList.Add(new Laptop("12345678901234", "1559-7895", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", Laptop.OperatingSystems.Windows));
+            LaptopList.Add(new Laptop("98765432109876", "1111-1234", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today.AddDays(-5), true, "1TB", Laptop.OperatingSystems.Windows));
 
         }
 
@@ -620,7 +620,7 @@ namespace NFC_Project
             Laptop l = new Laptop(tbx_AddLaptop_LaptopID.Text, tbx_AddLaptop_SerialNum.Text, Laptop.DeviceTypes.Other,  //tbx_AddLaptop_Condition.Text,
                                   tbx_AddLaptop_Brand.Text, tbx_AddLaptop_Model.Text, tbx_AddLaptop_Processor.Text, tbx_AddLaptop_RAM.Text,
                                   tbx_AddLaptop_Resolution.Text, tbx_AddLaptop_Size.Text, dtp_AddLaptop_DateAdded.Value,
-                                  service, tbx_AddLaptop_Memory.Text, tbx_AddLaptop_OSVersion.Text);
+                                  service, tbx_AddLaptop_Memory.Text, Laptop.OperatingSystems.Windows); //tbx_AddLaptop_OSVersion.Text); 
 
             //TODO: Add laptop to database instead of list
             LaptopList.Add(l);
@@ -779,7 +779,7 @@ namespace NFC_Project
 
                     int numControls = tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Count;
 
-                    for (int i = numControls - 1; i > 3; i--)
+                    for (int i = numControls - 1; i > 4; i--)
                     {
                         tbl_CheckInventory_AllLaptopsDisplayTable.Controls.RemoveAt(i);
                     }
@@ -806,7 +806,7 @@ namespace NFC_Project
 
                     int numControls = tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Count;
 
-                    for (int i = numControls - 1; i > 3; i--)
+                    for (int i = numControls - 1; i > 4; i--)
                     {
                         tbl_CheckInventory_AllLaptopsDisplayTable.Controls.RemoveAt(i);
                     }
@@ -843,40 +843,50 @@ namespace NFC_Project
             tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(serial, row);
             tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(serial, 0);
 
-            Label dateAdded = new Label()
+            Label type = new Label()
             {
-                Text = l.DateAdded.ToShortDateString(),
+                Text = l.Type.ToString(),
                 Anchor = AnchorStyles.None,
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(dateAdded, row);
-            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(dateAdded, 1);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(type, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(type, 1);
 
-            Label inService = new Label()
+            Label processor = new Label()
             {
-                Text = (l.InService == true) ? "Yes" : "No",
+                Text = l.Processor,
                 Anchor = AnchorStyles.None,
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(inService, row);
-            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(inService, 2);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(processor, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(processor, 2);
 
-            Label currentState = new Label()
+            Label ram = new Label()
             {
-                Text = (IsLaptopRentedOut(l.LaptopID)) ? "Rented Out" : "Inventory",
+                Text = l.RAM,
                 Anchor = AnchorStyles.None,
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(currentState, row);
-            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(currentState, 3);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(ram, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(ram, 3);
+
+            Label os = new Label()
+            {
+                Text = l.OSVersion.ToString(),
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(os, row);
+            tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(os, 4);
 
             //Add labels into a new row on the table
             tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount + 1;
             tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(serial);
-            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(dateAdded);
-            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(inService);
-            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(currentState);
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(type);
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(processor);
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(ram);
+            tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(os);
 
         }
 
