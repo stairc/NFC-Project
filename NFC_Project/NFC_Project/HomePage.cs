@@ -1079,6 +1079,9 @@ namespace NFC_Project
                     currentRow++;
                 }
 
+                // Update counter in top left corner
+                lbl_CheckInventory_AvailableLaptopCount.Text = laptops.ToString();
+
                 // Add placeholder row at bottom
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount + 1;
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
