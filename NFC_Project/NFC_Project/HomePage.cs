@@ -732,8 +732,24 @@ namespace NFC_Project
             int rows = tbl_CheckInventory_AllLaptopsDisplayTable.RowCount;
             int laptops = LaptopList.Count;
 
-            if (rows == 1 && laptops == 0)
+            if (laptops == 0)
             {
+                tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Clear();
+                tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+
+                // remove rows from already populated table
+                if (rows > 1)
+                {
+                    tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = 1;
+
+                    int numControls = tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Count;
+
+                    for (int i = numControls - 1; i > 3; i--)
+                    {
+                        tbl_CheckInventory_AllLaptopsDisplayTable.Controls.RemoveAt(i);
+                    }
+                }
+
                 tbl_CheckInventory_AllLaptopsDisplayTable.RowCount = 2;
                 tbl_CheckInventory_AllLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
@@ -833,8 +849,24 @@ namespace NFC_Project
             List<string> rentedLaptopIDs = GetListOfCurrentlyRentedLaptops();
             int laptops = rentedLaptopIDs.Count;
 
-            if (rows == 1 && laptops == 0)
+            if (laptops == 0)
             {
+                tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Clear();
+                tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+
+                // remove rows from already populated table
+                if (rows > 1)
+                {
+                    tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount = 1;
+
+                    int numControls = tbl_CheckInventory_RentedLaptopsDisplayTable.Controls.Count;
+
+                    for (int i = numControls - 1; i > 3; i--)
+                    {
+                        tbl_CheckInventory_RentedLaptopsDisplayTable.Controls.RemoveAt(i);
+                    }
+                }
+
                 tbl_CheckInventory_RentedLaptopsDisplayTable.RowCount = 2;
                 tbl_CheckInventory_RentedLaptopsDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
@@ -937,8 +969,24 @@ namespace NFC_Project
             List<string> availableLaptopIDs = GetListOfCurrentlyAvailableLaptops();
             int laptops = availableLaptopIDs.Count;
 
-            if (rows == 1 && laptops == 0)
+            if (laptops == 0)
             {
+                tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Clear();
+                tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+
+                // remove rows from already populated table
+                if (rows > 1)
+                {
+                    tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = 1;
+
+                    int numControls = tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Count;
+
+                    for (int i = numControls - 1; i > 3; i--)
+                    {
+                        tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.RemoveAt(i);
+                    }
+                }
+
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = 2;
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
