@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="DataContainers\Laptop.cs" />
     <Compile Include="DataContainers\Rental.cs" />
-    <Compile Include="DataContainers\User.cs" />
     <Compile Include="DBManager.cs" />
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>

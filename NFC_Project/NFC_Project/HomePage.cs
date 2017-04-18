@@ -17,7 +17,6 @@ namespace NFC_Project
 
         public List<Laptop> LaptopList;
         public List<Rental> RentalList;
-        public List<User> UserList;
 
         public HomePage()
         {
@@ -25,7 +24,6 @@ namespace NFC_Project
 
             LaptopList = new List<Laptop>();
             RentalList = new List<Rental>();
-            UserList = new List<User>();
 
             AddTestData();
 
@@ -218,18 +216,8 @@ namespace NFC_Project
                     if (!IsLaptopRentedOut(laptop))
                     {
                         string id = tbx_CheckOut_UserSerialNum.Text.Trim();
-                        User MatchedUser = null;
-
-                        //foreach (User u in UserList)
-                        //{
-                        //    if (id == u.UniqueID)
-                        //    {
-                        //        MatchedUser = u;
-                        //    }
-                        //}
 
                         if (id != "")
-                        //if (MatchedUser != null)
                         {
                             Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
                             RentalList.Add(newRent);
