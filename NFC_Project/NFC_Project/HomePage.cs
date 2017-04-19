@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using NFC_Project.DataContainers;
 using Oracle.ManagedDataAccess.Client;
 using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
+using System.DirectoryServices.Protocols;
 
 namespace NFC_Project
 {
@@ -37,7 +39,6 @@ namespace NFC_Project
             // TEST STUFF IS BELOW
             //DBManager db = new DBManager();
             //db.Connect();
-            //LDAP();
 
             //LaptopDetailPage page = new LaptopDetailPage();
            // page.Show();
@@ -1391,14 +1392,26 @@ namespace NFC_Project
             return null;
         }
 
-        public void LDAP()
+        public bool LDAPAuthenticate(string user, string pass)
         {
-            DirectoryEntry entry = new DirectoryEntry("LDAP://directory.miamioh.edu:636");
+            DirectoryEntry entry = new DirectoryEntry("LDAP://directory.miamioh.edu/dc=muohio,dc=edu");
             entry.AuthenticationType = AuthenticationTypes.None;
 
-            DirectorySearcher des = new DirectorySearcher(entry, "(&(ou = People)(dc=muohio)(dc=edu)(uid=*stair*))");
+            DirectorySearcher des = new DirectorySearcher(entry, "(uid=" + user + ")");
 
             var result = des.FindAll();
+
+            if (result.Count > 0)
+            {
+                // Return true for now
+                // TODO: Write code to actually authenticate user based on password and not just uniqueid
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         public bool IsUserIDUniqueID(string id)
