@@ -33,9 +33,14 @@ namespace NFC_Project
             AddLaptopPanel.Visible = false;
             CheckInventoryPanel.Visible = false;
 
+
+            // TEST STUFF IS BELOW
             //DBManager db = new DBManager();
             //db.Connect();
-            LDAP();
+            //LDAP();
+
+            //LaptopDetailPage page = new LaptopDetailPage();
+           // page.Show();
         }
 
         private void AddTestData()
@@ -919,6 +924,8 @@ namespace NFC_Project
             tbl_CheckInventory_AllLaptopsDisplayTable.SetRow(serial, row);
             tbl_CheckInventory_AllLaptopsDisplayTable.SetColumn(serial, 0);
 
+            serial.Click += Serial_Click;
+
             Label type = new Label()
             {
                 Text = l.Type.ToString(),
@@ -1052,6 +1059,8 @@ namespace NFC_Project
             tbl_CheckInventory_RentedLaptopsDisplayTable.SetRow(serial, row);
             tbl_CheckInventory_RentedLaptopsDisplayTable.SetColumn(serial, 0);
 
+            serial.Click += Serial_Click;
+
             Label rentalID = new Label()
             {
                 Text = r.RentalID.ToString(),
@@ -1180,6 +1189,8 @@ namespace NFC_Project
             tbl_CheckInventory_AvailableLaptopDisplayTable.SetRow(serial, row);
             tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumn(serial, 0);
 
+            serial.Click += Serial_Click;
+
             Label type = new Label()
             {
                 Text = l.Type.ToString(),
@@ -1261,6 +1272,15 @@ namespace NFC_Project
             // Send Email
         }
 
+        private void Serial_Click(object sender, EventArgs e)
+        {
+            Laptop data = GetLaptopData(((Label)sender).Text);
+            List<Rental> rentals = GetAssocciatedRentals(((Label)sender).Text);
+
+            LaptopDetailPage detail = new LaptopDetailPage(data, rentals);
+            detail.Show(this);
+        }
+
         /////////////////////////////////////////////////////////////////////////
         /// Helper Methods
         /// 
@@ -1297,6 +1317,21 @@ namespace NFC_Project
             }
 
             return mostRecentRental;
+        }
+
+        public List<Rental> GetAssocciatedRentals(string laptopID)
+        {
+            List<Rental> r = new List<Rental>();
+
+            foreach (Rental item in RentalList)
+            {
+                if (item.LaptopID == laptopID)
+                {
+                    r.Add(item);
+                }
+            }
+
+            return r;
         }
 
         public bool IsLaptopRentedOut(string id)
