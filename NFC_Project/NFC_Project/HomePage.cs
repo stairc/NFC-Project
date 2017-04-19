@@ -21,6 +21,7 @@ namespace NFC_Project
 
         public List<Laptop> LaptopList;
         public List<Rental> RentalList;
+        public DBManager db = new DBManager();
 
         public HomePage()
         {
@@ -29,22 +30,33 @@ namespace NFC_Project
             LaptopList = new List<Laptop>();
             RentalList = new List<Rental>();
 
-            AddTestData();
-
             CheckOutLaptopPanel.Visible = false;
             ReturnLaptopPanel.Visible = false;
             AddLaptopPanel.Visible = false;
             CheckInventoryPanel.Visible = false;
+
+            //TEST STUFF BELOW
+            //AddTestData();
+
+            //db.TestConnection();
+            //db.AddLaptop(LaptopList[0]);
+            //db.AddLaptop(LaptopList[1]);
+            //db.AddLaptop(LaptopList[2]);
+            //db.AddRental(RentalList[0]);
+            //db.AddRental(RentalList[1]);
+
+            LaptopList = db.GetAllLaptops();
+            RentalList = db.GetAllRentals();
         }
 
         private void AddTestData()
         {
             RentalList.Add(new Rental("046A2AAAD72C80", "11111111111111"));
-            RentalList.Add(new Rental(Guid.NewGuid().ToString(), "046A2AAAD72C80", "98765432109876", new DateTime(2017, 4, 15).Ticks, new DateTime(2017, 4, 16).Ticks));
+            RentalList.Add(new Rental(Guid.NewGuid().ToString(), "046A2AAAD72C80", "0459EBBA7A4880", new DateTime(2017, 4, 15).Ticks, new DateTime(2017, 4, 16).Ticks));
 
             LaptopList.Add(new Laptop("11111111111111", "9999-9999", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", Laptop.OperatingSystems.Windows));
-            LaptopList.Add(new Laptop("12345678901234", "1559-7895", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", Laptop.OperatingSystems.Windows));
-            LaptopList.Add(new Laptop("98765432109876", "1111-1234", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today.AddDays(-5), true, "1TB", Laptop.OperatingSystems.Windows));
+            LaptopList.Add(new Laptop("0459EBBA7A4880", "1559-7895", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today, true, "1TB", Laptop.OperatingSystems.Windows));
+            LaptopList.Add(new Laptop("0446EBBA7A4880", "1111-1234", Laptop.DeviceTypes.Laptop, "Dell", "Insperon", "i7", "8GB", "720p", "15.2 in.", DateTime.Today.AddDays(-5), true, "1TB", Laptop.OperatingSystems.Windows));
 
         }
 
@@ -219,7 +231,9 @@ namespace NFC_Project
                             if (!UserAlreadyHasLaptop(id))
                             {
                                 Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
-                                RentalList.Add(newRent);
+                                db.AddRental(newRent);
+                                RentalList = db.GetAllRentals();
+
                                 MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
                                 btn_CheckOut_Back_Click(null, null);
                             }
@@ -239,7 +253,8 @@ namespace NFC_Project
                                 {
                                    
                                     Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
-                                    RentalList.Add(newRent);
+                                    db.AddRental(newRent);
+                                    RentalList = db.GetAllRentals();
 
                                     MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
                                     btn_CheckOut_Back_Click(null, null);
@@ -662,8 +677,8 @@ namespace NFC_Project
                                   tbx_AddLaptop_Resolution.Text, tbx_AddLaptop_Size.Text, dtp_AddLaptop_DateAdded.Value,
                                   service, tbx_AddLaptop_Memory.Text, os);
 
-            //TODO: Add laptop to database instead of list
-            LaptopList.Add(l);
+            db.AddLaptop(l);
+            LaptopList = db.GetAllLaptops();
         }
         private bool IsAddNewLaptopDataValid()
         {
@@ -859,6 +874,8 @@ namespace NFC_Project
                     {
                         // rental found - close rental, notify user and return to main page
                         item.ReturnDate = DateTime.Now;
+                        db.UpdateRental(item);
+                        RentalList = db.GetAllRentals();
                         MessageBox.Show("Yout laptop has been succssfully checked back in.", "Success", MessageBoxButtons.OK);
                         btn_Return_Back_Click(null, null);
                     }
@@ -1466,24 +1483,40 @@ namespace NFC_Project
 
         public bool LDAPAuthenticate(string user, string pass)
         {
-            DirectoryEntry entry = new DirectoryEntry("LDAP://directory.miamioh.edu/dc=muohio,dc=edu");
-            entry.AuthenticationType = AuthenticationTypes.None;
-
-            DirectorySearcher des = new DirectorySearcher(entry, "(uid=" + user + ")");
-
-            var result = des.FindAll();
-
-            if (result.Count > 0)
+            try
             {
-                // Return true for now
-                // TODO: Write code to actually authenticate user based on password and not just uniqueid
-                return true;
+                DirectoryEntry entry = new DirectoryEntry("LDAP://directory.miamioh.edu/dc=muohio,dc=edu");
+                entry.AuthenticationType = AuthenticationTypes.None;
+
+                DirectorySearcher des = new DirectorySearcher(entry, "(uid=" + user + ")");
+
+                var result = des.FindAll();
+
+                if (result.Count > 0)
+                {
+                    // Return true for now
+                    // TODO: Write code to actually authenticate user based on password and not just uniqueid
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+
+                MessageBox.Show(ex.Message, "Error");
+
+                 DialogResult r = MessageBox.Show("Select whether or not you would like to manually authenticate this unique id.", "Choose One", MessageBoxButtons.YesNo);
+
+                if (r.ToString() == "Yes")
+                {
+                    return true;
+                }
             }
 
+            return false;
         }
 
         public bool IsUserIDUniqueID(string id)
