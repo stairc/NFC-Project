@@ -21,8 +21,25 @@ Steps:
   6. Click the **UID** Option
   7. When a tag is scanned the application will now auto paste the tag's UID into the currently selected textbox
   
-  ### Setting up the Inventory Management App
+### Setting up the Inventory Management App
   
-  
+Steps:
+
+  1. Open soultion from github
+  2. Install service references that are missing from your device
+  3. Add your connection string and username/password to the DBManager.cs
+     1. Connection string is located in the variable ConnString
+     2. Username and passwords are located in the variables UserName, Password
+  4. Run the SQL code to initalize tables in your selected database
+     1. Can be found in our Group Folder
+  5. Set up email service
+     1. In HomePage.cs there is a method called Email_Click()
+     2. Change variables in Email_Click() to match your selected email service
+     3. All variables to be changed are located at the begining of the method
+  6. Run application
+  7. Add laptops to the system
+  8. Application is now ready for use!
+     
+     
   
 
