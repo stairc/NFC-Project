@@ -35,21 +35,10 @@ namespace NFC_Project
             ReturnLaptopPanel.Visible = false;
             AddLaptopPanel.Visible = false;
             CheckInventoryPanel.Visible = false;
-
-
-            // TEST STUFF IS BELOW
-            //DBManager db = new DBManager();
-            //db.Connect();
-
-            //LaptopDetailPage page = new LaptopDetailPage();
-           // page.Show();
         }
 
         private void AddTestData()
         {
-            //UserList.Add(new User("staircd", "Cameron", "Stair", "staircd@miamioh.edu", "5135601882"));
-            //UserList.Add(new User("stairlj", "Landen", "Stair", "stairlj@miamioh.edu", "5135601991"));
-
             RentalList.Add(new Rental("046A2AAAD72C80", "11111111111111"));
             RentalList.Add(new Rental(Guid.NewGuid().ToString(), "046A2AAAD72C80", "98765432109876", new DateTime(2017, 4, 15).Ticks, new DateTime(2017, 4, 16).Ticks));
 
