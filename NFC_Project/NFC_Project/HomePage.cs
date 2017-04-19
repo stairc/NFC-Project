@@ -204,8 +204,7 @@ namespace NFC_Project
         {
             if (tbx_CheckOut_SerialNum.Text != "" &&
                 tbx_CheckOut_SerialNum.Text != "Scan Laptop ID Tag" &&
-                tbx_CheckOut_UserSerialNum.Text != "Scan Miami ID" &&
-                tbx_CheckOut_UserSerialNum.Text != "")
+                tbx_CheckOut_UserUniqueID.Enabled == false)
             {
                 string laptop = tbx_CheckOut_SerialNum.Text;
                 bool LaptopExists = false;
@@ -225,26 +224,41 @@ namespace NFC_Project
                     {
                         string id = tbx_CheckOut_UserSerialNum.Text.Trim();
 
-                        if (id != "")
+                        if (id != "" && id != "Scan Miami ID")
                         {
-                            Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
-                            RentalList.Add(newRent);
-                            MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
-                            btn_CheckOut_Back_Click(null, null);
+                            if (!UserAlreadyHasLaptop(id))
+                            {
+                                Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
+                                RentalList.Add(newRent);
+                                MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
+                                btn_CheckOut_Back_Click(null, null);
+                            }
+                            else
+                            {
+                                MessageBox.Show("You already have a laptop rented out. Return your current laptop before renting a new one.", "Error", MessageBoxButtons.OK);
+                            }
+                           
                         }
                         else
                         {
                             if (IsUserDataValid())
                             {
-                                //TODO: FIX THIS SHIT
-                                //User u = new User(tbxCheckOut_UniqueID.Text, tbx_CheckOut_FirstName.Text, tbx_CheckOut_LastName.Text, tbx_CheckOut_UserEmail.Text, tbx_CheckOut_UserPhone.Text);
-                                //UserList.Add(u);
+                                id = tbx_CheckOut_UserUniqueID.Text;
 
-                                Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
-                                RentalList.Add(newRent);
+                                if (!UserAlreadyHasLaptop(id))
+                                {
+                                   
+                                    Rental newRent = new Rental(id, tbx_CheckOut_SerialNum.Text);
+                                    RentalList.Add(newRent);
 
-                                MessageBox.Show("A new user has been successfully added to the system and the laptop has been checked out.", "Success", MessageBoxButtons.OK);
-                                btn_CheckOut_Back_Click(null, null);
+                                    MessageBox.Show("Laptop Successfully Checked Out", "Success", MessageBoxButtons.OK);
+                                    btn_CheckOut_Back_Click(null, null);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("You already have a laptop rented out. Return your current laptop before renting a new one.", "Error", MessageBoxButtons.OK);
+                                }
+
                             }
                             else
                             {
@@ -266,13 +280,31 @@ namespace NFC_Project
             }
             else
             {
-                MessageBox.Show("Please enter a unique ID and scan the laptop ID tag.", "Data Invalid", MessageBoxButtons.OK);
+                MessageBox.Show("Please the laptop ID tag and either scan your Miami ID or login with your unique ID and password.", "Data Invalid", MessageBoxButtons.OK);
             }
         }
 
         private void btn_CheckOut_UserLogin_Click(object sender, EventArgs e)
         {
-            //TODO: Implement PHP user checking here
+            string username = tbx_CheckOut_UserUniqueID.Text;
+            string pass = tbx_CheckOut_UserPassword.Text;
+
+            if (tbx_CheckOut_UserPassword.Text != "Enter Password" && !String.IsNullOrWhiteSpace(tbx_CheckOut_UserPassword.Text))
+            {
+                if (LDAPAuthenticate(username, pass))
+                {
+                    tbx_CheckOut_UserSerialNum.Enabled = false;
+                    tbx_CheckOut_UserUniqueID.Enabled = false;
+                    tbx_CheckOut_UserPassword.Enabled = false;
+                    lbl_CheckOut_UserFound.Visible = true;
+                    lbl_CheckOut_UserFound.Text = "User succesfully Authenticated.";
+                }
+                else
+                {
+
+                }
+            }            
+            
         }
 
         private bool IsUserDataValid()
@@ -1285,6 +1317,19 @@ namespace NFC_Project
         /////////////////////////////////////////////////////////////////////////
         /// Helper Methods
         /// 
+
+        public bool UserAlreadyHasLaptop(string userID)
+        {
+            foreach (Rental item in RentalList)
+            {
+                if (item.UniqueID == userID && item.ReturnDate == DateTime.MaxValue)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         public Rental GetCurrentLaptopRental(string id)
         {
