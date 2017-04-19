@@ -736,12 +736,12 @@ namespace NFC_Project
                 return false;
             }
 
-            if (cbo_AddLaptop_DeviceType.SelectedIndex > 6)
+            if (cbo_AddLaptop_DeviceType.SelectedIndex > 6 || String.IsNullOrWhiteSpace(cbo_AddLaptop_DeviceType.Text))
             {
                 return false;
             }
 
-            if (cbo_AddLaptop_OS.SelectedIndex > 6)
+            if (cbo_AddLaptop_OS.SelectedIndex > 6 || String.IsNullOrWhiteSpace(cbo_AddLaptop_OS.Text))
             {
                 return false;
             }
