@@ -286,12 +286,13 @@ namespace NFC_Project
                     tbx_CheckOut_UserSerialNum.Enabled = false;
                     tbx_CheckOut_UserUniqueID.Enabled = false;
                     tbx_CheckOut_UserPassword.Enabled = false;
+                    btn_CheckOut_UserLogin.Enabled = false;
                     lbl_CheckOut_UserFound.Visible = true;
                     lbl_CheckOut_UserFound.Text = "User succesfully Authenticated.";
                 }
                 else
                 {
-
+                    MessageBox.Show("Invalid username and password combination.");
                 }
             }            
             
@@ -323,7 +324,10 @@ namespace NFC_Project
         private void ResetCheckOutUserFields()
         {
             tbx_CheckOut_UserUniqueID.Text = "Enter Unique ID";
+            tbx_CheckOut_UserUniqueID.Enabled = true;
             tbx_CheckOut_UserPassword.Text = "Enter Password";
+            tbx_CheckOut_UserPassword.UseSystemPasswordChar = false;
+            tbx_CheckOut_UserPassword.Enabled = true;
         }
 
         private void tbx_CheckOut_FirstName_Enter(object sender, EventArgs e)
@@ -898,7 +902,7 @@ namespace NFC_Project
                 noItemsAvailable.Text = "No Data To Display";
                 noItemsAvailable.Anchor = AnchorStyles.None;
                 tbl_CheckInventory_AllLaptopsDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
-                tbl_CheckInventory_AllLaptopsDisplayTable.SetColumnSpan(noItemsAvailable, 4);
+                tbl_CheckInventory_AllLaptopsDisplayTable.SetColumnSpan(noItemsAvailable, 5);
                 tbl_CheckInventory_AllLaptopsDisplayTable.Controls.Add(noItemsAvailable, 0, 1);
             }
             else if (laptops > 0) // there are laptops in the system
@@ -1161,7 +1165,7 @@ namespace NFC_Project
                 noItemsAvailable.Text = "No Data To Display";
                 noItemsAvailable.Anchor = AnchorStyles.None;
                 tbl_CheckInventory_AvailableLaptopDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
-                tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumnSpan(noItemsAvailable, 4);
+                tbl_CheckInventory_AvailableLaptopDisplayTable.SetColumnSpan(noItemsAvailable, 5);
                 tbl_CheckInventory_AvailableLaptopDisplayTable.Controls.Add(noItemsAvailable, 0, 1);
             }
             else if (laptops > 0) // laptops are available
@@ -1187,15 +1191,16 @@ namespace NFC_Project
                     currentRow++;
                 }
 
-                // Update counter in top left corner
-                lbl_CheckInventory_AvailableLaptopCount.Text = laptops.ToString();
-
                 // Add placeholder row at bottom
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount = tbl_CheckInventory_AvailableLaptopDisplayTable.RowCount + 1;
                 tbl_CheckInventory_AvailableLaptopDisplayTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 tbl_CheckInventory_AvailableLaptopDisplayTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
 
             }
+
+            // Update counter in top left corner
+            lbl_CheckInventory_AvailableLaptopCount.Text = laptops.ToString();
+
         }
         private void AddEntryToAvailableLaptopTable(string laptopID, int row)
         {
