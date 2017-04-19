@@ -12,6 +12,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
 using System.DirectoryServices.Protocols;
+using System.Net.Mail;
 
 namespace NFC_Project
 {
@@ -1293,16 +1294,48 @@ namespace NFC_Project
 
         private void Email_Click(object sender, EventArgs e)
         {
-            // TODO: Implement this
-            MessageBox.Show("Implement this");
 
             // Get unique id from Miami ID
+            int row = tbl_CheckInventory_RentedLaptopsDisplayTable.GetRow((Button)sender);
+            string userID = ((Label)tbl_CheckInventory_RentedLaptopsDisplayTable.GetControlFromPosition(2, row)).Text;
 
-            // Create email address for that unique id
+            if (IsUserIDUniqueID(userID))
+            {
+                // Create email address for that unique id
+                string email = userID + "@miamioh.edu";
 
-            // Create email using STMP
+                var fromAddress = new MailAddress("cameronstair@gmail.com", "FSB IT SERVICES");
+                var toAddress = new MailAddress(email, "User");
+                const string fromPassword = "A1b2c1d2e!";
+                const string subject = "Reminder: Return Laptop";
+                const string body = "This is a reminder to please return your rented laptop to FSB IT Services.\n\nThank you!";
 
-            // Send Email
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new System.Net.NetworkCredential(fromAddress.Address, fromPassword)
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(message);
+                    MessageBox.Show("Email Successfully Sent.");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("User ID is not in unique ID format. Cannot generate email.");
+            }
+
+
         }
 
         private void Serial_Click(object sender, EventArgs e)
