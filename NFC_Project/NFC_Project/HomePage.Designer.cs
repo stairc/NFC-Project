@@ -88,14 +88,12 @@
             this.rdo_AddLaptop_InService_No = new System.Windows.Forms.RadioButton();
             this.rdo_AddLaptop_InService_Yes = new System.Windows.Forms.RadioButton();
             this.tbx_AddLaptop_Memory = new System.Windows.Forms.TextBox();
-            this.tbx_AddLaptop_OSVersion = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Size = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Resolution = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_RAM = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Processor = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Model = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_Brand = new System.Windows.Forms.TextBox();
-            this.tbx_AddLaptop_Condition = new System.Windows.Forms.TextBox();
             this.tbx_AddLaptop_LaptopID = new System.Windows.Forms.TextBox();
             this.btn_AddLaptop_Back = new System.Windows.Forms.Button();
             this.lbl_AddLaptop_Title = new System.Windows.Forms.Label();
@@ -116,6 +114,11 @@
             this.btn_Return_ProcessReturn = new System.Windows.Forms.Button();
             this.btn_Return_Back = new System.Windows.Forms.Button();
             this.lbl_Return_Title = new System.Windows.Forms.Label();
+            this.cbo_AddLaptop_DeviceType = new System.Windows.Forms.ComboBox();
+            this.cbo_AddLaptop_OS = new System.Windows.Forms.ComboBox();
+            this.DeviceTypeLabel = new System.Windows.Forms.Label();
+            this.DateAddedLabel = new System.Windows.Forms.Label();
+            this.OperatingSystemLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HomePagePanel.SuspendLayout();
             this.CheckInventoryPanel.SuspendLayout();
@@ -773,6 +776,11 @@
             // 
             // AddLaptopPanel
             // 
+            this.AddLaptopPanel.Controls.Add(this.OperatingSystemLabel);
+            this.AddLaptopPanel.Controls.Add(this.DateAddedLabel);
+            this.AddLaptopPanel.Controls.Add(this.DeviceTypeLabel);
+            this.AddLaptopPanel.Controls.Add(this.cbo_AddLaptop_OS);
+            this.AddLaptopPanel.Controls.Add(this.cbo_AddLaptop_DeviceType);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_SerialNum);
             this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_Rescan);
             this.AddLaptopPanel.Controls.Add(this.lbl_AddLaptop_ScanStatus);
@@ -781,14 +789,12 @@
             this.AddLaptopPanel.Controls.Add(this.dtp_AddLaptop_DateAdded);
             this.AddLaptopPanel.Controls.Add(this.pnl_AddLaptop_InServicePanel);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Memory);
-            this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_OSVersion);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Size);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Resolution);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_RAM);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Processor);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Model);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Brand);
-            this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_Condition);
             this.AddLaptopPanel.Controls.Add(this.tbx_AddLaptop_LaptopID);
             this.AddLaptopPanel.Controls.Add(this.btn_AddLaptop_Back);
             this.AddLaptopPanel.Controls.Add(this.lbl_AddLaptop_Title);
@@ -912,16 +918,6 @@
             this.tbx_AddLaptop_Memory.Enter += new System.EventHandler(this.tbx_AddLaptop_Memory_Enter);
             this.tbx_AddLaptop_Memory.Leave += new System.EventHandler(this.tbx_AddLaptop_Memory_Leave);
             // 
-            // tbx_AddLaptop_OSVersion
-            // 
-            this.tbx_AddLaptop_OSVersion.Location = new System.Drawing.Point(439, 444);
-            this.tbx_AddLaptop_OSVersion.Name = "tbx_AddLaptop_OSVersion";
-            this.tbx_AddLaptop_OSVersion.Size = new System.Drawing.Size(246, 20);
-            this.tbx_AddLaptop_OSVersion.TabIndex = 15;
-            this.tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
-            this.tbx_AddLaptop_OSVersion.Enter += new System.EventHandler(this.tbx_AddLaptop_OSVersion_Enter);
-            this.tbx_AddLaptop_OSVersion.Leave += new System.EventHandler(this.tbx_AddLaptop_OSVersion_Leave);
-            // 
             // tbx_AddLaptop_Size
             // 
             this.tbx_AddLaptop_Size.Location = new System.Drawing.Point(439, 257);
@@ -981,16 +977,6 @@
             this.tbx_AddLaptop_Brand.Text = "Laptop Brand";
             this.tbx_AddLaptop_Brand.Enter += new System.EventHandler(this.tbx_AddLaptop_Brand_Enter);
             this.tbx_AddLaptop_Brand.Leave += new System.EventHandler(this.tbx_AddLaptop_Brand_Leave);
-            // 
-            // tbx_AddLaptop_Condition
-            // 
-            this.tbx_AddLaptop_Condition.Location = new System.Drawing.Point(439, 305);
-            this.tbx_AddLaptop_Condition.Name = "tbx_AddLaptop_Condition";
-            this.tbx_AddLaptop_Condition.Size = new System.Drawing.Size(246, 20);
-            this.tbx_AddLaptop_Condition.TabIndex = 13;
-            this.tbx_AddLaptop_Condition.Text = "Laptop Condition";
-            this.tbx_AddLaptop_Condition.Enter += new System.EventHandler(this.tbx_AddLaptop_Condition_Enter);
-            this.tbx_AddLaptop_Condition.Leave += new System.EventHandler(this.tbx_AddLaptop_Condition_Leave);
             // 
             // tbx_AddLaptop_LaptopID
             // 
@@ -1221,17 +1207,72 @@
             this.lbl_Return_Title.TabIndex = 0;
             this.lbl_Return_Title.Text = "Return Laptop";
             // 
+            // cbo_AddLaptop_DeviceType
+            // 
+            this.cbo_AddLaptop_DeviceType.FormattingEnabled = true;
+            this.cbo_AddLaptop_DeviceType.Items.AddRange(new object[] {
+            "All-In-One",
+            "Laptop",
+            "Surface Pro",
+            "iPad",
+            "Other"});
+            this.cbo_AddLaptop_DeviceType.Location = new System.Drawing.Point(439, 305);
+            this.cbo_AddLaptop_DeviceType.Name = "cbo_AddLaptop_DeviceType";
+            this.cbo_AddLaptop_DeviceType.Size = new System.Drawing.Size(246, 21);
+            this.cbo_AddLaptop_DeviceType.TabIndex = 22;
+            // 
+            // cbo_AddLaptop_OS
+            // 
+            this.cbo_AddLaptop_OS.FormattingEnabled = true;
+            this.cbo_AddLaptop_OS.Items.AddRange(new object[] {
+            "Windows",
+            "MacOS",
+            "iOS",
+            "ChromeOS",
+            "Other"});
+            this.cbo_AddLaptop_OS.Location = new System.Drawing.Point(439, 447);
+            this.cbo_AddLaptop_OS.Name = "cbo_AddLaptop_OS";
+            this.cbo_AddLaptop_OS.Size = new System.Drawing.Size(246, 21);
+            this.cbo_AddLaptop_OS.TabIndex = 23;
+            // 
+            // DeviceTypeLabel
+            // 
+            this.DeviceTypeLabel.AutoSize = true;
+            this.DeviceTypeLabel.Location = new System.Drawing.Point(439, 291);
+            this.DeviceTypeLabel.Name = "DeviceTypeLabel";
+            this.DeviceTypeLabel.Size = new System.Drawing.Size(71, 13);
+            this.DeviceTypeLabel.TabIndex = 24;
+            this.DeviceTypeLabel.Text = "Device Type:";
+            // 
+            // DateAddedLabel
+            // 
+            this.DateAddedLabel.AutoSize = true;
+            this.DateAddedLabel.Location = new System.Drawing.Point(439, 336);
+            this.DateAddedLabel.Name = "DateAddedLabel";
+            this.DateAddedLabel.Size = new System.Drawing.Size(67, 13);
+            this.DateAddedLabel.TabIndex = 25;
+            this.DateAddedLabel.Text = "Date Added:";
+            // 
+            // OperatingSystemLabel
+            // 
+            this.OperatingSystemLabel.AutoSize = true;
+            this.OperatingSystemLabel.Location = new System.Drawing.Point(439, 433);
+            this.OperatingSystemLabel.Name = "OperatingSystemLabel";
+            this.OperatingSystemLabel.Size = new System.Drawing.Size(93, 13);
+            this.OperatingSystemLabel.TabIndex = 26;
+            this.OperatingSystemLabel.Text = "Operating System:";
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(841, 617);
-            this.Controls.Add(this.CheckOutLaptopPanel);
             this.Controls.Add(this.AddLaptopPanel);
             this.Controls.Add(this.ReturnLaptopPanel);
             this.Controls.Add(this.CheckInventoryPanel);
             this.Controls.Add(this.HomePagePanel);
+            this.Controls.Add(this.CheckOutLaptopPanel);
             this.Name = "HomePage";
             this.Text = "FSB NFC Laptop Rental";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1287,14 +1328,12 @@
         private System.Windows.Forms.RadioButton rdo_AddLaptop_InService_No;
         private System.Windows.Forms.RadioButton rdo_AddLaptop_InService_Yes;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Memory;
-        private System.Windows.Forms.TextBox tbx_AddLaptop_OSVersion;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Size;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Resolution;
         private System.Windows.Forms.TextBox tbx_AddLaptop_RAM;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Processor;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Model;
         private System.Windows.Forms.TextBox tbx_AddLaptop_Brand;
-        private System.Windows.Forms.TextBox tbx_AddLaptop_Condition;
         private System.Windows.Forms.TextBox tbx_AddLaptop_LaptopID;
         private System.Windows.Forms.Button btn_AddLaptop_Rescan;
         private System.Windows.Forms.Label lbl_AddLaptop_ScanStatus;
@@ -1351,6 +1390,11 @@
         private System.Windows.Forms.Label lbl_CheckInventory_TableHeaders_OSVersion2;
         private System.Windows.Forms.Label lbl_CheckInventory_AvailableLaptopCount;
         private System.Windows.Forms.Label lbl_CheckInventory_AvailalbeLaptopsTitle;
+        private System.Windows.Forms.ComboBox cbo_AddLaptop_DeviceType;
+        private System.Windows.Forms.Label OperatingSystemLabel;
+        private System.Windows.Forms.Label DateAddedLabel;
+        private System.Windows.Forms.Label DeviceTypeLabel;
+        private System.Windows.Forms.ComboBox cbo_AddLaptop_OS;
     }
 }
 

@@ -329,7 +329,7 @@ namespace NFC_Project
             }
         }
 
-        /// Add Laptop Page Methods //////////////////////////////
+        /// Add Laptop Page Methods //////////////////////////////////////////////////////////////////
         private void ResetAddLaptopPage()
         {
             // Reset the add laptop page for next use
@@ -348,10 +348,10 @@ namespace NFC_Project
             // Resets the add laptop text fields for next use
 
             tbx_AddLaptop_Brand.Text = "Laptop Brand";
-            tbx_AddLaptop_Condition.Text = "Laptop Condition";
+            cbo_AddLaptop_DeviceType.SelectedIndex = 0;
             tbx_AddLaptop_Memory.Text = "Laptop Memory";
             tbx_AddLaptop_Model.Text = "Laptop Model";
-            tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
+            cbo_AddLaptop_OS.Text = "";
             tbx_AddLaptop_Processor.Text = "Laptop Processor";
             tbx_AddLaptop_RAM.Text = "Laptop RAM";
             tbx_AddLaptop_Resolution.Text = "Laptop Resolution";
@@ -365,10 +365,10 @@ namespace NFC_Project
         {
             // Disables text entry until a valid laptop tag is scanned
             tbx_AddLaptop_Brand.Enabled = false;
-            tbx_AddLaptop_Condition.Enabled = false;
+            cbo_AddLaptop_DeviceType.Enabled = false;
             tbx_AddLaptop_Memory.Enabled = false;
             tbx_AddLaptop_Model.Enabled = false;
-            tbx_AddLaptop_OSVersion.Enabled = false;
+            cbo_AddLaptop_OS.Enabled = false;
             tbx_AddLaptop_Processor.Enabled = false;
             tbx_AddLaptop_RAM.Enabled = false;
             tbx_AddLaptop_Resolution.Enabled = false;
@@ -382,10 +382,10 @@ namespace NFC_Project
         {
             // Enables laptop fields for edit after a valid ID is entered
             tbx_AddLaptop_Brand.Enabled = true;
-            tbx_AddLaptop_Condition.Enabled = true;
+            cbo_AddLaptop_DeviceType.Enabled = true;
             tbx_AddLaptop_Memory.Enabled = true;
             tbx_AddLaptop_Model.Enabled = true;
-            tbx_AddLaptop_OSVersion.Enabled = true;
+            cbo_AddLaptop_OS.Enabled = true;
             tbx_AddLaptop_Processor.Enabled = true;
             tbx_AddLaptop_RAM.Enabled = true;
             tbx_AddLaptop_Resolution.Enabled = true;
@@ -558,20 +558,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Size.Text = "Laptop Screen Size";
             }
         }
-        private void tbx_AddLaptop_Condition_Enter(object sender, EventArgs e)
-        {
-            if (tbx_AddLaptop_Condition.Text == "Laptop Condition")
-            {
-                tbx_AddLaptop_Condition.Text = "";
-            }
-        }
-        private void tbx_AddLaptop_Condition_Leave(object sender, EventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(tbx_AddLaptop_Condition.Text))
-            {
-                tbx_AddLaptop_Condition.Text = "Laptop Condition";
-            }
-        }
         private void tbx_AddLaptop_Memory_Enter(object sender, EventArgs e)
         {
             if (tbx_AddLaptop_Memory.Text == "Laptop Memory")
@@ -586,20 +572,6 @@ namespace NFC_Project
                 tbx_AddLaptop_Memory.Text = "Laptop Memory";
             }
         }
-        private void tbx_AddLaptop_OSVersion_Enter(object sender, EventArgs e)
-        {
-            if (tbx_AddLaptop_OSVersion.Text == "Laptop OS Version")
-            {
-                tbx_AddLaptop_OSVersion.Text = "";
-            }
-        }
-        private void tbx_AddLaptop_OSVersion_Leave(object sender, EventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(tbx_AddLaptop_OSVersion.Text))
-            {
-                tbx_AddLaptop_OSVersion.Text = "Laptop OS Version";
-            }
-        }
 
         private void CreateLaptopObject()
         {
@@ -607,17 +579,128 @@ namespace NFC_Project
 
             bool service = (rdo_AddLaptop_InService_Yes.Checked) ? true : false;
 
-            Laptop l = new Laptop(tbx_AddLaptop_LaptopID.Text, tbx_AddLaptop_SerialNum.Text, Laptop.DeviceTypes.Other,  //tbx_AddLaptop_Condition.Text,
+            // Determine laptop type selection
+            Laptop.DeviceTypes type = Laptop.DeviceTypes.Other;
+            switch (cbo_AddLaptop_DeviceType.SelectedIndex)
+            {
+                case 0:
+                    type = Laptop.DeviceTypes.AllInOne;
+                    break;
+                case 1:
+                    type = Laptop.DeviceTypes.Laptop;
+                    break;
+                case 2:
+                    type = Laptop.DeviceTypes.SurfacePro;
+                    break;
+                case 3:
+                    type = Laptop.DeviceTypes.iPad;
+                    break;
+                case 4:
+                    type = Laptop.DeviceTypes.Other;
+                    break;
+                default:
+                    break;
+            }
+
+            // Detemine os selection
+            Laptop.OperatingSystems os = Laptop.OperatingSystems.Other;
+            switch (cbo_AddLaptop_DeviceType.SelectedIndex)
+            {
+                case 0:
+                    os = Laptop.OperatingSystems.Windows;
+                    break;
+                case 1:
+                    os = Laptop.OperatingSystems.MacOS;
+                    break;
+                case 2:
+                    os = Laptop.OperatingSystems.iOS;
+                    break;
+                case 3:
+                    os = Laptop.OperatingSystems.ChromeOS;
+                    break;
+                case 4:
+                    os = Laptop.OperatingSystems.Other;
+                    break;
+                default:
+                    break;
+            }
+
+            Laptop l = new Laptop(tbx_AddLaptop_LaptopID.Text, tbx_AddLaptop_SerialNum.Text, type,
                                   tbx_AddLaptop_Brand.Text, tbx_AddLaptop_Model.Text, tbx_AddLaptop_Processor.Text, tbx_AddLaptop_RAM.Text,
                                   tbx_AddLaptop_Resolution.Text, tbx_AddLaptop_Size.Text, dtp_AddLaptop_DateAdded.Value,
-                                  service, tbx_AddLaptop_Memory.Text, Laptop.OperatingSystems.Windows); //tbx_AddLaptop_OSVersion.Text); 
+                                  service, tbx_AddLaptop_Memory.Text, os);
 
             //TODO: Add laptop to database instead of list
             LaptopList.Add(l);
         }
         private bool IsAddNewLaptopDataValid()
         {
-            // TODO: IMPLEMENT LAPTOP DATA VALIDATION
+            if (tbx_AddLaptop_SerialNum.Text == "Laptop Serial Number" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_SerialNum.Text))
+            {
+                return false;
+            }
+
+            if (tbx_AddLaptop_Brand.Text == "Laptop Brand" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_Brand.Text))
+            {
+                return false;
+            }
+
+            if (tbx_AddLaptop_Model.Text == "Laptop Model" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_Model.Text))
+            {
+                return false;
+            }
+
+            if (tbx_AddLaptop_Processor.Text == "Laptop Processor" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_Processor.Text))
+            {
+                return false;
+            }
+
+            if (tbx_AddLaptop_RAM.Text == "Laptop RAM" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_RAM.Text))
+            {
+                return false;
+            }
+
+            if (tbx_AddLaptop_Resolution.Text == "Laptop Resolution" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_Resolution.Text))
+            {
+                return false;
+            }
+
+            if (tbx_AddLaptop_Size.Text == "Laptop Screen Size" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_Size.Text))
+            {
+                return false;
+            }
+
+            if (tbx_AddLaptop_Memory.Text == "Laptop Memory" ||
+                String.IsNullOrWhiteSpace(tbx_AddLaptop_Memory.Text))
+            {
+                return false;
+            }
+
+            if (!rdo_AddLaptop_InService_No.Checked &&
+                !rdo_AddLaptop_InService_Yes.Checked)
+            {
+                return false;
+            }
+
+            if (cbo_AddLaptop_DeviceType.SelectedIndex > 6)
+            {
+                return false;
+            }
+
+            if (cbo_AddLaptop_OS.SelectedIndex > 6)
+            {
+                return false;
+            }
+
+
+
             return true;
         }
 
@@ -626,15 +709,18 @@ namespace NFC_Project
             // Check if new data is valid for laptop
             if (IsAddNewLaptopDataValid())
             {
-
                 // Create the laptop object and notify user
                 CreateLaptopObject();
                 MessageBox.Show("Laptop added to system successfully.", "Success", MessageBoxButtons.OK);
                 btn_AddLaptop_Back_Click(null, null);
             }
+            else
+            {
+                MessageBox.Show("The data you entered for the new laptop is invalid. All fields must be filled in. Enter a dash ( - ) if you wish to leave the field empty.", "Invalid Data");
+            }
         }
 
-        /// Return Laptop Page Methods //////////////////////////////////////////
+        /// Return Laptop Page Methods ////////////////////////////////////////////////////////////////
 
         private void ResetReturnPage()
         {
@@ -748,7 +834,7 @@ namespace NFC_Project
             }
         }
 
-        /// Check Inventory Page Methods ////////////////////////////////////////
+        /// Check Inventory Page Methods ///////////////////////////////////////////////////////////////
 
         private void PopulateAllLaptopTable()
         {
