@@ -1305,6 +1305,15 @@ namespace NFC_Project
 
         private void Email_Click(object sender, EventArgs e)
         {
+            // CHANGE VARIABLES BELOW TO CHANGE EMAIL SENDER //
+            const string FromEmailAddress = "cameronstair@gmail.com";
+            const string FromName = "FSB IT SERVICES";
+            const string fromPassword = "A1b2c1d2e!";
+            const string subject = "Reminder: Return Laptop";
+            const string body = "This is a reminder to please return your rented laptop to FSB IT Services.\n\nThank you!";
+            const string emailHostAddress = "smtp.gmail.com";
+            const int emailHostPort = 587;
+
 
             // Get unique id from Miami ID
             int row = tbl_CheckInventory_RentedLaptopsDisplayTable.GetRow((Button)sender);
@@ -1315,16 +1324,13 @@ namespace NFC_Project
                 // Create email address for that unique id
                 string email = userID + "@miamioh.edu";
 
-                var fromAddress = new MailAddress("cameronstair@gmail.com", "FSB IT SERVICES");
+                var fromAddress = new MailAddress(FromEmailAddress, FromName);
                 var toAddress = new MailAddress(email, "User");
-                const string fromPassword = "A1b2c1d2e!";
-                const string subject = "Reminder: Return Laptop";
-                const string body = "This is a reminder to please return your rented laptop to FSB IT Services.\n\nThank you!";
 
                 var smtp = new SmtpClient
                 {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
+                    Host = emailHostAddress,
+                    Port = emailHostPort,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,

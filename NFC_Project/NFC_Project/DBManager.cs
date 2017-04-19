@@ -13,6 +13,8 @@ namespace NFC_Project
     {
        
         const string ConnString = "Data Source=DESKTOP-PASOB3I\\SQLEXPRESS;Initial Catalog=NFCTest;Integrated Security=True";
+        const string UserName = "nfc2";
+        const string Password = "nfc2Tw0";
 
         SqlConnection con;
 
